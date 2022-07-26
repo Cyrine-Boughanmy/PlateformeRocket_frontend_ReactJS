@@ -6,18 +6,34 @@ import ForgetPwd from "./components/Pages/Auth/ForgetPwd";
 import Dashboard from "./components/Dashboard/Default";
 // import Ecommerce from "./components/Dashboard/Ecommerce";
 
+// import SecuredRoute from "./middlewares/SecuredRout";
+
+import PrivateRoute from "./utils/PrivateRoute";
+import { AuthProvider } from "./context/AuthContext";
 function App() {
   return (
     <div className="App">
       <Router>
-        <Routes>
-          <Route exact path="/login" element={<Login />}></Route>
-          <Route exact path="/register" element={<RegisterSimple />}></Route>
-          <Route exact path="/login/reset_pwd" element={<ForgetPwd />}></Route>
-          <Route exact path="/dashboard" element={<Dashboard />}></Route>
+        <AuthProvider>
+          <Routes>
+            <Route exact path="/login" element={<Login />}></Route>
+            <Route exact path="/register" element={<RegisterSimple />}></Route>
+            <Route
+              exact
+              path="/login/reset_pwd"
+              element={<ForgetPwd />}
+            ></Route>
+            <Route exact path="/dashboard" element={<Dashboard />}></Route>
 
-          {/* <Route exact path="/test" element={<Ecommerce />}></Route> */}
-        </Routes>
+            {/* <PrivateRoute
+              exact
+              path="/dashboard"
+              element={<Dashboard />}
+            ></PrivateRoute> */}
+
+            {/* <Route exact path="/test" element={<Ecommerce />}></Route> */}
+          </Routes>
+        </AuthProvider>
       </Router>
     </div>
   );
