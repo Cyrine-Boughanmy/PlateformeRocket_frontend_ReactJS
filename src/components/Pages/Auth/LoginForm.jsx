@@ -1,13 +1,23 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState, useEffect, useContext } from "react";
 import { Btn, H4, H6 } from "../../../AbstractElements";
-import { Form, FormGroup, Input, Label } from "reactstrap";
-import { Link } from "react-router-dom";
+import { Button, Form, FormGroup, Input, Label } from "reactstrap";
+import { Link, useNavigate } from "react-router-dom";
+import AuthContext from "../../../context/AuthContext";
 
 const LoginForm = () => {
+  const history = useNavigate();
+  const { loginUser } = useContext(AuthContext);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const username = e.target.username.value;
+    const password = e.target.password.value;
+    username.length > 0 && loginUser(username, password);
+    history.push("/dashboard");
+  };
   return (
     <Fragment>
       <div className="login-card">
-        <Form className="theme-form login-form">
+        <Form className="theme-form login-form" onSubmit={handleSubmit}>
           <H4>Se Connecter</H4>
           <H6>Hello ! Connectez-vous à votre compte Rocket Coding.</H6>
 
@@ -18,10 +28,11 @@ const LoginForm = () => {
                 <i className="icon-email"></i>
               </span>
               <Input
+                id="username"
                 className="form-control"
-                type="email"
+                type="text"
                 required=""
-                placeholder="adresse@gmail.com"
+                placeholder="username"
               />
             </div>
           </FormGroup>
@@ -33,6 +44,7 @@ const LoginForm = () => {
                 <i className="icon-lock"></i>
               </span>
               <Input
+                id="password"
                 className="form-control"
                 type="password"
                 name="login[password]"
