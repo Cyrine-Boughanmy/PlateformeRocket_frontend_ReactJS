@@ -1,6 +1,6 @@
-import React, { Fragment, useState, useEffect, useContext } from "react";
+import React, { Fragment, useContext } from "react";
 import { Btn, H4, H6 } from "../../../AbstractElements";
-import { Button, Form, FormGroup, Input, Label } from "reactstrap";
+import { Form, FormGroup, Input, Label } from "reactstrap";
 import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "../../../context/AuthContext";
 
@@ -12,7 +12,7 @@ const LoginForm = () => {
     const username = e.target.username.value;
     const password = e.target.password.value;
     username.length > 0 && loginUser(username, password);
-    history.push("/dashboard");
+    history("/dashboard");
   };
   return (
     <Fragment>
@@ -71,6 +71,7 @@ const LoginForm = () => {
                 type: "submit",
               }}
             >
+              {/* <Link to="/dashboard" /> */}
               Se Connecter
             </Btn>
           </FormGroup>
