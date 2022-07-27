@@ -1,6 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const AuthContext = createContext();
 
@@ -41,9 +42,29 @@ export const AuthProvider = ({ children }) => {
       setAuthTokens(data);
       setUser(jwt_decode(data.access));
       localStorage.setItem("authTokens", JSON.stringify(data));
-      history.push("/");
+      history("/dashboard");
     } else {
       alert("Something went wrong!");
+    }
+  };
+
+  const reset_passsword = async (email) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const body = JSON.stringify({ email });
+
+    try {
+      await axios.post(
+        "http://127.0.0.1:8000/simple-user/password-reset/",
+        body,
+        config
+      );
+    } catch (err) {
+      console.log(err);
     }
   };
 
@@ -102,6 +123,7 @@ export const AuthProvider = ({ children }) => {
     registerUser,
     loginUser,
     logoutUser,
+    reset_passsword,
   };
 
   useEffect(() => {

@@ -1,64 +1,70 @@
-import React, { Fragment, useState, useEffect, useLayoutEffect } from 'react';
-import { MoreHorizontal } from 'react-feather';
-import Leftbar from './LeftBar';
-import Rightbar from './RightBar';
-import Searchbar from './Search';
-import { Row } from 'reactstrap';
-import { useContext } from 'react';
-import CustomizerContext from '../../_helper/Customizer';
-
+import React, { Fragment, useState, useEffect, useLayoutEffect } from "react";
+import { MoreHorizontal } from "react-feather";
+import Leftbar from "./LeftBar";
+import Rightbar from "./RightBar";
+import Searchbar from "./Search";
+import { Row } from "reactstrap";
+import { useContext } from "react";
+import CustomizerContext from "../../_helper/Customizer";
+import Dashboard from "../../components/Dashboard/Default";
 const Header = () => {
-    const [sidebartoogle, setSidebartoogle] = useState(true);
-    const { toggleIcon, toggleSidebarResponsive, setToggleIcon } = useContext(CustomizerContext);
-    const [toggle, setToggle] = useState(true);
+  const [sidebartoogle, setSidebartoogle] = useState(true);
+  const { toggleIcon, toggleSidebarResponsive, setToggleIcon } =
+    useContext(CustomizerContext);
+  const [toggle, setToggle] = useState(true);
 
-    function useWindowSize() {
-        const [size, setSize] = useState([0, 0]);
-        useLayoutEffect(() => {
-            function updateSize() {
-                setSize([window.innerWidth, window.innerHeight]);
-                if (window.innerWidth <= 991) {
-                    setToggleIcon(true);
-                } else {
-                    setToggleIcon(false);
-                }
-            }
-            window.addEventListener('resize', updateSize);
-            updateSize();
-            return () => window.removeEventListener('resize', updateSize);
-        }, []);
-        return size;
-    }
-    // eslint-disable-next-line
-    const [width] = useWindowSize();
-
-    useEffect(() => {
+  function useWindowSize() {
+    const [size, setSize] = useState([0, 0]);
+    useLayoutEffect(() => {
+      function updateSize() {
+        setSize([window.innerWidth, window.innerHeight]);
         if (window.innerWidth <= 991) {
-            setToggleIcon(true);
+          setToggleIcon(true);
         } else {
-            setToggleIcon(false);
+          setToggleIcon(false);
         }
+      }
+      window.addEventListener("resize", updateSize);
+      updateSize();
+      return () => window.removeEventListener("resize", updateSize);
     }, []);
+    return size;
+  }
+  // eslint-disable-next-line
+  const [width] = useWindowSize();
 
-    const toggleResp = (value) => {
-        setToggle(value);
-        toggleSidebarResponsive(toggle);
-    };
-    return (
-        <Fragment>
-            <div className={`page-main-header ${toggleIcon ? 'close_icon' : ''}`}>
-                <Row className="main-header-right m-0">
-                    <Leftbar sidebartoogle={sidebartoogle} setSidebartoogle={setSidebartoogle} />
-                    <Searchbar />
-                    <Rightbar />
-                    <div className="d-lg-none mobile-toggle pull-right w-auto" onClick={() => toggleResp(!toggle)}>
-                        <MoreHorizontal />
-                    </div>
-                </Row>
-            </div>
+  useEffect(() => {
+    if (window.innerWidth <= 991) {
+      setToggleIcon(true);
+    } else {
+      setToggleIcon(false);
+    }
+  }, []);
 
-        </Fragment >
-    );
+  const toggleResp = (value) => {
+    setToggle(value);
+    toggleSidebarResponsive(toggle);
+  };
+  return (
+    <Fragment>
+      <div className={`page-main-header ${toggleIcon ? "close_icon" : ""}`}>
+        <Row className="main-header-right m-0">
+          <Leftbar
+            sidebartoogle={sidebartoogle}
+            setSidebartoogle={setSidebartoogle}
+          />
+          <Searchbar />
+          <Rightbar />
+          <div
+            className="d-lg-none mobile-toggle pull-right w-auto"
+            onClick={() => toggleResp(!toggle)}
+          >
+            <MoreHorizontal />
+          </div>
+        </Row>
+      </div>
+    </Fragment>
+  );
 };
 
 export default Header;

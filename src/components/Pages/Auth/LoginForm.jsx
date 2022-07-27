@@ -12,7 +12,7 @@ const LoginForm = () => {
     const username = e.target.username.value;
     const password = e.target.password.value;
     username.length > 0 && loginUser(username, password);
-    history("/dashboard");
+    // history("/dashboard");
   };
   return (
     <Fragment>
@@ -22,7 +22,7 @@ const LoginForm = () => {
           <H6>Hello ! Connectez-vous à votre compte Rocket Coding.</H6>
 
           <FormGroup>
-            <Label>Adresse Email</Label>
+            <Label>Username</Label>
             <div className="input-group">
               <span className="input-group-text">
                 <i className="icon-email"></i>

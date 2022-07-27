@@ -10,6 +10,7 @@ import Dashboard from "./components/Dashboard/Default";
 
 import PrivateRoute from "./utils/PrivateRoute";
 import { AuthProvider } from "./context/AuthContext";
+import Header from "./Layout/Header";
 function App() {
   return (
     <div className="App">
@@ -24,6 +25,7 @@ function App() {
               element={<ForgetPwd />}
             ></Route>
             <Route exact path="/dashboard" element={<Dashboard />}></Route>
+            <Route path="/header" element={<Header />}></Route>
 
             {/* <PrivateRoute
               exact
