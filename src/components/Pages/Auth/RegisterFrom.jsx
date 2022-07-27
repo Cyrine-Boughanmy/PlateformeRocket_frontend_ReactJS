@@ -1,9 +1,10 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useContext, useState } from "react";
 import { Form, FormGroup, Input, Label } from "reactstrap";
-import { H4, H6 } from "../../../AbstractElements";
+import { H4, H6, Btn } from "../../../AbstractElements";
 import { Link } from "react-router-dom";
 
 import axios from "axios";
+import AuthContext from "../../../context/AuthContext";
 
 const RegisterFrom = () => {
   const [nom, setNom] = useState("");
@@ -17,25 +18,42 @@ const RegisterFrom = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const registerUser = (event) => {
-    const formdata = {
-      nom: nom,
-      prenom: prenom,
-      username: username,
-      email: email,
-      password: password,
-      dateNaissance: dateNaissance,
-      adresse: adresse,
-      ville: ville,
-      codePostal: codePostal,
-      numTel: numTel,
-    };
-    axios.post(`http://localhost:8000/super-user/user/`, formdata);
+  const { registerUser } = useContext(AuthContext);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    registerUser(
+      username,
+      password,
+      email,
+      nom,
+      prenom,
+      dateNaissance,
+      adresse,
+      ville,
+      codePostal,
+      numTel
+    );
   };
+  // const registerUser = (event) => {
+  //   const formdata = {
+  //     nom: nom,
+  //     prenom: prenom,
+  //     username: username,
+  //     email: email,
+  //     password: password,
+  //     dateNaissance: dateNaissance,
+  //     adresse: adresse,
+  //     ville: ville,
+  //     codePostal: codePostal,
+  //     numTel: numTel,
+  //   };
+  //   axios.post(`http://localhost:8000/super-user/user/`, formdata);
+  // };
   return (
     <Fragment>
       <div className="login-card">
-        <Form className="theme-form login-form">
+        <Form className="theme-form login-form" onSubmit={handleSubmit}>
           <H4>Create your account</H4>
           <H6>Enter your personal details to create account</H6>
           <FormGroup>
@@ -46,11 +64,12 @@ const RegisterFrom = () => {
                   <i className="icon-user"></i>
                 </span>
                 <Input
+                  id="nom"
                   className="form-control"
                   type="text"
                   required=""
                   placeholder="Nom"
-                  value={nom}
+                  // value={nom}
                   onChange={(e) => setNom(e.target.value)}
                 />
               </div>
@@ -59,11 +78,12 @@ const RegisterFrom = () => {
                   <i className="icon-user"></i>
                 </span>
                 <Input
+                  id="prenom"
                   className="form-control"
                   type="text"
                   required=""
                   placeholder="Prénom"
-                  value={prenom}
+                  // value={prenom}
                   onChange={(e) => setPrenom(e.target.value)}
                 />
               </div>
@@ -76,11 +96,12 @@ const RegisterFrom = () => {
                 <i className="icon-email"></i>
               </span>
               <Input
+                id="dateNaissance"
                 className="form-control"
                 type="date"
                 required=""
                 placeholder="Date de Naissance"
-                value={dateNaissance}
+                // value={dateNaissance}
                 onChange={(e) => setDateNaissance(e.target.value)}
               />
             </div>
@@ -92,11 +113,12 @@ const RegisterFrom = () => {
                 <i className="icon-email"></i>
               </span>
               <Input
+                id="numTel"
                 className="form-control"
                 type="text"
                 required=""
                 placeholder="Téléphone"
-                value={numTel}
+                // value={numTel}
                 onChange={(e) => setNumTel(e.target.value)}
               />
             </div>
@@ -108,11 +130,12 @@ const RegisterFrom = () => {
                 <i className="icon-email"></i>
               </span>
               <Input
+                id="adresse"
                 className="form-control"
                 type="text"
                 required=""
                 placeholder="Adresse"
-                value={adresse}
+                // value={adresse}
                 onChange={(e) => setAdresse(e.target.value)}
               />
             </div>
@@ -124,11 +147,12 @@ const RegisterFrom = () => {
                 <i className="icon-email"></i>
               </span>
               <Input
+                id="ville"
                 className="form-control"
                 type="text"
                 required=""
                 placeholder="Ville"
-                value={ville}
+                // value={ville}
                 onChange={(e) => setVille(e.target.value)}
               />
             </div>
@@ -140,11 +164,12 @@ const RegisterFrom = () => {
                 <i className="icon-email"></i>
               </span>
               <Input
+                id="codePostal"
                 className="form-control"
                 type="number"
                 required=""
                 placeholder="Code Postal"
-                value={codePostal}
+                // value={codePostal}
                 onChange={(e) => setCodePostal(e.target.value)}
               />
             </div>
@@ -156,11 +181,12 @@ const RegisterFrom = () => {
                 <i className="icon-email"></i>
               </span>
               <Input
+                id="username"
                 className="form-control"
                 type="text"
                 required=""
                 placeholder="Username"
-                value={username}
+                // value={username}
                 onChange={(e) => setUsername(e.target.value)}
               />
             </div>
@@ -172,11 +198,12 @@ const RegisterFrom = () => {
                 <i className="icon-email"></i>
               </span>
               <Input
+                id="email"
                 className="form-control"
                 type="email"
                 required=""
                 placeholder="Test@gmail.com"
-                value={email}
+                // value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
@@ -188,12 +215,13 @@ const RegisterFrom = () => {
                 <i className="icon-lock"></i>
               </span>
               <Input
+                id="password"
                 className="form-control"
                 type="password"
                 name="login[password]"
                 required=""
                 placeholder="*********"
-                value={password}
+                // value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
               <div className="show-hide">
@@ -203,16 +231,22 @@ const RegisterFrom = () => {
           </FormGroup>
           <FormGroup>
             <div className="checkbox">
-              <Input id="checkbox1" type="checkbox" />
+              <Input id="checkbox1" type="checkbox" required />
               <Label className="text-muted" for="checkbox1">
                 Agree with <span>Privacy Policy</span>
               </Label>
             </div>
           </FormGroup>
           <FormGroup>
-            <button type="text" class="submit" onClick={() => registerUser()}>
+            <Btn
+              attrBtn={{
+                className: "btn-block",
+                color: "primary",
+                type: "submit",
+              }}
+            >
               Create Account
-            </button>
+            </Btn>
           </FormGroup>
 
           <p>
