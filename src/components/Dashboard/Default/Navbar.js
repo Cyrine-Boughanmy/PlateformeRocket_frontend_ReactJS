@@ -16,7 +16,16 @@ import MailIcon from "@mui/icons-material/Mail";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import { Divider, Drawer, List, ListItem, ListItemText } from "@mui/material";
+import HomeIcon from "@mui/icons-material/Home";
+import ImportContactsSharpIcon from "@mui/icons-material/ImportContactsSharp";
+import PersonIcon from "@mui/icons-material/Person";
+import VerifiedUserSharpIcon from "@mui/icons-material/VerifiedUserSharp";
+import WebAssetSharpIcon from "@mui/icons-material/WebAssetSharp";
+import ReorderSharpIcon from "@mui/icons-material/ReorderSharp";
+import ArticleIcon from "@mui/icons-material/Article";
+import NewspaperIcon from "@mui/icons-material/Newspaper";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -48,7 +57,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: "inherit",
   "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create("width"),
     width: "100%",
@@ -83,6 +91,8 @@ export default function PrimarySearchAppBar() {
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
+
+  const history = useNavigate();
 
   const menuId = "primary-search-account-menu";
   const renderMenu = (
@@ -185,25 +195,42 @@ export default function PrimarySearchAppBar() {
             </Box>
             <Divider />
             <List>
-              <ListItem button onClick={() => {}}>
+              <ListItem button onClick={() => history("/")}>
+                <HomeIcon />
+                <ListItemText primary={"Home"}></ListItemText>
+              </ListItem>
+              <ListItem button onClick={() => history("/profile")}>
+                <PersonIcon />
+                <ListItemText primary={"Profile"}></ListItemText>
+              </ListItem>
+            </List>
+            <Divider />
+            <List>
+              <ListItem button onClick={() => history("/cours")}>
+                <ImportContactsSharpIcon />
                 <ListItemText primary={"Cours"}></ListItemText>
               </ListItem>
-              <ListItem button onClick={() => {}}>
+              <ListItem button onClick={() => history("/exercices")}>
+                <WebAssetSharpIcon />
                 <ListItemText primary={"Exercices"}></ListItemText>
               </ListItem>
-              <ListItem button onClick={() => {}}>
+              <ListItem button onClick={() => history("/evaluations")}>
+                <VerifiedUserSharpIcon />
                 <ListItemText primary={"Evaluations"}></ListItemText>
               </ListItem>
-              <ListItem button onClick={() => {}}>
+              <ListItem button onClick={() => history("/qcm")}>
+                <ReorderSharpIcon />
                 <ListItemText primary={"QCM"}></ListItemText>
               </ListItem>
             </List>
             <Divider />
             <List>
-              <ListItem button onClick={() => {}}>
+              <ListItem button onClick={() => history("/blog")}>
+                <ArticleIcon />
                 <ListItemText primary={"Blog"}></ListItemText>
               </ListItem>
-              <ListItem button onClick={() => {}}>
+              <ListItem button onClick={() => history("/annonces")}>
+                <NewspaperIcon />
                 <ListItemText primary={"Annonces"}></ListItemText>
               </ListItem>
             </List>
