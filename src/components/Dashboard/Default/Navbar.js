@@ -111,8 +111,8 @@ export default function PrimarySearchAppBar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={() => history("/profile")}>Profile</MenuItem>
+      <MenuItem onClick={() => history("/monCompte")}>Mon compte</MenuItem>
     </Menu>
   );
 
@@ -133,7 +133,7 @@ export default function PrimarySearchAppBar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem>
+      {/* <MenuItem>
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
           <Badge badgeContent={4} color="error">
             <MailIcon />
@@ -152,7 +152,7 @@ export default function PrimarySearchAppBar() {
           </Badge>
         </IconButton>
         <p>Notifications</p>
-      </MenuItem>
+      </MenuItem> */}
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           size="large"
@@ -243,7 +243,7 @@ export default function PrimarySearchAppBar() {
           >
             Rocket Coding Bootcamp
           </Typography>
-          <Search>
+          {/* <Search>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
@@ -251,16 +251,16 @@ export default function PrimarySearchAppBar() {
               placeholder="Search…"
               inputProps={{ "aria-label": "search" }}
             />
-          </Search>
+          </Search> */}
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            <IconButton
+            {/* <IconButton
               size="large"
               aria-label="show 4 new mails"
               color="inherit"
-            >
-              {/* <Badge badgeContent={4} color="error"> */}
-              <Badge color="error">
+            > */}
+            {/* <Badge badgeContent={4} color="error"> */}
+            {/* <Badge color="error">
                 <MailIcon />
               </Badge>
             </IconButton>
@@ -268,12 +268,12 @@ export default function PrimarySearchAppBar() {
               size="large"
               aria-label="show 17 new notifications"
               color="inherit"
-            >
-              {/* <Badge badgeContent={17} color="error"> */}
-              <Badge color="error">
+            > */}
+            {/* <Badge badgeContent={17} color="error"> */}
+            {/* <Badge color="error">
                 <NotificationsIcon />
               </Badge>
-            </IconButton>
+            </IconButton> */}
             <IconButton
               size="large"
               edge="end"

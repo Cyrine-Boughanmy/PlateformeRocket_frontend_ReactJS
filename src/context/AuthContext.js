@@ -42,88 +42,88 @@ export const AuthProvider = ({ children }) => {
       setAuthTokens(data);
       setUser(jwt_decode(data.access));
       localStorage.setItem("authTokens", JSON.stringify(data));
-      history("/dashboard");
+      history("/");
     } else {
       alert("Something went wrong!");
     }
   };
 
-  const reset_passsword = async (email) => {
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
+  // const reset_passsword = async (email) => {
+  //   const config = {
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   };
 
-    const body = JSON.stringify({ email });
+  //   const body = JSON.stringify({ email });
 
-    try {
-      await axios.post(
-        "http://127.0.0.1:8000/simple-user/password-reset/",
-        body,
-        config
-      );
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  //   try {
+  //     await axios.post(
+  //       "http://127.0.0.1:8000/simple-user/password-reset/",
+  //       body,
+  //       config
+  //     );
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
-  const registerUser = async (
-    username,
-    password,
-    email,
-    nom,
-    prenom,
-    date_de_naissance,
-    num_tel,
-    adresse,
-    ville,
-    code_postal
-  ) => {
-    const response = await fetch(
-      "http://127.0.0.1:8000/simple-user/register/",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username,
-          password,
-          email,
-          nom,
-          prenom,
-          date_de_naissance,
-          num_tel,
-          adresse,
-          ville,
-          code_postal,
-        }),
-      }
-    );
-    if (response.status === 201) {
-      history.push("/login");
-    } else {
-      alert("Something went wrong!");
-    }
-  };
+  // const registerUser = async (
+  //   username,
+  //   password,
+  //   email,
+  //   nom,
+  //   prenom,
+  //   date_de_naissance,
+  //   num_tel,
+  //   adresse,
+  //   ville,
+  //   code_postal
+  // ) => {
+  //   const response = await fetch(
+  //     "http://127.0.0.1:8000/simple-user/register/",
+  //     {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({
+  //         username,
+  //         password,
+  //         email,
+  //         nom,
+  //         prenom,
+  //         date_de_naissance,
+  //         num_tel,
+  //         adresse,
+  //         ville,
+  //         code_postal,
+  //       }),
+  //     }
+  //   );
+  //   if (response.status === 201) {
+  //     history.push("/login");
+  //   } else {
+  //     alert("Something went wrong!");
+  //   }
+  // };
 
-  const logoutUser = () => {
-    setAuthTokens(null);
-    setUser(null);
-    localStorage.removeItem("authTokens");
-    history.push("/");
-  };
+  // const logoutUser = () => {
+  //   setAuthTokens(null);
+  //   setUser(null);
+  //   localStorage.removeItem("authTokens");
+  //   history.push("/");
+  // };
 
   const contextData = {
     user,
     setUser,
     authTokens,
     setAuthTokens,
-    registerUser,
+    // registerUser,
     loginUser,
-    logoutUser,
-    reset_passsword,
+    // logoutUser,
+    // reset_passsword,
   };
 
   useEffect(() => {

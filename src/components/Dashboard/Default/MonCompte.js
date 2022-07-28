@@ -1,15 +1,14 @@
 import React from "react";
 import PrimarySearchAppBar from "./Navbar";
-import AllCours from "../../Pages/Cours/AllCours";
-const Cours = () => {
+
+const MonCompte = () => {
   return (
     <div>
       <PrimarySearchAppBar />
       <br />
-      <AllCours />
-      <br />
+      Welcome to your account !
     </div>
   );
 };
 
-export default Cours;
+export default MonCompte;

@@ -18,16 +18,16 @@ const Item = styled(Paper)(({ theme }) => ({
   cursor: "pointer",
 }));
 
-const Evaluations = () => {
+const Home = () => {
   const history = useNavigate();
   return (
     <div>
       <PrimarySearchAppBar />
       <br />
       <Box>
-        <p style={{ fontSize: "60px" }}>Evaluations</p>
+        <p style={{ fontSize: "60px" }}>HOME</p>
         <Stack spacing={2} mt={2}>
-          <Item onClick={() => history("/")}>Evaluation 1</Item>
+          <Item onClick={() => history("/profile")}>Profile</Item>
           <br />
           <Item
             style={{ margin: "auto", padding: "10px", fontSize: "20px" }}
@@ -43,10 +43,37 @@ const Evaluations = () => {
             Exercices
           </Item>
           <br />
+          <Item
+            style={{ margin: "auto", padding: "10px", fontSize: "20px" }}
+            onClick={() => history("/evaluations")}
+          >
+            Evaluations
+          </Item>
+          <br />
+          <Item
+            style={{ margin: "auto", padding: "10px", fontSize: "20px" }}
+            onClick={() => history("/qcm")}
+          >
+            QCM
+          </Item>
+          <br />
+          <Item
+            style={{ margin: "auto", padding: "10px", fontSize: "20px" }}
+            onClick={() => history("/blog")}
+          >
+            Blog
+          </Item>
+          <br />
+          <Item
+            style={{ margin: "auto", padding: "10px", fontSize: "20px" }}
+            onClick={() => history("/annonces")}
+          >
+            Annonces
+          </Item>
         </Stack>
       </Box>
     </div>
   );
 };
 
-export default Evaluations;
+export default Home;
