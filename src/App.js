@@ -21,8 +21,8 @@ function App() {
       <Router>
         <AuthProvider>
           <Routes>
-            <Route exact path="/" element={<Home />}></Route>
-            <Route exact path="/login" element={<Login />}></Route>
+            <Route exact path="/home" element={<Home />}></Route>
+            <Route exact path="/" element={<Login />}></Route>
             <Route exact path="/register" element={<RegisterSimple />}></Route>
             <Route exact path="/cours" element={<Cours />}></Route>
             <Route exact path="/profile" element={<Profile />}></Route>

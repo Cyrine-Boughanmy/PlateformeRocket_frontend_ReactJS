@@ -27,7 +27,7 @@ const Evaluations = () => {
       <Box>
         <p style={{ fontSize: "60px" }}>Evaluations</p>
         <Stack spacing={2} mt={2}>
-          <Item onClick={() => history("/")}>Evaluation 1</Item>
+          <Item onClick={() => history("/home")}>Evaluation 1</Item>
           <br />
           <Item
             style={{ margin: "auto", padding: "10px", fontSize: "20px" }}
