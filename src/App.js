@@ -11,12 +11,9 @@ import Evaluations from "./components/Dashboard/Default/Evaluations";
 import Qcm from "./components/Dashboard/Default/Qcm";
 import Blog from "./components/Dashboard/Default/Blog";
 import Annonces from "./components/Dashboard/Default/Annonces";
-// import Ecommerce from "./components/Dashboard/Ecommerce";
-
-// import SecuredRoute from "./middlewares/SecuredRout";
-
-// import PrivateRoute from "./utils/PrivateRoute";
 import { AuthProvider } from "./context/AuthContext";
+import Home from "./components/Dashboard/Default/Home";
+import MonCompte from "./components/Dashboard/Default/MonCompte";
 
 function App() {
   return (
@@ -24,8 +21,8 @@ function App() {
       <Router>
         <AuthProvider>
           <Routes>
-            <Route exact path="/" element={<Dashboard />}></Route>
-            <Route exact path="/login" element={<Login />}></Route>
+            <Route exact path="/home" element={<Home />}></Route>
+            <Route exact path="/" element={<Login />}></Route>
             <Route exact path="/register" element={<RegisterSimple />}></Route>
             <Route exact path="/cours" element={<Cours />}></Route>
             <Route exact path="/profile" element={<Profile />}></Route>
@@ -34,6 +31,7 @@ function App() {
             <Route exact path="/qcm" element={<Qcm />}></Route>
             <Route exact path="/blog" element={<Blog />}></Route>
             <Route exact path="/annonces" element={<Annonces />}></Route>
+            <Route exact path="/monCompte" element={<MonCompte />}></Route>
 
             <Route
               exact
