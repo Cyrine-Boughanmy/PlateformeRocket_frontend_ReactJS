@@ -195,7 +195,7 @@ export default function PrimarySearchAppBar() {
             </Box>
             <Divider />
             <List>
-              <ListItem button onClick={() => history("/")}>
+              <ListItem button onClick={() => history("/home")}>
                 <HomeIcon />
                 <ListItemText primary={"Home"}></ListItemText>
               </ListItem>

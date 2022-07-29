@@ -14,6 +14,7 @@ import Annonces from "./components/Dashboard/Default/Annonces";
 import { AuthProvider } from "./context/AuthContext";
 import Home from "./components/Dashboard/Default/Home";
 import MonCompte from "./components/Dashboard/Default/MonCompte";
+import CoursPage from "./components/Pages/Cours/CoursPage";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
             <Route exact path="/blog" element={<Blog />}></Route>
             <Route exact path="/annonces" element={<Annonces />}></Route>
             <Route exact path="/monCompte" element={<MonCompte />}></Route>
+            <Route exact path="/modules/:id" element={<CoursPage />}></Route>
 
             <Route
               exact
