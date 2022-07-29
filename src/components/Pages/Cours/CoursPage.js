@@ -7,52 +7,72 @@ import { CardActionArea, CardActions, Button } from "@mui/material";
 import { Grid } from "@material-ui/core";
 import { Container } from "@mui/system";
 
-const CoursPage = ({
-  id,
-  nom,
-  description,
-  titre_module,
-  image_cours,
-  //   fichier_cours,
-  categorie,
-  cours_module,
-}) => {
+import { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import axios from "axios";
+import PrimarySearchAppBar from "../../Dashboard/Default/Navbar";
+
+const CoursPage = () => {
+  const [module, setModule] = useState([]);
+  const { id } = useParams();
+
+  useEffect(() => {
+    modules();
+  }, []);
+
+  const modules = async () => {
+    const response = await axios.get(
+      `http://localhost:8000/cours/detailsModule/${id}`
+    );
+    setModule(response.data);
+    console.log("response details", response.data);
+  };
+  const history = useNavigate();
+
   return (
-    <Container>
-      <Grid
-        container
-        spacing={4}
-        justify="center"
-        direction="row"
-        alignItems="center"
-      >
-        <Grid item md={4}>
-          <Card sx={{ maxWidth: 345 }}>
-            <CardActionArea>
-              <CardMedia
+    <div>
+      <PrimarySearchAppBar />
+      <br />
+      <Container>
+        <Grid
+          container
+          spacing={4}
+          justify="center"
+          direction="row"
+          alignItems="center"
+        >
+          <Grid item md={4}>
+            <Card sx={{ maxWidth: 345 }}>
+              <CardActionArea>
+                {/* <CardMedia
                 component="img"
                 height="180"
                 image={image_cours}
                 alt="green iguana"
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  {nom}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {description}
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-            <CardActions>
-              <Button size="small" color="primary">
-                Voir cours
-              </Button>
-            </CardActions>
-          </Card>
+              /> */}
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    Titre : {module.titre_module}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Cours : {module.cours_module}
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+              <CardActions>
+                <Button
+                  size="small"
+                  color="primary"
+                  onClick={() => history("/cours")}
+                >
+                  Retour
+                </Button>
+              </CardActions>
+            </Card>
+          </Grid>
         </Grid>
-      </Grid>
-    </Container>
+      </Container>
+    </div>
   );
 };
 
