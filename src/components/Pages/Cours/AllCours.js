@@ -30,8 +30,8 @@ const AllCours = () => {
   const getCourses = async () => {
     // const response = await axios.get("http://localhost:8000/cours/liste/");
     const response = await axios.get(
-      // " https://rocketcoding-plateform-back.herokuapp.com/cours/liste/"
-      "http://localhost:8000/cours/liste/"
+      " https://rocketcoding-plateform-back.herokuapp.com/cours/liste/"
+      // "http://localhost:8000/cours/liste/"
     );
 
     console.log("reponsee", response.data);
@@ -44,7 +44,7 @@ const AllCours = () => {
 
   const getModules = async () => {
     const response = await axios.get(
-      "http://localhost:8000/cours/listeModule/"
+      "https://rocketcoding-plateform-back.herokuapp.com/cours/listeModule/"
     );
     console.log("reponsee", response.data);
     setModules(response.data);
