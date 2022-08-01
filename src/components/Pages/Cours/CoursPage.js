@@ -22,7 +22,7 @@ const CoursPage = () => {
 
   const modules = async () => {
     const response = await axios.get(
-      `http://localhost:8000/cours/details/${id}`
+      `https://rocketcoding-plateform-back.herokuapp.com/cours/details/${id}`
     );
     setModule(response.data);
     console.log("response details of something", response.data);
@@ -52,10 +52,15 @@ const CoursPage = () => {
                 alt="green iguana"
               /> */}
                   <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
+                    <Typography
+                      onClick={() => history(`/sousModule/${item.id}`)}
+                      gutterBottom
+                      variant="h5"
+                      component="div"
+                    >
                       {/* Titre : {module.modules && module.modules.titre_module} */}
-                      Titre : {item && item.titre_module}
-                      id : {item && item.id}
+                      <strong>{item && item.titre_module}</strong>
+                      {/* id : {item && item.id} */}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
                       {/* Cours : {module.modules && module.modules.cours_module} */}
@@ -73,13 +78,15 @@ const CoursPage = () => {
                   </Button>
                 </CardActions>
                 <CardActions>
-                  <Button
-                    size="small"
-                    color="primary"
-                    onClick={() => history(`/sousModule/${item.id}`)}
-                  >
-                    Voir module
-                  </Button>
+                  <div style={{ float: "right" }}>
+                    <Button
+                      size="small"
+                      color="primary"
+                      onClick={() => history(`/sousModule/${item.id}`)}
+                    >
+                      Voir module
+                    </Button>
+                  </div>
                 </CardActions>
               </Card>
             </Grid>
