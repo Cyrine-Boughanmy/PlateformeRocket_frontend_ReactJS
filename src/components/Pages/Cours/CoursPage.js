@@ -41,9 +41,6 @@ const CoursPage = () => {
           direction="row"
           alignItems="center"
         >
-          {/* {module.modules.map((item) => (
-            <div>{item && item.titre_module}</div>
-          ))} */}
           {module.modules?.map((item) => (
             <Grid item key={item.id} xs={12} md={6} lg={4}>
               <Card sx={{ maxWidth: 345 }}>
