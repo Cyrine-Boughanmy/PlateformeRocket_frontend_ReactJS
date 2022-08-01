@@ -10,16 +10,19 @@ import Exercices from "./components/Dashboard/Default/Exercices";
 import Evaluations from "./components/Dashboard/Default/Evaluations";
 import Qcm from "./components/Dashboard/Default/Qcm";
 import Blog from "./components/Dashboard/Default/Blog";
-import Annonces from "./components/Dashboard/Default/Annonces";
+// import Annonces from "./components/Dashboard/Default/Annonces";
 import { AuthProvider } from "./context/AuthContext";
 import Home from "./components/Dashboard/Default/Home";
 import MonCompte from "./components/Dashboard/Default/MonCompte";
 import CoursPage from "./components/Pages/Cours/CoursPage";
 import ModulesPage from "./components/Pages/Cours/ModulesPage";
+import Blogs from "./components/Pages/Blog/AllBlogs";
+import Annonces from "./components/Pages/Annonces/Annonces";
 
 function App() {
   return (
     <div className="App">
+      
       <Router>
         <AuthProvider>
           <Routes>
@@ -31,7 +34,7 @@ function App() {
             <Route exact path="/exercices" element={<Exercices />}></Route>
             <Route exact path="/evaluations" element={<Evaluations />}></Route>
             <Route exact path="/qcm" element={<Qcm />}></Route>
-            <Route exact path="/blog" element={<Blog />}></Route>
+            <Route exact path="/blog" element={<Blogs />}></Route>
             <Route exact path="/annonces" element={<Annonces />}></Route>
             <Route exact path="/monCompte" element={<MonCompte />}></Route>
             <Route exact path="/modules/:id" element={<CoursPage />}></Route>
