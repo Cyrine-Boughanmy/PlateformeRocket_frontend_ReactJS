@@ -15,6 +15,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import PrimarySearchAppBar from "../../Dashboard/Default/Navbar";
 import Checkbox from "@mui/material/Checkbox";
+import { Document, Page } from "react-pdf";
 
 const CoursPage = () => {
   const [sousModule, setSousModule] = useState([]);
@@ -69,7 +70,7 @@ const CoursPage = () => {
                 {item.sous_module?.map((index) => (
                   <Grid item key={item.id}>
                     <br />
-                    <Container>
+                    <Container style={{ textAlign: "center" }}>
                       <Box
                         sx={{
                           backgroundColor: "primary.main",
@@ -86,11 +87,11 @@ const CoursPage = () => {
                         {index && index.num_module}
                       </Box>
                     </Container>
-                    <br />
+                    {/* <br /> */}
                     {/* <Container>
                       <Box>ficher : {index && index.fichier_cours}</Box>
-                    </Container>
-                    <br /> */}
+                    </Container> */}
+                    <br />
                     <Container>
                       <Box
                         sx={{
@@ -113,6 +114,11 @@ const CoursPage = () => {
                           ></div>
                         }
                       </Box>
+                      <Container>
+                        <Document file={index && index.fichier_cours}>
+                          <Page pageNumber={1} />
+                        </Document>
+                      </Container>
                       <div style={{ textAlign: "right" }}>
                         <strong>J'ai lu ce chapitre</strong>
                         <Checkbox onChange={handleChange} />

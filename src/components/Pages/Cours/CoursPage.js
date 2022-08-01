@@ -52,7 +52,12 @@ const CoursPage = () => {
                 alt="green iguana"
               /> */}
                   <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
+                    <Typography
+                      onClick={() => history(`/sousModule/${item.id}`)}
+                      gutterBottom
+                      variant="h5"
+                      component="div"
+                    >
                       {/* Titre : {module.modules && module.modules.titre_module} */}
                       <strong>{item && item.titre_module}</strong>
                       {/* id : {item && item.id} */}
@@ -73,13 +78,15 @@ const CoursPage = () => {
                   </Button>
                 </CardActions>
                 <CardActions>
-                  <Button
-                    size="small"
-                    color="primary"
-                    onClick={() => history(`/sousModule/${item.id}`)}
-                  >
-                    Voir module
-                  </Button>
+                  <div style={{ float: "right" }}>
+                    <Button
+                      size="small"
+                      color="primary"
+                      onClick={() => history(`/sousModule/${item.id}`)}
+                    >
+                      Voir module
+                    </Button>
+                  </div>
                 </CardActions>
               </Card>
             </Grid>
