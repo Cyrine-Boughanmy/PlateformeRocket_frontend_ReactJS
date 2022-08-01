@@ -55,7 +55,7 @@ const CoursPage = () => {
                     <Typography gutterBottom variant="h5" component="div">
                       {/* Titre : {module.modules && module.modules.titre_module} */}
                       Titre : {item && item.titre_module}
-                      id : {item && item.id}
+                      {/* id : {item && item.id} */}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
                       {/* Cours : {module.modules && module.modules.cours_module} */}
