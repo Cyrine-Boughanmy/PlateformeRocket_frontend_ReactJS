@@ -30,7 +30,8 @@ const AllCours = () => {
   const getCourses = async () => {
     // const response = await axios.get("http://localhost:8000/cours/liste/");
     const response = await axios.get(
-      " https://rocketcoding-plateform-back.herokuapp.com/cours/liste/"
+      // " https://rocketcoding-plateform-back.herokuapp.com/cours/liste/"
+      "http://localhost:8000/cours/liste/"
     );
 
     console.log("reponsee", response.data);
@@ -52,23 +53,6 @@ const AllCours = () => {
   const history = useNavigate();
 
   return (
-    // <div>
-    //   {cours.map(function (courses) {
-    //     return (
-    //       <CoursPage
-    //         id={courses.id}
-    //         key={courses.id}
-    //         nom={courses.nom}
-    //         description={courses.description}
-    //         titre_module={courses.titre_module}
-    //         image_cours={courses.image_cours}
-    //         fichier_cours={courses.fichier_cours}
-    //         categorie={courses.categorie}
-    //         cours_module={courses.cours_module}
-    //       />
-    //     );
-    //   })}
-    // </div>
     <Container>
       <p style={{ fontSize: "60px" }}>Cours</p>
       <Grid container spacing={3}>

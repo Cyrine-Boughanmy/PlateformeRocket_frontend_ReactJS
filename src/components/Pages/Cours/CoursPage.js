@@ -22,10 +22,10 @@ const CoursPage = () => {
 
   const modules = async () => {
     const response = await axios.get(
-      `http://localhost:8000/cours/detailsModule/${id}`
+      `http://localhost:8000/cours/details/${id}`
     );
     setModule(response.data);
-    console.log("response details", response.data);
+    console.log("response details of something", response.data);
   };
   const history = useNavigate();
 
@@ -36,40 +36,54 @@ const CoursPage = () => {
       <Container>
         <Grid
           container
-          spacing={4}
+          spacing={3}
           justify="center"
           direction="row"
           alignItems="center"
         >
-          <Grid item md={4}>
-            <Card sx={{ maxWidth: 345 }}>
-              <CardActionArea>
-                {/* <CardMedia
+          {module.modules?.map((item) => (
+            <Grid item key={item.id} xs={12} md={6} lg={4}>
+              <Card sx={{ maxWidth: 345 }}>
+                <CardActionArea>
+                  {/* <CardMedia
                 component="img"
                 height="180"
                 image={image_cours}
                 alt="green iguana"
               /> */}
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
-                    Titre : {module.titre_module}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Cours : {module.cours_module}
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-              <CardActions>
-                <Button
-                  size="small"
-                  color="primary"
-                  onClick={() => history("/cours")}
-                >
-                  Retour
-                </Button>
-              </CardActions>
-            </Card>
-          </Grid>
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                      {/* Titre : {module.modules && module.modules.titre_module} */}
+                      Titre : {item && item.titre_module}
+                      id : {item && item.id}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      {/* Cours : {module.modules && module.modules.cours_module} */}
+                      {/* Cours : {item && item.cours_module} */}
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+                <CardActions>
+                  <Button
+                    size="small"
+                    color="primary"
+                    onClick={() => history("/cours")}
+                  >
+                    Retour
+                  </Button>
+                </CardActions>
+                <CardActions>
+                  <Button
+                    size="small"
+                    color="primary"
+                    onClick={() => history(`/sousModule/${item.id}`)}
+                  >
+                    Voir module
+                  </Button>
+                </CardActions>
+              </Card>
+            </Grid>
+          ))}
         </Grid>
       </Container>
     </div>
