@@ -15,6 +15,7 @@ import { AuthProvider } from "./context/AuthContext";
 import Home from "./components/Dashboard/Default/Home";
 import MonCompte from "./components/Dashboard/Default/MonCompte";
 import CoursPage from "./components/Pages/Cours/CoursPage";
+import ModulesPage from "./components/Pages/Cours/ModulesPage";
 
 function App() {
   return (
@@ -34,6 +35,11 @@ function App() {
             <Route exact path="/annonces" element={<Annonces />}></Route>
             <Route exact path="/monCompte" element={<MonCompte />}></Route>
             <Route exact path="/modules/:id" element={<CoursPage />}></Route>
+            <Route
+              exact
+              path="/sousModule/:id"
+              element={<ModulesPage />}
+            ></Route>
 
             <Route
               exact

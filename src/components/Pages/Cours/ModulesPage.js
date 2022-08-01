@@ -12,19 +12,19 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import PrimarySearchAppBar from "../../Dashboard/Default/Navbar";
 
-const CoursPage = () => {
-  const [module, setModule] = useState([]);
+const ModulesPage = () => {
+  const [sousModule, setSousModule] = useState([]);
   const { id } = useParams();
 
   useEffect(() => {
-    modules();
+    sousModules();
   }, []);
 
-  const modules = async () => {
+  const sousModules = async () => {
     const response = await axios.get(
-      `http://localhost:8000/cours/details/${id}`
+      `http://localhost:8000/cours/detailsSousModule/${id}`
     );
-    setModule(response.data);
+    setSousModule(response.data);
     console.log("response details of something", response.data);
   };
   const history = useNavigate();
@@ -36,7 +36,7 @@ const CoursPage = () => {
       <Container>
         <Grid
           container
-          spacing={3}
+          spacing={4}
           justify="center"
           direction="row"
           alignItems="center"
@@ -44,8 +44,8 @@ const CoursPage = () => {
           {/* {module.modules.map((item) => (
             <div>{item && item.titre_module}</div>
           ))} */}
-          {module.modules?.map((item) => (
-            <Grid item key={item.id} xs={12} md={6} lg={4}>
+          <Grid item md={4}>
+            {sousModule.modules?.sous_module?.map((item) => (
               <Card sx={{ maxWidth: 345 }}>
                 <CardActionArea>
                   {/* <CardMedia
@@ -57,8 +57,7 @@ const CoursPage = () => {
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
                       {/* Titre : {module.modules && module.modules.titre_module} */}
-                      Titre : {item && item.titre_module}
-                      id : {item && item.id}
+                      Cours : {item && item.cours_module}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
                       {/* Cours : {module.modules && module.modules.cours_module} */}
@@ -75,22 +74,13 @@ const CoursPage = () => {
                     Retour
                   </Button>
                 </CardActions>
-                <CardActions>
-                  <Button
-                    size="small"
-                    color="primary"
-                    onClick={() => history(`/sousModule/${item.id}`)}
-                  >
-                    Voir module
-                  </Button>
-                </CardActions>
               </Card>
-            </Grid>
-          ))}
+            ))}
+          </Grid>
         </Grid>
       </Container>
     </div>
   );
 };
 
-export default CoursPage;
+export default ModulesPage;
