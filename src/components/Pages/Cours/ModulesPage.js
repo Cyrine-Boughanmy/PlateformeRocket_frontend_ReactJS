@@ -18,6 +18,7 @@ import Checkbox from "@mui/material/Checkbox";
 
 const CoursPage = () => {
   const [sousModule, setSousModule] = useState([]);
+  const [change, setChange] = useState(true);
   const { id } = useParams();
 
   useEffect(() => {
@@ -32,6 +33,10 @@ const CoursPage = () => {
     console.log("response details of SOUS MODULES", response.data);
   };
   const history = useNavigate();
+
+  const handleChange = () => {
+    setChange(!change);
+  };
 
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: "#3243E0",
@@ -60,6 +65,7 @@ const CoursPage = () => {
           {sousModule.modules?.map((item) => {
             return (
               <div>
+                <p style={{ fontSize: "60px" }}>{item.titre_module}</p>
                 {item.sous_module?.map((index) => (
                   <Grid item key={item.id}>
                     <br />
@@ -81,6 +87,10 @@ const CoursPage = () => {
                       </Box>
                     </Container>
                     <br />
+                    {/* <Container>
+                      <Box>ficher : {index && index.fichier_cours}</Box>
+                    </Container>
+                    <br /> */}
                     <Container>
                       <Box
                         sx={{
@@ -95,36 +105,20 @@ const CoursPage = () => {
                           fontSize: "26px",
                         }}
                       >
-                        {index && index.cours_module}
+                        {
+                          <div
+                            dangerouslySetInnerHTML={{
+                              __html: index && index.cours_module,
+                            }}
+                          ></div>
+                        }
                       </Box>
                       <div style={{ textAlign: "right" }}>
                         <strong>J'ai lu ce chapitre</strong>
-                        <Checkbox />
+                        <Checkbox onChange={handleChange} />
                       </div>
                     </Container>
-                    {/* <Card sx={{ minWidth: 375 }}>
-                      <CardContent>
-                        <Typography
-                          sx={{ fontSize: 14 }}
-                          color="text.secondary"
-                          gutterBottom
-                        >
-                          Word of the Day
-                        </Typography>
-                        <Typography variant="h5" component="div"></Typography>
-                        <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                          adjective
-                        </Typography>
-                        <Typography variant="body2">
-                          well meaning and kindly.
-                          <br />
-                          {'"a benevolent smile"'}
-                        </Typography>
-                      </CardContent>
-                      <CardActions>
-                        <Button size="small">Learn More</Button>
-                      </CardActions>
-                    </Card> */}
+
                     <br />
                   </Grid>
                 ))}
@@ -134,7 +128,24 @@ const CoursPage = () => {
         </Grid>
         <Box>
           <Stack spacing={2} mt={2}>
-            <Item onClick={() => history("/profile")}>Valider</Item>
+            {/* <Item onClick={() => history("/profile")}>Valider</Item> */}
+            {/* <Item disabled={change}>Valider</Item> */}
+            <Box textAlign="center">
+              <Button
+                style={{
+                  backgroundColor: "#3243E0",
+                  color: "white",
+                  width: "500px",
+                  height: "50px",
+                }}
+                variant="contained"
+                disabled={change}
+                onClick={() => history("/cours")}
+              >
+                {" "}
+                Valider
+              </Button>
+            </Box>
             <br />
           </Stack>
         </Box>
