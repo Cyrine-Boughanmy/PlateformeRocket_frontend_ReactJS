@@ -8,9 +8,9 @@ import { Button, CardActionArea, CardActions, Container, Grid } from '@mui/mater
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-import PrimarySearchAppBar from '../../../Dashboard/Default/Navbar';
 import Pagination from 'react-paginate';
-import '../../hooks/Pagination.css';
+import "../hooks/Pagination.css";
+import PrimarySearchAppBar from '../../Dashboard/Default/Navbar';
 
 
 

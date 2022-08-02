@@ -18,8 +18,8 @@ import CoursPage from "./components/Pages/Cours/CoursPage";
 import ModulesPage from "./components/Pages/Cours/ModulesPage";
 import Annonces from "./components/Pages/Annonces/Annonces";
 import AnnoncePage from "./components/Pages/Annonces/Annoncepage";
-import AllBlogs from "./components/Pages/Blog/BlogPage/AllBlogs";
-import Articles from "./components/Pages/Blog/BlogPage/Articles";
+import AllBlogs from "./components/Pages/Blog/AllBlogs";
+import Articles from "./components/Pages/Blog/Articles";
 
 function App() {
   return (
