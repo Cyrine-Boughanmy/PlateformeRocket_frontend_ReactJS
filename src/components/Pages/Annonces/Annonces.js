@@ -58,7 +58,7 @@ const AllAnnonces = () => {
               fontSize: "96px",
               lineHeight: "116px",
               textAlign: "center"  }}>
-        Nos annonces
+        ANNONCES EMPLOI
       </p>
       <Grid container spacing={3}>
       {displayAnnonces.map((item) => (

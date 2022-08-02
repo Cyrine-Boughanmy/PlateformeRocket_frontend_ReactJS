@@ -20,7 +20,7 @@ const AllBlogs = () => {
 
     const [blogs, setBlogs] = useState([]);
     const [pageNumber, setPageNumber] = useState(0);
-    const blogsPerPage = 2;
+    const blogsPerPage = 3;
     const pagesVisited = pageNumber * blogsPerPage;
     const displayBlogs = blogs.slice(pagesVisited, pagesVisited + blogsPerPage);
     const pageCount = Math.ceil(blogs.length / blogsPerPage);

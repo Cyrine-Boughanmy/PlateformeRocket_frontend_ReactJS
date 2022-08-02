@@ -2,7 +2,6 @@ import { Container } from '@mui/material';
 import React, { Fragment, useEffect, useState } from 'react';
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import DaysJS from 'react-dayjs';
 import './AnnoncePage.css';
 
 
@@ -85,7 +84,7 @@ const AnnoncePage = () => {
                 <p className="actualite-text-Download">
                   <u>
                     <a
-                      href={annonce.ficher_pdf}
+                      href={annonce.fichier_pdf}
                       target="-blank"
                       className="center-actualite__Page"
                     >
