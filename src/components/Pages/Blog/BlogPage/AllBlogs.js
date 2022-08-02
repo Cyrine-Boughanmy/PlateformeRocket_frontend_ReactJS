@@ -4,11 +4,13 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions, Container, Grid } from '@mui/material';
-import blogimg from '../../../assets/images/blog/Blog-intro.jpg';
+
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import DaysJS from 'react-dayjs';
 
+import PrimarySearchAppBar from '../../../Dashboard/Default/Navbar';
+import Pagination from 'react-paginate';
+import '../../hooks/Pagination.css';
 
 
 
@@ -17,17 +19,31 @@ import DaysJS from 'react-dayjs';
 const AllBlogs = () => {
 
     const [blogs, setBlogs] = useState([]);
+    const [pageNumber, setPageNumber] = useState(0);
+    const blogsPerPage = 2;
+    const pagesVisited = pageNumber * blogsPerPage;
+    const displayBlogs = blogs.slice(pagesVisited, pagesVisited + blogsPerPage);
+    const pageCount = Math.ceil(blogs.length / blogsPerPage);
+
+  const changePage = ({ selected }) => {
+    setPageNumber(selected);
+  };
+
     const getBlogs = async () => {
         const response = await axios.get(
           "http://localhost:8000/blogs/blog/"
         );
     
-        console.log("reponsee", response.data);
+        console.log("reponse", response.data);
         setBlogs(response.data);
       };
       useEffect(() => {
         getBlogs();
       }, []);
+
+      
+
+
       const history = useNavigate();
 
       const getDate = (date) => {
@@ -38,7 +54,9 @@ const AllBlogs = () => {
 
 
   return (
+    <><PrimarySearchAppBar/>
     <Container>
+      
         <p style={{ fontSize: "60px", marginBottom :"40px" , color:"#3243E0",fontFamily: 'Inter',
               fontStyle: "normal",
               fontW: "800",
@@ -48,7 +66,7 @@ const AllBlogs = () => {
         BLOG
       </p>
       <Grid container spacing={3}>
-      {blogs.map((item) => (
+      {displayBlogs.map((item) => (
         <Grid item key={blogs.id} xs={12} md={6} lg={4}>
     <Card 
      elevation={3}
@@ -92,7 +110,27 @@ const AllBlogs = () => {
     </Grid>
      ))}
      </Grid>
+     <div style={{display: "flex",
+                justifyContent: "center",
+                marginBottom: "2rem",
+                marginTop: "2rem",}}>
+     <Pagination
+     
+     
+        previousLabel={"Précédent"}
+        nextLabel={"Suivant"}
+        pageCount={pageCount}
+        onPageChange={changePage}
+        containerClassName={"paginationBttns"}
+        previousLinkClassName={"previousBttn"}
+        nextLinkClassName={"nextBttn"}
+        disabledClassName={"paginationDisabled"}
+        activeClassName={"paginationActive"}
+      />
+      </div>
     </Container>
+    
+    </>
   );
 }
 
