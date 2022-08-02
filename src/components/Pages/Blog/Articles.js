@@ -1,8 +1,6 @@
-import { Container } from '@mui/material';
 import React, { Fragment, useEffect, useState } from 'react';
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import DaysJS from 'react-dayjs';
 import './Articles.css';
 
 
