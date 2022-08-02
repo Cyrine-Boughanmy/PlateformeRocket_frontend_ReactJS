@@ -8,7 +8,9 @@ import Annonceimg from '../../../assets/images/annonce/annonce-intro.jpg';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import DaysJS from 'react-dayjs';
-
+import PrimarySearchAppBar from '../../Dashboard/Default/Navbar';
+import Pagination from 'react-paginate';
+import '../hooks/Pagination.css';
 
 
 
@@ -17,6 +19,16 @@ import DaysJS from 'react-dayjs';
 const AllAnnonces = () => {
 
     const [annonces, setAnnonces] = useState([]);
+    const [pageNumber, setPageNumber] = useState(0);
+    const annoncesPerPage = 3;
+    const pagesVisited = pageNumber * annoncesPerPage;
+    const displayAnnonces = annonces.slice(pagesVisited, pagesVisited +annoncesPerPage);
+    const pageCount = Math.ceil(annonces.length / annoncesPerPage);
+
+  const changePage = ({ selected }) => {
+    setPageNumber(selected);
+  };
+
     const getAnnonces = async () => {
         const response = await axios.get(
           "http://localhost:8000/annonces/annonce/"
@@ -37,6 +49,8 @@ const AllAnnonces = () => {
 
 
   return (
+    <>
+    <PrimarySearchAppBar/>
     <Container>
         <p style={{ fontSize: "60px", marginBottom :"40px" , color:"#3243E0",fontFamily: 'Inter',
               fontStyle: "normal",
@@ -44,10 +58,10 @@ const AllAnnonces = () => {
               fontSize: "96px",
               lineHeight: "116px",
               textAlign: "center"  }}>
-        Nos annonces
+        ANNONCES EMPLOI
       </p>
       <Grid container spacing={3}>
-      {annonces.map((item) => (
+      {displayAnnonces.map((item) => (
         <Grid item key={annonces.id} xs={12} md={6} lg={4}>
     <Card sx={{ textAlign:"left",boxShadow :"0 4px 4px rgb(0 0 0 / 25%)" }}>
       <CardActionArea>
@@ -94,6 +108,25 @@ const AllAnnonces = () => {
      ))}
      </Grid>
     </Container>
+    <div style={{display: "flex",
+                justifyContent: "center",
+                marginBottom: "2rem",
+                marginTop: "2rem",}}>
+     <Pagination
+     
+     
+        previousLabel={"Précédent"}
+        nextLabel={"Suivant"}
+        pageCount={pageCount}
+        onPageChange={changePage}
+        containerClassName={"paginationBttns"}
+        previousLinkClassName={"previousBttn"}
+        nextLinkClassName={"nextBttn"}
+        disabledClassName={"paginationDisabled"}
+        activeClassName={"paginationActive"}
+      />
+      </div>
+    </>
   );
 }
 
