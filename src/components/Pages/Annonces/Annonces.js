@@ -29,11 +29,21 @@ const AllAnnonces = () => {
         getAnnonces();
       }, []);
       const history = useNavigate();
+      const getDate = (date) => {
+        const newDate = new Date(date);
+        const options = { year: "numeric", month: "long", day: "numeric" };
+        return newDate.toLocaleDateString("fr-FR", options);
+      };
 
 
   return (
     <Container>
-        <p style={{ fontSize: "60px", marginBottom :"20px" }}>
+        <p style={{ fontSize: "60px", marginBottom :"40px" , color:"#3243E0",fontFamily: 'Inter',
+              fontStyle: "normal",
+              fontW: "800",
+              fontSize: "96px",
+              lineHeight: "116px",
+              textAlign: "center"  }}>
         Nos annonces
       </p>
       <Grid container spacing={3}>
@@ -54,7 +64,7 @@ const AllAnnonces = () => {
           </Typography>
           <Typography variant="body2" color="text.secondary"
           sx={{ margin:"10px" , color:"#040404"}}>
-          <DaysJS element="span" format ="DD MM YYYY" asString={ true }>{item.date}</DaysJS>
+          {getDate(item.date_annonce)}
           </Typography>
           <Typography variant="body2" color="text.secondary"
           sx={{ margin:"10px" , color:"#040404"}}>
@@ -74,7 +84,7 @@ const AllAnnonces = () => {
       </CardActionArea>
       <CardActions>
         <Button size="small" color="primary" variant="contained" onClick={() =>
-        history(`/article/${item.id}`)}
+        history(`/annonce/${item.id}`)}
         sx={{ margin:"10px"}}>
           En Savoir plus
         </Button>

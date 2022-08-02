@@ -18,6 +18,8 @@ import CoursPage from "./components/Pages/Cours/CoursPage";
 import ModulesPage from "./components/Pages/Cours/ModulesPage";
 import Blogs from "./components/Pages/Blog/AllBlogs";
 import Annonces from "./components/Pages/Annonces/Annonces";
+import Articles from "./components/Pages/Blog/Articles";
+import AnnoncePage from "./components/Pages/Annonces/Annoncepage";
 
 function App() {
   return (
@@ -35,7 +37,9 @@ function App() {
             <Route exact path="/evaluations" element={<Evaluations />}></Route>
             <Route exact path="/qcm" element={<Qcm />}></Route>
             <Route exact path="/blog" element={<Blogs />}></Route>
+            <Route exact path="/article/:id" element={<Articles />}></Route>
             <Route exact path="/annonces" element={<Annonces />}></Route>
+            <Route exact path="/annonce/:id" element={<AnnoncePage/>}></Route>
             <Route exact path="/monCompte" element={<MonCompte />}></Route>
             <Route exact path="/modules/:id" element={<CoursPage />}></Route>
             <Route
