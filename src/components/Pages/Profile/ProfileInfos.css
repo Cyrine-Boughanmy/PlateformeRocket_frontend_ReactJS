@@ -11,7 +11,7 @@
   font-family: "Inter";
   font-style: normal;
   font-weight: 800;
-  font-size: 25px;
+  font-size: 30px;
   line-height: 48px;
   text-align: left;
   color: #fffcfc;
@@ -24,4 +24,26 @@
   line-height: 48px;
   text-align: left;
   color: #fffcfc;
+}
+.btn-download{
+    padding: 6px 20px;
+    color:#FFFCFC;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    background-color: #3243E0;
+}
+.btn-update{
+  padding: 6px 20px;
+  color:#FFFCFC;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  background-color: #EF0E0E;
 }
