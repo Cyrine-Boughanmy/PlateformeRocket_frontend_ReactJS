@@ -3,6 +3,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./AnnoncePage.css";
+import PrimarySearchAppBar from "../../Dashboard/Default/Navbar";
 
 const AnnoncePage = () => {
   const [annonce, setAnnonce] = useState([]);
@@ -29,11 +30,9 @@ const AnnoncePage = () => {
   };
 
   return (
+    <>
+    <PrimarySearchAppBar />
     <div className="actualite-page__container">
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
       <br></br>
       <button
         className="go-back-link__actualites"
@@ -91,6 +90,7 @@ const AnnoncePage = () => {
         </Fragment>
       </div>
     </div>
+    </>
   );
 };
 

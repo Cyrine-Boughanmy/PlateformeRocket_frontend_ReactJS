@@ -13,8 +13,7 @@ import {
 import Annonceimg from "../../../assets/images/annonce/annonce-intro.jpg";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import DaysJS from "react-dayjs";
-import PrimarySearchAppBar from "../../Dashboard/Default/Navbar";
+
 import Pagination from "react-paginate";
 import "../hooks/Pagination.css";
 
@@ -54,7 +53,6 @@ const AllAnnonces = () => {
 
   return (
     <>
-      <PrimarySearchAppBar />
       <Container>
         <p
           style={{

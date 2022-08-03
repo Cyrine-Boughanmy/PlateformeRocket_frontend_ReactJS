@@ -10,16 +10,17 @@ import Exercices from "./components/Dashboard/Default/Exercices";
 import Evaluations from "./components/Dashboard/Default/Evaluations";
 import Qcm from "./components/Dashboard/Default/Qcm";
 import Blog from "./components/Dashboard/Default/Blog";
-// import Annonces from "./components/Dashboard/Default/Annonces";
+import Annonces from "./components/Dashboard/Default/Annonces";
 import { AuthProvider } from "./context/AuthContext";
 import Home from "./components/Dashboard/Default/Home";
 import MonCompte from "./components/Dashboard/Default/MonCompte";
 import CoursPage from "./components/Pages/Cours/CoursPage";
 import ModulesPage from "./components/Pages/Cours/ModulesPage";
-import Annonces from "./components/Pages/Annonces/Annonces";
+// import Annonces from "./components/Pages/Annonces/Annonces";
 import AnnoncePage from "./components/Pages/Annonces/Annoncepage";
-import AllBlogs from "./components/Pages/Blog/AllBlogs";
+// import AllBlogs from "./components/Pages/Blog/AllBlogs";
 import Articles from "./components/Pages/Blog/Articles";
+import ProfilePage from './components/Pages/Profile/ProfilePage';
 
 function App() {
   return (
@@ -33,10 +34,11 @@ function App() {
             <Route exact path="/register" element={<RegisterSimple />}></Route>
             <Route exact path="/cours" element={<Cours />}></Route>
             <Route exact path="/profile" element={<Profile />}></Route>
+            <Route exact path="/profilepage" element={<ProfilePage />}></Route>
             <Route exact path="/exercices" element={<Exercices />}></Route>
             <Route exact path="/evaluations" element={<Evaluations />}></Route>
             <Route exact path="/qcm" element={<Qcm />}></Route>
-            <Route exact path="/blog" element={<AllBlogs />}></Route>
+            <Route exact path="/blog" element={<Blog />}></Route>
             <Route exact path="/article/:id" element={<Articles />}></Route>
             <Route exact path="/annonces" element={<Annonces />}></Route>
             <Route exact path="/annonce/:id" element={<AnnoncePage/>}></Route>
