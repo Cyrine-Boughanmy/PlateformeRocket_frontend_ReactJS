@@ -16,7 +16,6 @@ import { useNavigate } from "react-router-dom";
 
 import Pagination from "react-paginate";
 import "../hooks/Pagination.css";
-import PrimarySearchAppBar from "../../Dashboard/Default/Navbar";
 
 const AllBlogs = () => {
   const [blogs, setBlogs] = useState([]);
@@ -53,7 +52,7 @@ const AllBlogs = () => {
 
   return (
     <>
-      <PrimarySearchAppBar />
+      
       <Container>
         <p
           style={{

@@ -2,6 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Articles.css";
+import PrimarySearchAppBar from "../../Dashboard/Default/Navbar";
 
 const Articles = () => {
   const [article, setArticle] = useState([]);
@@ -28,11 +29,9 @@ const Articles = () => {
   };
 
   return (
+    <>
+    <PrimarySearchAppBar />
     <div className="actualite-page__container">
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
       <br></br>
       <button
         className="go-back-link__actualites"
@@ -93,6 +92,7 @@ const Articles = () => {
         </Fragment>
       </div>
     </div>
+    </>
   );
 };
 
