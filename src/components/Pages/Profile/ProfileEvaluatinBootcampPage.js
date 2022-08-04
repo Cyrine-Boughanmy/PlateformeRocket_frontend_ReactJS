@@ -15,7 +15,7 @@ const ProfileEvaluatinBootcampPage = () => {
             marginTop: "20px",
             marginBottom: "20px",
             color: "#3243E0",
-            fontFamily: "Inter",
+            fontFamily:'Arimo',
             fontStyle: "normal",
             fontW: "800",
             fontSize: "96px",
@@ -50,12 +50,12 @@ const ProfileEvaluatinBootcampPage = () => {
                   
                 }}
              >
-                <Typography variant="h5" gutterBottom component="div" color="#FFFCFC">
+                <Typography variant="h5" gutterBottom component="div" color="#FFFCFC" fontFamily='Arimo'>
                 Progression COURS
                 </Typography>
                 <br></br>
                 <br></br>
-                <Typography variant="h4" gutterBottom component="div" color="#FFFCFC">
+                <Typography variant="h4" gutterBottom component="div" color="#FFFCFC" fontFamily='Arimo'>
                 80 %
                 </Typography>
 
@@ -76,13 +76,13 @@ const ProfileEvaluatinBootcampPage = () => {
                   
                 }}
              >
-                <Typography variant="h5" gutterBottom component="div" color="#FFFCFC">
+                <Typography variant="h5" gutterBottom component="div" color="#FFFCFC" fontFamily='Arimo'>
                 Moyenne Score QCM
                 </Typography>
                 <br></br>
                 <br></br>
                 
-                <Typography variant="h4" gutterBottom component="div" color="#FFFCFC">
+                <Typography variant="h4" gutterBottom component="div" color="#FFFCFC" fontFamily='Arimo'>
                13/20
                 </Typography>
 

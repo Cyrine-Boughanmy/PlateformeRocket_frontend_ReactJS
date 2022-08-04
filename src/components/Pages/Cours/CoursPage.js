@@ -57,12 +57,15 @@ const CoursPage = () => {
                       gutterBottom
                       variant="h5"
                       component="div"
+                      fontFamily='Arimo'
+
                     >
                       {/* Titre : {module.modules && module.modules.titre_module} */}
                       <strong>{item && item.titre_module}</strong>
                       {/* id : {item && item.id} */}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="body2" color="text.secondary" fontFamily='Arimo'
+>
                       {/* Cours : {module.modules && module.modules.cours_module} */}
                       {/* Cours : {item && item.cours_module} */}
                     </Typography>
@@ -70,6 +73,7 @@ const CoursPage = () => {
                 </CardActionArea>
                 <CardActions>
                   <Button
+                  style={{fontFamily:'Arimo'}}
                     size="small"
                     color="primary"
                     onClick={() => history("/cours")}
@@ -78,8 +82,9 @@ const CoursPage = () => {
                   </Button>
                 </CardActions>
                 <CardActions>
-                  <div style={{ float: "right" }}>
+                  <div style={{ float: "right", fontFamily:'Arimo'}}>
                     <Button
+                    style={{fontFamily:'Arimo'}}
                       size="small"
                       color="primary"
                       onClick={() => history(`/sousModule/${item.id}`)}

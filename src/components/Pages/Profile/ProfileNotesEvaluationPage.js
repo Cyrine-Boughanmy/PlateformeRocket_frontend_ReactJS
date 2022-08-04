@@ -13,7 +13,7 @@ const ProfileNotesEvaluationPage = () => {
             // marginTop: "20px",
             marginBottom: "20px",
             color: "#3243E0",
-            fontFamily: "Inter",
+            
             fontStyle: "normal",
             fontW: "800",
             fontSize: "96px",
@@ -48,7 +48,7 @@ const ProfileNotesEvaluationPage = () => {
                   
                 }}
              >
-                <Typography variant="h5" gutterBottom component="div" color="#FFFCFC">
+                <Typography variant="h5" gutterBottom component="div" color="#FFFCFC" fontFamily='Arimo'>
                 Évaluation 1 13/20
                 </Typography>
                 
@@ -71,7 +71,7 @@ const ProfileNotesEvaluationPage = () => {
                   
                 }}
              >
-            <Typography variant="h5" gutterBottom component="div" color="#FFFCFC">
+            <Typography variant="h5" gutterBottom component="div" color="#FFFCFC" fontFamily='Arimo'>
             Évaluation 2 13/20
                 </Typography>
                </Box> 
@@ -91,7 +91,7 @@ const ProfileNotesEvaluationPage = () => {
               
             }}
          >
-            <Typography variant="h5" gutterBottom component="div" color="#FFFCFC">
+            <Typography variant="h5" gutterBottom component="div" color="#FFFCFC" fontFamily='Arimo'>
             Évaluation 3 13/20
                 </Typography>
                 </Box>
@@ -111,7 +111,7 @@ const ProfileNotesEvaluationPage = () => {
               
             }}
          >
-            <Typography variant="h5" gutterBottom component="div" color="#FFFCFC">
+            <Typography variant="h5" gutterBottom component="div" color="#FFFCFC" fontFamily='Arimo'>
             Évaluation 4 13/20
                 </Typography>
                 </Box>

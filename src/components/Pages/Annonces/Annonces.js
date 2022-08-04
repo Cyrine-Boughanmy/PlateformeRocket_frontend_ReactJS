@@ -34,8 +34,8 @@ const AllAnnonces = () => {
 
   const getAnnonces = async () => {
     const response = await axios.get(
-      "https://rocketcoding-plateform-back.herokuapp.com/annonces/annonce/"
-      // "http://localhost:8000/annonces/annonce/"
+      // "https://rocketcoding-plateform-back.herokuapp.com/annonces/annonce/"
+      "http://localhost:8000/annonces/annonce/"
     );
 
     console.log("reponsee", response.data);
@@ -59,7 +59,7 @@ const AllAnnonces = () => {
             fontSize: "60px",
             marginBottom: "40px",
             color: "#3243E0",
-            fontFamily: "Inter",
+            
             fontStyle: "normal",
             fontW: "800",
             fontSize: "96px",

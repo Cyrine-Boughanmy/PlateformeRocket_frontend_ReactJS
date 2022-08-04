@@ -12,6 +12,7 @@ const Item = styled(Paper)(({ theme }) => ({
   padding: "10px",
   width: "50%",
   margin: "auto",
+  fontFamily:'Arimo',
   textAlign: "center",
   color: "#FFFCFC",
   fontSize: "20px",
@@ -25,15 +26,15 @@ const Profile = () => {
       <PrimarySearchAppBar />
       <br />
       <Box>
-        <p style={{ fontSize: "60px" }}>PROFILE</p>
+        <p style={{ fontSize: "60px" , fontFamily:'Arimo'}}>PROFILE</p>
         <Stack spacing={2} mt={2}>
-          <Item onClick={() => history("/profilepage")}>Profile</Item>
+          <Item onClick={() => history("/profilepage/:id")}>Profile</Item>
           <br />
           <Item
-            style={{ margin: "auto", padding: "10px", fontSize: "20px" }}
+            style={{ margin: "auto", padding: "10px", fontSize: "20px" , fontFamily:'Arimo'}}
             onClick={() => history("/monCompte")}
           >
-            Mon compte
+            Connexion
           </Item>
           <br />
         </Stack>

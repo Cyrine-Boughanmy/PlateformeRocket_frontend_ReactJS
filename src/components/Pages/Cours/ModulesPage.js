@@ -45,6 +45,7 @@ const CoursPage = () => {
     padding: "10px",
     width: "50%",
     margin: "auto",
+    
     textAlign: "center",
     color: "#FFFCFC",
     fontSize: "20px",
@@ -143,6 +144,7 @@ const CoursPage = () => {
                   color: "white",
                   width: "500px",
                   height: "50px",
+                  fontFamily:'Arimo'
                 }}
                 variant="contained"
                 disabled={change}

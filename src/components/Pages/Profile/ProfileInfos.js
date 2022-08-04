@@ -4,13 +4,31 @@ import React, { useEffect, useState } from 'react';
 import PrimarySearchAppBar from '../../Dashboard/Default/Navbar';
 import userimg from '../../../assets/images/user-profile/userprofile.jpg';
 import './ProfileInfos.css';
-import {  useNavigate } from "react-router-dom";
+import {  useNavigate, useParams } from "react-router-dom";
+import axios from 'axios';
+import { saveAs } from 'file-saver';
 
 
 const PageProfil = () => {
-  
+  const [user, setUser] = useState([]);
+  const { id } = useParams();
   const history = useNavigate();
+  const fetchData = async () => {
+    // const response = await axios.get("http://localhost:8000/cours/liste/");
+    const response = await axios.get(
+      // " https://rocketcoding-plateform-back.herokuapp.com/cours/liste/"
+      `http://localhost:8000/simple-user/user/${id} `
+    );
 
+    console.log("reponsee", response.data);
+    setUser(response.data);
+  };
+  useEffect(() => {
+    
+      fetchData();
+     
+  }, []);
+  
 
   return (
 
@@ -22,7 +40,7 @@ const PageProfil = () => {
             fontSize: "60px",
             marginBottom: "40px",
             color: "#3243E0",
-            fontFamily: "Inter",
+           
             fontStyle: "normal",
             fontW: "800",
             fontSize: "96px",
@@ -56,18 +74,24 @@ const PageProfil = () => {
                
                 sx={{
                   width: 215,
-                  height: 220,
+                  
                   
                   
                 }}
              >
-              <img style={{
+              <img
+               style={{
                 width:"100%",
                 borderRadius:"50px"
-              }} src={userimg} alt='user image'/>
+              }} 
+              src={user.profile_image} 
+              alt='user profile '/>
              </Box>
              <br></br>
-             <Button>Télécharger photo</Button>
+             <Button type='submit' 
+             style={{fontFamily:'Arimo'}}onClick={()=>{
+              saveAs(user.profile_image, 'image.jpg')
+             }}>Télécharger photo</Button>
       
             </Grid>
             <Grid item xs="auto"
@@ -86,25 +110,25 @@ const PageProfil = () => {
                 }}
              >
               <div className="text-cordonnées">
-                    Nom : 
+                    Nom : {user.nom}
               </div>
               <div className="text-cordonnées">
-                    Prénom : 
+                    Prénom : {user.prenom}
               </div>
               <div className="text-cordonnées">
-                    Adresse : 
+                    Adresse : {user.adresse}
               </div>
               <div className="text-cordonnées">
-                    Code Postale : 
+                    Code Postale : {user.code_postal}
               </div>
               <div className="text-cordonnées">
-                    Ville : 
+                    Ville : {user.ville}
               </div>
               <div className="text-cordonnées">
-                    Mail : 
+                    Mail : {user.email}
               </div>
               <div className="text-cordonnées">
-                    Numéro de téléphone : 
+                    Numéro de téléphone : {user.num_tel}
               </div>
              </Box>
       
@@ -123,14 +147,16 @@ const PageProfil = () => {
                 }}
              >
               <div className="titre-présentation">Présentation</div>
-              <p className="text-présentation">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vulputate lacus quis nunc, adipiscing tincidunt aliquam faucibus. Turpis neque, convallis felis aliquam a mattis lacus, a. Ipsum, amet, volutpat interdum elit. Placerat faucibus ac turpis sit.</p>
+              <p className="text-présentation">{user.presentation}</p>
              </Box>
       
             </Grid>
             
         </Grid>
         <br></br>
-        <button className='btn-download'>Télécharger mon cv</button>
+         <button className='btn-download' type='submit' onClick={()=>{
+              saveAs(user.resume, 'resume.pdf',{type: "text/plain;charset=utf-8"})
+             }}>Télécharger mon cv</button>
             <br></br>
             <br></br>
            

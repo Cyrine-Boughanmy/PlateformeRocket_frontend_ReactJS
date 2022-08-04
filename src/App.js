@@ -34,7 +34,7 @@ function App() {
             <Route exact path="/register" element={<RegisterSimple />}></Route>
             <Route exact path="/cours" element={<Cours />}></Route>
             <Route exact path="/profile" element={<Profile />}></Route>
-            <Route exact path="/profilepage" element={<ProfilePage />}></Route>
+            <Route exact path="/profilepage/:id" element={<ProfilePage />}></Route>
             <Route exact path="/exercices" element={<Exercices />}></Route>
             <Route exact path="/evaluations" element={<Evaluations />}></Route>
             <Route exact path="/qcm" element={<Qcm />}></Route>

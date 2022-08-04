@@ -59,7 +59,6 @@ const AllBlogs = () => {
             fontSize: "60px",
             marginBottom: "40px",
             color: "#3243E0",
-            fontFamily: "Inter",
             fontStyle: "normal",
             fontW: "800",
             fontSize: "96px",
