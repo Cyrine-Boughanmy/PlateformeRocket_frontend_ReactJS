@@ -40,13 +40,14 @@ const CoursPage = () => {
   };
 
   const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: "#3243E0",
+    backgroundColor:"#014AAD",
     ...theme.typography.body2,
     padding: "10px",
     width: "50%",
     margin: "auto",
+    
     textAlign: "center",
-    color: "#FFFCFC",
+    color: "#FFFFFF",
     fontSize: "20px",
     cursor: "pointer",
   }));
@@ -66,21 +67,21 @@ const CoursPage = () => {
           {sousModule.modules?.map((item) => {
             return (
               <div>
-                <p style={{ fontSize: "60px" }}>{item.titre_module}</p>
+                <p style={{ fontSize: "60px", color:"#014AAD"  }}>{item.titre_module}</p>
                 {item.sous_module?.map((index) => (
                   <Grid item key={item.id}>
                     <br />
                     <Container style={{ textAlign: "center" }}>
                       <Box
                         sx={{
-                          backgroundColor: "primary.main",
-                          color: "white",
+                          backgroundColor:"#014AAD",
+                          color: "#FFFFFF",
                           height: "100px",
                           width: "500px",
                           padding: "25px",
-                          "&:hover": {
-                            backgroundColor: "primary.light",
-                          },
+                          // "&:hover": {
+                          //   backgroundColor: "primary.light",
+                          // },
                           fontSize: "33px",
                         }}
                       >
@@ -95,7 +96,7 @@ const CoursPage = () => {
                     <Container>
                       <Box
                         sx={{
-                          backgroundColor: "#FFFCFC",
+                          backgroundColor:  "#FFFFFF",
                           color: "black",
                           height: "500px",
                           width: "500px",
@@ -139,10 +140,11 @@ const CoursPage = () => {
             <Box textAlign="center">
               <Button
                 style={{
-                  backgroundColor: "#3243E0",
-                  color: "white",
+                  backgroundColor:"#014AAD",
+                  color: "#FFFFFF",
                   width: "500px",
                   height: "50px",
+                  fontFamily:'Arimo'
                 }}
                 variant="contained"
                 disabled={change}

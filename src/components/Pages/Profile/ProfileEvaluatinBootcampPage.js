@@ -14,8 +14,8 @@ const ProfileEvaluatinBootcampPage = () => {
             fontSize: "60px",
             marginTop: "20px",
             marginBottom: "20px",
-            color: "#3243E0",
-            fontFamily: "Inter",
+            color: "#014AAD",
+            fontFamily:'Arimo',
             fontStyle: "normal",
             fontW: "800",
             fontSize: "96px",
@@ -43,19 +43,19 @@ const ProfileEvaluatinBootcampPage = () => {
                   width: 300,
                   height:250,
                   padding: "20px",
-                  backgroundColor: "#3243E0",
+                  backgroundColor: "#014AAD",
                   boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
                   borderRadius: "10px"
                  
                   
                 }}
              >
-                <Typography variant="h5" gutterBottom component="div" color="#FFFCFC">
+                <Typography variant="h5" gutterBottom component="div" color="#FFFFFF" fontFamily='Arimo'>
                 Progression COURS
                 </Typography>
                 <br></br>
                 <br></br>
-                <Typography variant="h4" gutterBottom component="div" color="#FFFCFC">
+                <Typography variant="h4" gutterBottom component="div" color="#FFFFFF" fontFamily='Arimo'>
                 80 %
                 </Typography>
 
@@ -69,20 +69,20 @@ const ProfileEvaluatinBootcampPage = () => {
                   width: 300,
                   height:250,
                   padding: "20px",
-                  backgroundColor: "#3243E0",
+                  backgroundColor: "#014AAD",
                   boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
                   borderRadius: "10px"
                  
                   
                 }}
              >
-                <Typography variant="h5" gutterBottom component="div" color="#FFFCFC">
+                <Typography variant="h5" gutterBottom component="div" color="#FFFFFF" fontFamily='Arimo'>
                 Moyenne Score QCM
                 </Typography>
                 <br></br>
                 <br></br>
                 
-                <Typography variant="h4" gutterBottom component="div" color="#FFFCFC">
+                <Typography variant="h4" gutterBottom component="div" color="#FFFFFF" fontFamily='Arimo'>
                13/20
                 </Typography>
 

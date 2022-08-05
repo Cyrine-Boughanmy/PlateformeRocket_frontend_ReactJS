@@ -21,6 +21,7 @@ import AnnoncePage from "./components/Pages/Annonces/Annoncepage";
 // import AllBlogs from "./components/Pages/Blog/AllBlogs";
 import Articles from "./components/Pages/Blog/Articles";
 import ProfilePage from './components/Pages/Profile/ProfilePage';
+import PageQcm from "./components/Pages/QCM/PageQcm";
 
 function App() {
   return (
@@ -34,10 +35,11 @@ function App() {
             <Route exact path="/register" element={<RegisterSimple />}></Route>
             <Route exact path="/cours" element={<Cours />}></Route>
             <Route exact path="/profile" element={<Profile />}></Route>
-            <Route exact path="/profilepage" element={<ProfilePage />}></Route>
+            <Route exact path="/profilepage/:id" element={<ProfilePage />}></Route>
             <Route exact path="/exercices" element={<Exercices />}></Route>
             <Route exact path="/evaluations" element={<Evaluations />}></Route>
             <Route exact path="/qcm" element={<Qcm />}></Route>
+            <Route exact path="/pageqcm" element={<PageQcm />}></Route>
             <Route exact path="/blog" element={<Blog />}></Route>
             <Route exact path="/article/:id" element={<Articles />}></Route>
             <Route exact path="/annonces" element={<Annonces />}></Route>

@@ -1,4 +1,5 @@
 import React from "react";
+import MenuQcm from "../../Pages/QCM/MenuQcm";
 import PrimarySearchAppBar from "./Navbar";
 
 const Qcm = () => {
@@ -6,7 +7,7 @@ const Qcm = () => {
     <div>
       <PrimarySearchAppBar />
       <br />
-      Welcome to QCM !{" "}
+      <MenuQcm/>
     </div>
   );
 };

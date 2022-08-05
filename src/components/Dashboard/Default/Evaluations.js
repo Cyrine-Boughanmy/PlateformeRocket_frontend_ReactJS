@@ -7,13 +7,14 @@ import PrimarySearchAppBar from "./Navbar";
 import { useNavigate } from "react-router-dom";
 
 const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: "#3243E0",
+  backgroundColor:"#014AAD",
   ...theme.typography.body2,
   padding: "10px",
   width: "50%",
   margin: "auto",
   textAlign: "center",
-  color: "#FFFCFC",
+  color: "#FFFFFF",
+  fontFamily:'Arimo',
   fontSize: "20px",
   cursor: "pointer",
 }));
@@ -25,7 +26,7 @@ const Evaluations = () => {
       <PrimarySearchAppBar />
       <br />
       <Box>
-        <p style={{ fontSize: "60px" }}>Evaluations</p>
+        <p style={{ fontSize: "60px" , color:"#014AAD" }}>Evaluations</p>
         <Stack spacing={2} mt={2}>
           <Item onClick={() => history("/home")}>Evaluation 1</Item>
           <br />

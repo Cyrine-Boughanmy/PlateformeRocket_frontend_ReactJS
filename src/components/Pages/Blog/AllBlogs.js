@@ -3,6 +3,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
+import './Articles.css';
 import {
   Button,
   CardActionArea,
@@ -58,8 +59,7 @@ const AllBlogs = () => {
           style={{
             fontSize: "60px",
             marginBottom: "40px",
-            color: "#3243E0",
-            fontFamily: "Inter",
+            color:"#014AAD",
             fontStyle: "normal",
             fontW: "800",
             fontSize: "96px",
@@ -91,21 +91,21 @@ const AllBlogs = () => {
                       gutterBottom
                       variant="h5"
                       component="div"
-                      sx={{ margin: "10px", color: "#3243E0" }}
+                      sx={{ margin: "10px", color:"#014AAD" }}
                     >
                       {item.titre}
                     </Typography>
                     <Typography
                       variant="body2"
                       color="text.secondary"
-                      sx={{ margin: "10px", color: "#040404" }}
+                      sx={{ margin: "10px" }}
                     >
                       {getDate(item.date)}
                     </Typography>
                     <Typography
                       variant="body2"
                       color="text.secondary"
-                      sx={{ margin: "10px" }}
+                      sx={{ margin: "10px" ,color: "#040404" }}
                     >
                       {
                         <div
@@ -120,10 +120,10 @@ const AllBlogs = () => {
                 <CardActions>
                   <Button
                     size="small"
-                    color="primary"
+                    
                     variant="contained"
                     onClick={() => history(`/article/${item.id}`)}
-                    sx={{ margin: "10px" }}
+                    sx={{ margin: "10px" , backgroundColor:"#014AAD"}}
                   >
                     En Savoir plus
                   </Button>
@@ -138,6 +138,7 @@ const AllBlogs = () => {
             justifyContent: "center",
             marginBottom: "2rem",
             marginTop: "2rem",
+
           }}
         >
           <Pagination

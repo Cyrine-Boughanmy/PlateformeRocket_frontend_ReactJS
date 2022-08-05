@@ -12,8 +12,8 @@ const ProfileNotesEvaluationPage = () => {
             fontSize: "60px",
             // marginTop: "20px",
             marginBottom: "20px",
-            color: "#3243E0",
-            fontFamily: "Inter",
+            color: "#014AAD",
+            
             fontStyle: "normal",
             fontW: "800",
             fontSize: "96px",
@@ -41,14 +41,14 @@ const ProfileNotesEvaluationPage = () => {
                  
                  
                   padding: "20px",
-                  backgroundColor: "#3243E0",
+                  backgroundColor: "#014AAD",
                   boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
                   borderRadius: "10px"
                  
                   
                 }}
              >
-                <Typography variant="h5" gutterBottom component="div" color="#FFFCFC">
+                <Typography variant="h5" gutterBottom component="div" color="#FFFFFF" fontFamily='Arimo'>
                 Évaluation 1 13/20
                 </Typography>
                 
@@ -64,14 +64,14 @@ const ProfileNotesEvaluationPage = () => {
                 
                  
                   padding: "20px",
-                  backgroundColor: "#3243E0",
+                  backgroundColor:"#014AAD",
                   boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
                   borderRadius: "10px"
                  
                   
                 }}
              >
-            <Typography variant="h5" gutterBottom component="div" color="#FFFCFC">
+            <Typography variant="h5" gutterBottom component="div" color="#FFFFFF" fontFamily='Arimo'>
             Évaluation 2 13/20
                 </Typography>
                </Box> 
@@ -84,14 +84,14 @@ const ProfileNotesEvaluationPage = () => {
               
              
               padding: "20px",
-              backgroundColor: "#3243E0",
+              backgroundColor:"#014AAD",
               boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
               borderRadius: "10px"
              
               
             }}
          >
-            <Typography variant="h5" gutterBottom component="div" color="#FFFCFC">
+            <Typography variant="h5" gutterBottom component="div" color="#FFFFFF" fontFamily='Arimo'>
             Évaluation 3 13/20
                 </Typography>
                 </Box>
@@ -104,14 +104,14 @@ const ProfileNotesEvaluationPage = () => {
               
              
               padding: "20px",
-              backgroundColor: "#3243E0",
+              backgroundColor:"#014AAD",
               boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
               borderRadius: "10px"
              
               
             }}
          >
-            <Typography variant="h5" gutterBottom component="div" color="#FFFCFC">
+            <Typography variant="h5" gutterBottom component="div" color="#FFFFFF" fontFamily='Arimo'>
             Évaluation 4 13/20
                 </Typography>
                 </Box>

@@ -54,7 +54,7 @@ const AllCours = () => {
 
   return (
     <Container>
-      <p style={{ fontSize: "60px" }}>Cours</p>
+      <p style={{ fontSize: "60px", color:"#014AAD"  }}>Cours</p>
       <Grid container spacing={3}>
         {cours.map((courses) => (
           <Grid item key={courses.id} xs={12} md={6} lg={4}>
@@ -66,6 +66,7 @@ const AllCours = () => {
                     color="text.secondary"
                     gutterBottom
                     variant="h5"
+                    fontFamily='Arimo'
                   >
                     <strong>Catégorie :</strong> {courses.categorie}
                   </Typography>
@@ -77,18 +78,20 @@ const AllCours = () => {
                   alt="green iguana"
                 />
                 <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
+                  <Typography gutterBottom variant="h5" component="div" fontFamily='Arimo'
+>
                     {courses.nom}
                   </Typography>
 
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" color="text.secondary" fontFamily='Arimo'
+>
                     {courses.description}
                   </Typography>
                 </CardContent>
               </CardActionArea>
               <Divider />
               <IconButton onClick={() => history(`/modules/${courses.id}`)}>
-                <h5>
+                <h5 style={{fontFamily:'Arimo'}}>
                   {" "}
                   <strong>Ouvrir Cours</strong>
                 </h5>{" "}
