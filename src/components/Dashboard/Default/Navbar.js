@@ -30,10 +30,10 @@ import { useNavigate } from "react-router-dom";
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
-  "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-  },
+  // backgroundColor: alpha(theme.palette.common.white, 0.15),
+  // "&:hover": {
+  //   backgroundColor: alpha(theme.palette.common.white, 0.25),
+  // },
   marginRight: theme.spacing(2),
   marginLeft: 0,
   width: "100%",
@@ -170,8 +170,8 @@ export default function PrimarySearchAppBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar>
+      <AppBar position="static" sx={{ backgroundColor: "#014AAD", color:"#FFFFFF" }}>
+        <Toolbar sx={{ backgroundColor: "#014AAD" , color:"#FFFFFF"}}>
           {/* DRAWER CODE */}
           <IconButton
             size="large"

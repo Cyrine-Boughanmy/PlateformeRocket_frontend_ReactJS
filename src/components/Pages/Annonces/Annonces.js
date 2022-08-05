@@ -58,7 +58,7 @@ const AllAnnonces = () => {
           style={{
             fontSize: "60px",
             marginBottom: "40px",
-            color: "#3243E0",
+            color:"#014AAD",
             
             fontStyle: "normal",
             fontW: "800",
@@ -90,14 +90,14 @@ const AllAnnonces = () => {
                       gutterBottom
                       variant="h5"
                       component="div"
-                      sx={{ margin: "10px", color: "#3243E0" }}
+                      sx={{ margin: "10px", color:"#014AAD" }}
                     >
                       {item.titre}
                     </Typography>
                     <Typography
                       variant="body2"
                       color="text.secondary"
-                      sx={{ margin: "10px", color: "#040404" }}
+                      sx={{ margin: "10px" }}
                     >
                       {getDate(item.date_annonce)}
                     </Typography>
@@ -129,7 +129,7 @@ const AllAnnonces = () => {
                     color="primary"
                     variant="contained"
                     onClick={() => history(`/annonce/${item.id}`)}
-                    sx={{ margin: "10px" }}
+                    sx={{ margin: "10px" ,backgroundColor:"#014AAD" }}
                   >
                     En Savoir plus
                   </Button>

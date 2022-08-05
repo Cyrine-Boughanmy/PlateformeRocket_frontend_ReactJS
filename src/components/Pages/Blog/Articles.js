@@ -46,7 +46,7 @@ const Articles = () => {
             <h4 className="center-actualite__Page">
               <b
                 style={{
-                  color: "#3243E0",
+                  color: "#014AAD",
                 }}
               >
                 {" "}
@@ -56,7 +56,7 @@ const Articles = () => {
 
             <img src={article.image_Blog} alt="image blog"></img>
             <br></br>
-            <p className="center-actualite__Page">
+            <p className="center-actualite__Page" >
               <b> {getDate(article.date)}</b>
             </p>
 

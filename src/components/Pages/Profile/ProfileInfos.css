@@ -4,7 +4,7 @@
   font-weight: 800;
   font-size: 18px;
   line-height: 48px;
-  color: #3243e0;
+  color: #014AAD;
   text-align: left;
 }
 .titre-présentation {
@@ -14,7 +14,7 @@
   font-size: 30px;
   line-height: 48px;
   text-align: left;
-  color: #fffcfc;
+  color: #FFFFFF;
 }
 .text-présentation{
   font-family:Arimo;
@@ -23,22 +23,22 @@
   font-size: 15px;
   line-height: 48px;
   text-align: left;
-  color: #fffcfc;
+  color: #FFFFFF;
 }
 .btn-download{
     padding: 6px 20px;
-    color:#FFFCFC;
+    color:#FFFFFF;
     outline: none;
     border: none;
     cursor: pointer;
     font-family:Arimo;
     font-style: normal;
     font-weight: 600;
-    background-color: #3243E0;
+    background-color: #014AAD;
 }
 .btn-update{
   padding: 6px 20px;
-  color:#FFFCFC;
+  color:#FFFFFF;
   outline: none;
   border: none;
   cursor: pointer;

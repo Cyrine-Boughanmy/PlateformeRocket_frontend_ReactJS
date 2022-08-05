@@ -54,7 +54,7 @@ const AllCours = () => {
 
   return (
     <Container>
-      <p style={{ fontSize: "60px" }}>Cours</p>
+      <p style={{ fontSize: "60px", color:"#014AAD"  }}>Cours</p>
       <Grid container spacing={3}>
         {cours.map((courses) => (
           <Grid item key={courses.id} xs={12} md={6} lg={4}>

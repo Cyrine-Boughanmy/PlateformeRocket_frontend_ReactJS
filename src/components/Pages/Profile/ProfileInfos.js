@@ -39,7 +39,7 @@ const PageProfil = () => {
           style={{
             fontSize: "60px",
             marginBottom: "40px",
-            color: "#3243E0",
+            color: "#014AAD",
            
             fontStyle: "normal",
             fontW: "800",
@@ -102,7 +102,7 @@ const PageProfil = () => {
                   width: 400,
                   
                   padding: "20px",
-                  backgroundColor: "#FFFCFC",
+                  backgroundColor: "#FFFFFF",
                   boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
                   borderRadius: "10px"
                  
@@ -140,7 +140,7 @@ const PageProfil = () => {
                   width: 400,
                   height: 340,
                   padding: "20px",
-                  backgroundColor: '#3243E0',
+                  backgroundColor: '#014AAD',
                   boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
                   borderRadius: "10px"
                   

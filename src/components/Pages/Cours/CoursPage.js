@@ -58,6 +58,7 @@ const CoursPage = () => {
                       variant="h5"
                       component="div"
                       fontFamily='Arimo'
+                      sx={{ color:"#014AAD" }}
 
                     >
                       {/* Titre : {module.modules && module.modules.titre_module} */}
@@ -73,9 +74,9 @@ const CoursPage = () => {
                 </CardActionArea>
                 <CardActions>
                   <Button
-                  style={{fontFamily:'Arimo'}}
+                  style={{fontFamily:'Arimo', color:"#014AAD"}}
                     size="small"
-                    color="primary"
+                    
                     onClick={() => history("/cours")}
                   >
                     Retour
@@ -84,9 +85,8 @@ const CoursPage = () => {
                 <CardActions>
                   <div style={{ float: "right", fontFamily:'Arimo'}}>
                     <Button
-                    style={{fontFamily:'Arimo'}}
+                    style={{fontFamily:'Arimo' , color:"#014AAD"}}
                       size="small"
-                      color="primary"
                       onClick={() => history(`/sousModule/${item.id}`)}
                     >
                       Voir module
