@@ -1,5 +1,6 @@
 import React from "react";
 import MenuQcm from "../../Pages/QCM/MenuQcm";
+import SetupForm from "../../Pages/QCM/testqcm/SetupForm";
 import PrimarySearchAppBar from "./Navbar";
 
 const Qcm = () => {
@@ -8,6 +9,7 @@ const Qcm = () => {
       <PrimarySearchAppBar />
       <br />
       <MenuQcm/>
+      {/* <SetupForm/> */}
     </div>
   );
 };
