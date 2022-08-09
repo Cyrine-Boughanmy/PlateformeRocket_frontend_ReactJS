@@ -22,7 +22,6 @@ import AnnoncePage from "./components/Pages/Annonces/Annoncepage";
 import Articles from "./components/Pages/Blog/Articles";
 import ProfilePage from './components/Pages/Profile/ProfilePage';
 import PageQcm from "./components/Pages/QCM/PageQcm";
-import QuestionPage from "./components/Pages/QCM/testqcm/QuestionPage";
 
 function App() {
   return (

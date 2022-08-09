@@ -1,4 +1,5 @@
 import React from "react";
+import AllExercices from "../../Pages/Exercices/AllExercices";
 import PrimarySearchAppBar from "./Navbar";
 
 const Exercices = () => {
@@ -6,7 +7,7 @@ const Exercices = () => {
     <div>
       <PrimarySearchAppBar />
       <br />
-      Welcome to our exercices !{" "}
+      <AllExercices/>
     </div>
   );
 };
