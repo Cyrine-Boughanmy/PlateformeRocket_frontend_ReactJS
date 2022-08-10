@@ -11,19 +11,19 @@
     margin: 8px;
     margin-top: 40px;
     border-radius: 5px;
-    border: 1px solid #2b2eff;
-    color: #2b2eff;
+    border: 1px solid #014AAD;
+    color: #014AAD;
     cursor: pointer;
   }
   
   
   
   .paginationActive a {
-    color: white;
-    background-color: #2b2eff;
+    color: #FFFFFF;
+    background-color: #014AAD;
   }
   
   .paginationDisabled a {
-    
+    color:#014AAD
   }
   

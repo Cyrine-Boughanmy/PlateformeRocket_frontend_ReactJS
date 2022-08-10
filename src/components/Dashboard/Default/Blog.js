@@ -1,4 +1,5 @@
 import React from "react";
+import AllBlogs from "../../Pages/Blog/AllBlogs";
 import PrimarySearchAppBar from "./Navbar";
 
 const Blog = () => {
@@ -6,7 +7,7 @@ const Blog = () => {
     <div>
       <PrimarySearchAppBar />
       <br />
-      Welcome to our Blog !{" "}
+      <AllBlogs/>
     </div>
   );
 };

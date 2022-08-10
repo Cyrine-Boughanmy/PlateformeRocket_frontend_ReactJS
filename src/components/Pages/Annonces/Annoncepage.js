@@ -3,6 +3,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./AnnoncePage.css";
+import PrimarySearchAppBar from "../../Dashboard/Default/Navbar";
 
 const AnnoncePage = () => {
   const [annonce, setAnnonce] = useState([]);
@@ -14,8 +15,8 @@ const AnnoncePage = () => {
 
   const annonces = async () => {
     const response = await axios.get(
-      // `http://localhost:8000/annonces/annonce/${id}`
-      `https://rocketcoding-plateform-back.herokuapp.com/annonces/annonce/${id}`
+      `http://localhost:8000/annonces/annonce/${id}`
+      // `https://rocketcoding-plateform-back.herokuapp.com/annonces/annonce/${id}`
     );
     setAnnonce(response.data);
     console.log("response details of something", response.data);
@@ -29,11 +30,9 @@ const AnnoncePage = () => {
   };
 
   return (
+    <>
+    <PrimarySearchAppBar />
     <div className="actualite-page__container">
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
       <br></br>
       <button
         className="go-back-link__actualites"
@@ -48,7 +47,7 @@ const AnnoncePage = () => {
             <h4 className="center-actualite__Page">
               <b
                 style={{
-                  color: "#3243E0",
+                  color: "#014AAD",
                 }}
               >
                 {" "}
@@ -91,6 +90,7 @@ const AnnoncePage = () => {
         </Fragment>
       </div>
     </div>
+    </>
   );
 };
 

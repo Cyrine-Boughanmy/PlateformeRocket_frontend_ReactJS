@@ -18,7 +18,7 @@ const LoginForm = () => {
     <Fragment>
       <div className="login-card">
         <Form className="theme-form login-form" onSubmit={handleSubmit}>
-          <H4>Se Connecter</H4>
+          <H4 >Se Connecter</H4>
           <H6>Hello ! Connectez-vous à votre compte Rocket Coding.</H6>
 
           <FormGroup>
@@ -67,7 +67,7 @@ const LoginForm = () => {
             <Btn
               attrBtn={{
                 className: "btn-block",
-                color: "primary",
+                color: "#014AAD",
                 type: "submit",
               }}
             >

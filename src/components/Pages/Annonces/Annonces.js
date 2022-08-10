@@ -13,8 +13,7 @@ import {
 import Annonceimg from "../../../assets/images/annonce/annonce-intro.jpg";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import DaysJS from "react-dayjs";
-import PrimarySearchAppBar from "../../Dashboard/Default/Navbar";
+
 import Pagination from "react-paginate";
 import "../hooks/Pagination.css";
 
@@ -35,8 +34,8 @@ const AllAnnonces = () => {
 
   const getAnnonces = async () => {
     const response = await axios.get(
-      "https://rocketcoding-plateform-back.herokuapp.com/annonces/annonce/"
-      // "http://localhost:8000/annonces/annonce/"
+      // "https://rocketcoding-plateform-back.herokuapp.com/annonces/annonce/"
+      "http://localhost:8000/annonces/annonce/"
     );
 
     console.log("reponsee", response.data);
@@ -54,14 +53,13 @@ const AllAnnonces = () => {
 
   return (
     <>
-      <PrimarySearchAppBar />
       <Container>
         <p
           style={{
             fontSize: "60px",
             marginBottom: "40px",
-            color: "#3243E0",
-            fontFamily: "Inter",
+            color:"#014AAD",
+            
             fontStyle: "normal",
             fontW: "800",
             fontSize: "96px",
@@ -92,14 +90,14 @@ const AllAnnonces = () => {
                       gutterBottom
                       variant="h5"
                       component="div"
-                      sx={{ margin: "10px", color: "#3243E0" }}
+                      sx={{ margin: "10px", color:"#014AAD" }}
                     >
                       {item.titre}
                     </Typography>
                     <Typography
                       variant="body2"
                       color="text.secondary"
-                      sx={{ margin: "10px", color: "#040404" }}
+                      sx={{ margin: "10px" }}
                     >
                       {getDate(item.date_annonce)}
                     </Typography>
@@ -131,7 +129,7 @@ const AllAnnonces = () => {
                     color="primary"
                     variant="contained"
                     onClick={() => history(`/annonce/${item.id}`)}
-                    sx={{ margin: "10px" }}
+                    sx={{ margin: "10px" ,backgroundColor:"#014AAD" }}
                   >
                     En Savoir plus
                   </Button>
