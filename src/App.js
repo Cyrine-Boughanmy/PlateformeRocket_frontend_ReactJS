@@ -22,6 +22,7 @@ import AnnoncePage from "./components/Pages/Annonces/Annoncepage";
 import Articles from "./components/Pages/Blog/Articles";
 import ProfilePage from './components/Pages/Profile/ProfilePage';
 import PageQcm from "./components/Pages/QCM/PageQcm";
+import ExercicePage from "./components/Pages/Exercices/ExercicePage";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
             <Route exact path="/profile" element={<Profile />}></Route>
             <Route exact path="/profilepage/:id" element={<ProfilePage />}></Route>
             <Route exact path="/exercices" element={<Exercices />}></Route>
+            <Route exact path="/exercicepage" element={<ExercicePage />}></Route>
             <Route exact path="/evaluations" element={<Evaluations />}></Route>
             <Route exact path="/qcm" element={<Qcm />}></Route>
             <Route exact path="/pageqcm" element={<PageQcm />}></Route>

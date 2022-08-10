@@ -5,7 +5,7 @@ import LoginForm from './LoginForm';
 const Login = () => {
     return (
         <Fragment>
-            <Container fluid={true} className="p-0">
+            <Container fluid={true} className="p-0" >
                 <Row>
                     <Col>
                         <LoginForm />
