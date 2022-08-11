@@ -34,7 +34,7 @@ const LoginForm = () => {
         
       <Fragment>
       
-      <div className="login-card">
+      <div className="login-card" >
         <Form className="theme-form login-form" onSubmit={handleSubmit}>
           <H4 >Se Connecter</H4>
           <H6>Hello ! Connectez-vous à votre compte Rocket Coding.</H6>
