@@ -101,7 +101,7 @@ const ExercicePage = () => {
             
           }}
         >
-            <Typography variant="h5" gutterBottom component="div" color="#014AAD" fontFamily='Arimo'>Réponse </Typography>
+            <Typography variant="h5" gutterBottom component="div" color="#014AAD" fontFamily='Arimo'>Votre réponse </Typography>
             </Box>
         <Box textAlign="center" mt={5} maxWidth="sm"
             sx={{
