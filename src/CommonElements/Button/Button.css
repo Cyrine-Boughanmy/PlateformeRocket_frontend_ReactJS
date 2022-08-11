@@ -1,0 +1,16 @@
+.btn-se-connecter{
+    background-color:#014AAD;
+    color : #FFFFFF;
+    width: 100%;
+    border: none;
+    padding: 10px 5px;
+    font-size: 15px;
+    cursor : pointer;
+    margin-top: 10px; 
+    transition-duration: 0.4s;
+}
+.btn-se-connecter:hover{
+    background-color: #97bffc; 
+    color: #014AAD;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}

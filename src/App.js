@@ -22,10 +22,13 @@ import AnnoncePage from "./components/Pages/Annonces/Annoncepage";
 import Articles from "./components/Pages/Blog/Articles";
 import ProfilePage from './components/Pages/Profile/ProfilePage';
 import PageQcm from "./components/Pages/QCM/PageQcm";
+import ExercicePage from "./components/Pages/Exercices/ExercicePage";
+import PageLoader from "./components/Pages/hooks/PageLoader";
 
 function App() {
   return (
     <div className="App">
+      {/* <PageLoader/> */}
       
       <Router>
         <AuthProvider>
@@ -37,10 +40,15 @@ function App() {
             <Route exact path="/profile" element={<Profile />}></Route>
             <Route exact path="/profilepage/:id" element={<ProfilePage />}></Route>
             <Route exact path="/exercices" element={<Exercices />}></Route>
+            <Route exact path="/exercicepage" element={<ExercicePage />}></Route>
             <Route exact path="/evaluations" element={<Evaluations />}></Route>
             <Route exact path="/qcm" element={<Qcm />}></Route>
             <Route exact path="/pageqcm" element={<PageQcm />}></Route>
+
+
             {/* <Route exact path="/pageqcm" element={<QuestionPage />}></Route> */}
+
+
             <Route exact path="/blog" element={<Blog />}></Route>
             <Route exact path="/article/:id" element={<Articles />}></Route>
             <Route exact path="/annonces" element={<Annonces />}></Route>
@@ -53,11 +61,13 @@ function App() {
               element={<ModulesPage />}
             ></Route>
 
-            <Route
+            {/* <Route
               exact
               path="/login/reset_pwd"
               element={<ForgetPwd />}
-            ></Route>
+            ></Route> */}
+
+
             {/* <Route exact path="/dashboard" element={<Dashboard />}></Route> */}
 
             {/* <PrivateRoute
@@ -67,6 +77,8 @@ function App() {
             ></PrivateRoute> */}
 
             {/* <Route exact path="/test" element={<Ecommerce />}></Route> */}
+
+
           </Routes>
         </AuthProvider>
       </Router>

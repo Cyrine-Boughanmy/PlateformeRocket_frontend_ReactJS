@@ -15,16 +15,19 @@ import {
 } from "@mui/material";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useNavigate } from "react-router-dom";
+import PageLoader from "../hooks/PageLoader";
 
 const AllCours = () => {
   const [cours, setCours] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [modules, setModules] = useState([]);
 
   useEffect(() => {
     if (isLoading) {
       getCourses();
-      setIsLoading(false);
+     
+     
+
     }
   }, [isLoading]);
   const getCourses = async () => {
@@ -36,6 +39,8 @@ const AllCours = () => {
 
     console.log("reponsee", response.data);
     setCours(response.data);
+  
+    
   };
 
   useEffect(() => {
@@ -53,7 +58,9 @@ const AllCours = () => {
   const history = useNavigate();
 
   return (
+   
     <Container>
+      
       <p style={{ fontSize: "60px", color:"#014AAD"  }}>Cours</p>
       <Grid container spacing={3}>
         {cours.map((courses) => (
@@ -104,6 +111,8 @@ const AllCours = () => {
         ))}
       </Grid>
     </Container>
+    
+   
   );
 };
 

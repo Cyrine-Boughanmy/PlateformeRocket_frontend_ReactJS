@@ -1,21 +1,39 @@
-import React, { Fragment, useContext } from "react";
+import React, { Fragment, useContext, useEffect, useState } from "react";
 import { Btn, H4, H6 } from "../../../AbstractElements";
 import { Form, FormGroup, Input, Label } from "reactstrap";
 import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "../../../context/AuthContext";
+import {DotLoader} from 'react-spinners';
+import PageLoader from "../hooks/PageLoader";
+import { Box } from "@mui/material";
+import loginlogo from '../../../assets/images/login/logo1.png';
+
+
 
 const LoginForm = () => {
   const history = useNavigate();
+  const [loading , setLoading]=useState(false);
+ 
   const { loginUser } = useContext(AuthContext);
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     const username = e.target.username.value;
     const password = e.target.password.value;
     username.length > 0 && loginUser(username, password);
+    console.log(loginUser);
+    console.log(loading);
+    
     // history("/dashboard");
   };
+  
   return (
-    <Fragment>
+    <>
+      {loading &&<PageLoader/>}
+        
+        
+      <Fragment>
+      
       <div className="login-card">
         <Form className="theme-form login-form" onSubmit={handleSubmit}>
           <H4 >Se Connecter</H4>
@@ -65,10 +83,12 @@ const LoginForm = () => {
           </FormGroup>
           <FormGroup>
             <Btn
+              
               attrBtn={{
-                className: "btn-block",
+                
                 color: "#014AAD",
                 type: "submit",
+                
               }}
             >
               {/* <Link to="/dashboard" /> */}
@@ -77,7 +97,9 @@ const LoginForm = () => {
           </FormGroup>
         </Form>
       </div>
-    </Fragment>
+      </Fragment>
+      
+    </>
   );
 };
 
