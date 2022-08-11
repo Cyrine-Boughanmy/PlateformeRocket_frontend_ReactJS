@@ -24,6 +24,8 @@ import ProfilePage from './components/Pages/Profile/ProfilePage';
 import PageQcm from "./components/Pages/QCM/PageQcm";
 import ExercicePage from "./components/Pages/Exercices/ExercicePage";
 import PageLoader from "./components/Pages/hooks/PageLoader";
+import EvaluationPage from "./components/Pages/Evaluations/EvaluationPage";
+import ConnexionPage from "./components/Pages/Profile/ConnexionPage";
 
 function App() {
   return (
@@ -42,6 +44,7 @@ function App() {
             <Route exact path="/exercices" element={<Exercices />}></Route>
             <Route exact path="/exercicepage" element={<ExercicePage />}></Route>
             <Route exact path="/evaluations" element={<Evaluations />}></Route>
+            <Route exact path="/evaluationpage" element={<EvaluationPage />}></Route>
             <Route exact path="/qcm" element={<Qcm />}></Route>
             <Route exact path="/pageqcm" element={<PageQcm />}></Route>
 
@@ -53,7 +56,7 @@ function App() {
             <Route exact path="/article/:id" element={<Articles />}></Route>
             <Route exact path="/annonces" element={<Annonces />}></Route>
             <Route exact path="/annonce/:id" element={<AnnoncePage/>}></Route>
-            <Route exact path="/monCompte" element={<MonCompte />}></Route>
+            <Route exact path="/monCompte" element={<ConnexionPage />}></Route>
             <Route exact path="/modules/:id" element={<CoursPage />}></Route>
             <Route
               exact
