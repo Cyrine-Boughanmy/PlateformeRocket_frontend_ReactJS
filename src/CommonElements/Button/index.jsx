@@ -1,14 +1,13 @@
 import React from 'react';
 import { Button } from 'reactstrap';
+import { motion } from 'framer-motion';
+import './Button.css';
 
 const Btn = (props) =>{
-    return <Button  style={{backgroundColor:"#014AAD" ,'&:hover': {
-        backgroundColor: '#FFFFFF',
-        opacity: [0.9, 0.8, 0.7],
-      },
-       color :"#FFFFFF"}}
+    return <button  
+    className='btn-se-connecter'
         {...props.attrBtn}
-        >{props.children}</Button>;
+        >{props.children}</button>;
 };
 
 export default Btn;

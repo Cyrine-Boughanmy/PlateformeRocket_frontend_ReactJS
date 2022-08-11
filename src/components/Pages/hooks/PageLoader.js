@@ -1,14 +1,23 @@
+import { Box } from '@mui/material';
 import React from 'react'
-import {DotLoader} from 'react-spinners';
+import {BounceLoader, DotLoader} from 'react-spinners';
+import './PageLoader.css';
 
 const PageLoader = () => {
   return (
     <>
-      <DotLoader
+    <div className='loader-section' >
+      {/* <Box textAlign="center" backgroundColor="#97bffc" sx={{width:100,
+                        height:100 ,display:"flex", justifyContent:"center", alignItems:"center"}}> */}
+       <Box backgroundColor = "#FFFFFF" textAlign="center">             
+      <BounceLoader
         color="#014AAD"
-        size={60}
+        size={100}
         
-      />
+      /></Box>
+      {/* </Box> */}
+      
+    </div>
     </>
   )
 }

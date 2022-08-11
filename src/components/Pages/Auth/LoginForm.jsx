@@ -12,7 +12,7 @@ import loginlogo from '../../../assets/images/login/logo1.png';
 
 const LoginForm = () => {
   const history = useNavigate();
-  let [loading , setLoading]=useState(false);
+  const [loading , setLoading]=useState(false);
  
   const { loginUser } = useContext(AuthContext);
   const handleSubmit = async (e) => {
@@ -21,7 +21,6 @@ const LoginForm = () => {
     const username = e.target.username.value;
     const password = e.target.password.value;
     username.length > 0 && loginUser(username, password);
-    
     console.log(loginUser);
     console.log(loading);
     
@@ -30,24 +29,11 @@ const LoginForm = () => {
   
   return (
     <>
-      {
-        loading ?
-        <PageLoader/>
-        :
+      {loading &&<PageLoader/>}
+        
+        
       <Fragment>
-      <Box textAlign="center" 
-                    sx={{
-                        width:80,
-                        height:80,
-                        margin:"auto",backgroundColor: "#014AAD"
-                    }}>
-                      <img 
-                       style={{
-                        width:80,
-                        height:80,
-                    }}
-                         src={loginlogo} alt='logo'/>
-                    </Box>
+      
       <div className="login-card">
         <Form className="theme-form login-form" onSubmit={handleSubmit}>
           <H4 >Se Connecter</H4>
@@ -99,9 +85,10 @@ const LoginForm = () => {
             <Btn
               
               attrBtn={{
-                className: "btn-block",
+                
                 color: "#014AAD",
                 type: "submit",
+                
               }}
             >
               {/* <Link to="/dashboard" /> */}
@@ -111,7 +98,7 @@ const LoginForm = () => {
         </Form>
       </div>
       </Fragment>
-      }
+      
     </>
   );
 };
