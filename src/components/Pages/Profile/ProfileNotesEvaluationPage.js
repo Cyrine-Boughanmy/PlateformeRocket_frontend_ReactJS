@@ -16,7 +16,6 @@ const ProfileNotesEvaluationPage = () => {
             
             fontStyle: "normal",
             fontW: "800",
-            fontSize: "96px",
             lineHeight: "116px",
             textAlign: "center",
           }}>

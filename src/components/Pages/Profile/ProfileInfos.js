@@ -1,6 +1,8 @@
 import { Container } from '@material-ui/core';
 import { Box, Grid, div, Button } from '@mui/material';
-import React, { useEffect, useState } from 'react';
+import AuthContext from "../../../context/AuthContext";
+import jwt_decode from "jwt-decode";
+import React, { useEffect, useState, useContext } from "react";
 import PrimarySearchAppBar from '../../Dashboard/Default/Navbar';
 import userimg from '../../../assets/images/user-profile/userprofile.jpg';
 import './ProfileInfos.css';
@@ -11,39 +13,75 @@ import { saveAs } from 'file-saver';
 
 const PageProfil = () => {
   const [user, setUser] = useState([]);
-  const { id } = useParams();
+  // const { id } = useParams();
+  // const { id } = useContext(AuthContext);
+  const tokenToServer = localStorage.getItem("authTokens");
+  const tokenDecoded = jwt_decode(tokenToServer);
+  const { authTokens } = useContext(AuthContext);
+  console.log("TOKEEEEEEEEEEEEN", tokenToServer);
+  console.log("AMAAAAAAAAAN", tokenDecoded.user_id);
   const history = useNavigate();
   const fetchData = async () => {
-    // const response = await axios.get("http://localhost:8000/cours/liste/");
-    const response = await axios.get(
-      // " https://rocketcoding-plateform-back.herokuapp.com/cours/liste/"
-      `http://localhost:8000/simple-user/user/${id} `
-    );
-
-    console.log("reponsee", response.data);
-    setUser(response.data);
+    const res = await axios
+      .get(
+        // " https://rocketcoding-plateform-back.herokuapp.com/cours/liste/"
+        // `http://localhost:8000/simple-user/profile/${id} `,
+        "http://localhost:8000/simple-user/profile/" + tokenDecoded.user_id,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            // Authorization:
+            //   "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYxNjA0OTAwLCJpYXQiOjE2NjAzMDg5MDAsImp0aSI6IjdiNGIyNmE2Mjc0NDQ3YzY5NDVhN2U2NTRkZWViNGUyIiwidXNlcl9pZCI6MX0.8y-xHXUDTCA9pP-8RabFjHVkZ2oEVnuV7qH7qpof3KI ",
+            Authorization: `Bearer ${authTokens?.access}`,
+          },
+        }
+        // ,
+        // {
+        //   headers: {
+        //     "Content-Type": "application/json",
+        //     Authorization: `JWT ${localStorage.getItem("authTokens")}`,
+        //     Accept: "application/json",
+        //   },
+        // }
+      )
+      .then((res) => {
+        setUser(res.data);
+        console.log("DATAAAAAAA", res.data);
+      })
+      .catch((Error) => {
+        console.log(Error);
+      });
+    // console.log("reponsee", response.data);
+    // console.log("reponseeeeeeeeeee", res.data);
   };
+  function parseJwt(token) {
+    if (!token) {
+      return;
+    }
+    const base64Url = token.split(".")[1];
+    const base64 = base64Url.replace("-", "+").replace("_", "/");
+    return JSON.parse(window.atob(base64));
+  }
+  console.log("TEEEEEEEEST", parseJwt(tokenToServer));
   useEffect(() => {
-    
-      fetchData();
-     
+    fetchData();
   }, []);
-  
 
   return (
 
     <>
     
-    <Container sx={{padding:"10px"}}>
+    <Container 
+    key={tokenDecoded.user_id}
+    sx={{padding:"10px"}}>
     <p
           style={{
             fontSize: "60px",
             marginBottom: "40px",
             color: "#014AAD",
-           
+
             fontStyle: "normal",
             fontW: "800",
-            fontSize: "96px",
             lineHeight: "116px",
             textAlign: "center",
           }}
@@ -51,11 +89,13 @@ const PageProfil = () => {
           PROFIL
         </p>
         <Grid
+        sx="auto"
         container
         spacing={2}
         direction="row"
         justifyContent="center"
         alignItems="stretch"
+        
         >
           <Grid item xs="auto">
           <button
