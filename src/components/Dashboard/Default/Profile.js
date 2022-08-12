@@ -28,7 +28,7 @@ const Profile = () => {
       <Box>
         <p style={{ fontSize: "60px" , fontFamily:'Arimo', color:"#014AAD" }}>PROFILE</p>
         <Stack spacing={2} mt={2}>
-          <Item onClick={() => history("/profilepage/:id")}>Profile</Item>
+          <Item onClick={() => history("/profilepage")}>Profile</Item>
           <br />
           <Item
             style={{ margin: "auto", padding: "10px", fontSize: "20px" , fontFamily:'Arimo'}}
