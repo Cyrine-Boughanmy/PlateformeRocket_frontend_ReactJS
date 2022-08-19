@@ -24,8 +24,9 @@ import WebAssetSharpIcon from "@mui/icons-material/WebAssetSharp";
 import ReorderSharpIcon from "@mui/icons-material/ReorderSharp";
 import ArticleIcon from "@mui/icons-material/Article";
 import NewspaperIcon from "@mui/icons-material/Newspaper";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import AuthContext from "../../../context/AuthContext";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -94,6 +95,7 @@ export default function PrimarySearchAppBar() {
 
   const history = useNavigate();
 
+  const { logoutUser } = useContext(AuthContext);
   const menuId = "primary-search-account-menu";
   const renderMenu = (
     <Menu
@@ -113,6 +115,7 @@ export default function PrimarySearchAppBar() {
     >
       <MenuItem onClick={() => history("/profile")}>Profile</MenuItem>
       <MenuItem onClick={() => history("/monCompte")}>Mon compte</MenuItem>
+      <MenuItem onClick={() => logoutUser()}>Se déconnecter</MenuItem>
     </Menu>
   );
 
@@ -170,8 +173,11 @@ export default function PrimarySearchAppBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{ backgroundColor: "#014AAD", color:"#FFFFFF" }}>
-        <Toolbar sx={{ backgroundColor: "#014AAD" , color:"#FFFFFF"}}>
+      <AppBar
+        position="static"
+        sx={{ backgroundColor: "#014AAD", color: "#FFFFFF" }}
+      >
+        <Toolbar sx={{ backgroundColor: "#014AAD", color: "#FFFFFF" }}>
           {/* DRAWER CODE */}
           <IconButton
             size="large"

@@ -23,8 +23,23 @@ export const AuthProvider = ({ children }) => {
   const history = useNavigate();
 
   const loginUser = async (username, password) => {
+    // const response = axios
+    //   .post("http://localhost:8000/simple-user/token/", {
+    //     username: username,
+    //     password: password,
+    //   })
+    //   .then((res) => {
+    //     const users = {
+    //       authTokens: res.data.key,
+    //       username,
+    //       userId: res.data.users,
+    //     };
+    //     localStorage.setItem("users", JSON.stringify(users));
+    //   });
     const response = await fetch(
-      "https://rocketcoding-plateform-back.herokuapp.com/simple-user/token/",
+      // "https://rocketcoding-plateform-back.herokuapp.com/simple-user/token/",
+      "http://localhost:8000/simple-user/token/",
+
       {
         method: "POST",
         headers: {
@@ -37,7 +52,6 @@ export const AuthProvider = ({ children }) => {
       }
     );
     const data = await response.json();
-
     if (response.status === 200) {
       setAuthTokens(data);
       setUser(jwt_decode(data.access));
@@ -108,12 +122,12 @@ export const AuthProvider = ({ children }) => {
   //   }
   // };
 
-  // const logoutUser = () => {
-  //   setAuthTokens(null);
-  //   setUser(null);
-  //   localStorage.removeItem("authTokens");
-  //   history.push("/");
-  // };
+  const logoutUser = () => {
+    setAuthTokens(null);
+    setUser(null);
+    localStorage.removeItem("authTokens");
+    history("/");
+  };
 
   const contextData = {
     user,
@@ -122,7 +136,7 @@ export const AuthProvider = ({ children }) => {
     setAuthTokens,
     // registerUser,
     loginUser,
-    // logoutUser,
+    logoutUser,
     // reset_passsword,
   };
 
