@@ -31,65 +31,65 @@ const AnnoncePage = () => {
 
   return (
     <>
-    <PrimarySearchAppBar />
-    <div className="actualite-page__container">
-      <br></br>
-      <button
-        className="go-back-link__actualites"
-        onClick={() => history("/annonces")}
-      >
-        Retour
-      </button>
+      <PrimarySearchAppBar />
+      <div className="actualite-page__container">
+        <br></br>
+        <button
+          className="go-back-link__actualites"
+          onClick={() => history("/annonces")}
+        >
+          Retour
+        </button>
 
-      <div className="actualite-details__container">
-        <Fragment>
-          <div className="actualite__Page-content">
-            <h4 className="center-actualite__Page">
-              <b
-                style={{
-                  color: "#014AAD",
-                }}
-              >
-                {" "}
-                {annonce.titre}{" "}
-              </b>
-            </h4>
-
-            <img src={annonce.image_annonce} alt="image blog"></img>
-            <br></br>
-            <p className="center-actualite__Page">
-              <b> {getDate(annonce.date_annonce)}</b>
-            </p>
-            <p className="center-actualite__Page">
-              <b>{annonce.publie_par}</b>
-            </p>
-            <br></br>
-            <div>
-              <p className="news-text">
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: annonce.description,
+        <div className="actualite-details__container">
+          <Fragment>
+            <div className="actualite__Page-content">
+              <h4 className="center-actualite__Page">
+                <b
+                  style={{
+                    color: "#014AAD",
                   }}
-                ></div>
-              </p>{" "}
-            </div>
-
-            <br></br>
-            <p className="actualite-text-Download">
-              <u>
-                <a
-                  href={annonce.fichier_pdf}
-                  target="-blank"
-                  className="center-actualite__Page"
                 >
-                  Télécharger le document
-                </a>
-              </u>
-            </p>
-          </div>
-        </Fragment>
+                  {" "}
+                  {annonce.titre_annonce}{" "}
+                </b>
+              </h4>
+
+              <img src={annonce.image_annonce} alt="image blog"></img>
+              <br></br>
+              <p className="center-actualite__Page">
+                <b> {getDate(annonce.date_annonce)}</b>
+              </p>
+              <p className="center-actualite__Page">
+                <b>{annonce.publie_par}</b>
+              </p>
+              <br></br>
+              <div>
+                <p className="news-text">
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: annonce.description_annonce,
+                    }}
+                  ></div>
+                </p>{" "}
+              </div>
+
+              <br></br>
+              <p className="actualite-text-Download">
+                <u>
+                  <a
+                    href={annonce.fichier_annonce_pdf}
+                    target="-blank"
+                    className="center-actualite__Page"
+                  >
+                    Télécharger le document
+                  </a>
+                </u>
+              </p>
+            </div>
+          </Fragment>
+        </div>
       </div>
-    </div>
     </>
   );
 };

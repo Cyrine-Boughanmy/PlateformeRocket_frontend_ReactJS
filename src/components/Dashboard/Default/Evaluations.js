@@ -5,6 +5,9 @@ import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
 import PrimarySearchAppBar from "./Navbar";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
+
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor:"#014AAD",
@@ -20,7 +23,26 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const Evaluations = () => {
+  const [evaluation,setEvaluation]= useState([]);
   const history = useNavigate();
+  const getEvaluations = async () => {
+    // const response = await axios.get("http://localhost:8000/cours/liste/");
+    const response = await axios.get(
+      // " https://rocketcoding-plateform-back.herokuapp.com/cours/liste/"
+      "http://localhost:8000/evaluations/liste/"
+    );
+
+    console.log("reponsee", response.data);
+    setEvaluation(response.data);
+  
+    
+  };
+  useEffect(() => {
+    
+      getEvaluations();
+    
+  }, []);
+
   return (
     <div>
       <PrimarySearchAppBar />
@@ -28,22 +50,33 @@ const Evaluations = () => {
       <Box>
         <p style={{ fontSize: "60px" , color:"#014AAD" }}>Evaluations</p>
         <Stack spacing={2} mt={2}>
-          <Item onClick={() => history("/home")}>Evaluation 1</Item>
-          <br />
+        {evaluation.map((evalu) => (
+          <>
+          
           <Item
+          
             style={{ margin: "auto", padding: "10px", fontSize: "20px" }}
             onClick={() => history("/cours")}
           >
-            Cours
+            {evalu.titre}
+          </Item>
+          <br />
+          </>
+          ))}
+          {/* <Item
+            style={{ margin: "auto", padding: "10px", fontSize: "20px" }}
+            onClick={() => history("/exercices")}
+          >
+            Evaluation 3
           </Item>
           <br />
           <Item
             style={{ margin: "auto", padding: "10px", fontSize: "20px" }}
             onClick={() => history("/exercices")}
           >
-            Exercices
+            Evaluation 4
           </Item>
-          <br />
+          <br /> */}
         </Stack>
       </Box>
     </div>

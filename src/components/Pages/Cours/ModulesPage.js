@@ -28,7 +28,8 @@ const CoursPage = () => {
 
   const sousModules = async () => {
     const response = await axios.get(
-      `https://rocketcoding-plateform-back.herokuapp.com/cours/details/${id}`
+      // `https://rocketcoding-plateform-back.herokuapp.com/cours/details/${id}`
+      `http://localhost:8000/cours/details/${id}`
     );
     setSousModule(response.data);
     console.log("response details of SOUS MODULES", response.data);
@@ -40,12 +41,12 @@ const CoursPage = () => {
   };
 
   const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor:"#014AAD",
+    backgroundColor: "#014AAD",
     ...theme.typography.body2,
     padding: "10px",
     width: "50%",
     margin: "auto",
-    
+
     textAlign: "center",
     color: "#FFFFFF",
     fontSize: "20px",
@@ -67,14 +68,16 @@ const CoursPage = () => {
           {sousModule.modules?.map((item) => {
             return (
               <div>
-                <p style={{ fontSize: "60px", color:"#014AAD"  }}>{item.titre_module}</p>
+                <p style={{ fontSize: "60px", color: "#014AAD" }}>
+                  {item.titre_module}
+                </p>
                 {item.sous_module?.map((index) => (
                   <Grid item key={item.id}>
                     <br />
                     <Container style={{ textAlign: "center" }}>
                       <Box
                         sx={{
-                          backgroundColor:"#014AAD",
+                          backgroundColor: "#014AAD",
                           color: "#FFFFFF",
                           height: "100px",
                           width: "500px",
@@ -96,7 +99,7 @@ const CoursPage = () => {
                     <Container>
                       <Box
                         sx={{
-                          backgroundColor:  "#FFFFFF",
+                          backgroundColor: "#FFFFFF",
                           color: "black",
                           height: "500px",
                           width: "500px",
@@ -116,7 +119,7 @@ const CoursPage = () => {
                         }
                       </Box>
                       <Container>
-                        <Document file={index && index.fichier_cours}>
+                        <Document file={index && index.ficher_cours_pdf}>
                           <Page pageNumber={1} />
                         </Document>
                       </Container>
@@ -140,11 +143,11 @@ const CoursPage = () => {
             <Box textAlign="center">
               <Button
                 style={{
-                  backgroundColor:"#014AAD",
+                  backgroundColor: "#014AAD",
                   color: "#FFFFFF",
                   width: "500px",
                   height: "50px",
-                  fontFamily:'Arimo'
+                  fontFamily: "Arimo",
                 }}
                 variant="contained"
                 disabled={change}

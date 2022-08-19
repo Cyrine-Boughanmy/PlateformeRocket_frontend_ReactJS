@@ -6,6 +6,7 @@ import { MenuItem } from 'react-bootstrap-typeahead';
 
 const AllExercices = () => {
     const [exercices, setExercices] = useState([]);
+    const [categories,setCategories] = useState([]);
 
     const getExercices = async () => {
         // const response = await axios.get("http://localhost:8000/cours/liste/");
@@ -21,11 +22,11 @@ const AllExercices = () => {
           getExercices();      
         
       }, []);
-      const onChangeComboBox = (e) => {
-        const selectedId = e.target.value;
-        const selectedCatégorie = getExercices().filter((d) => d.id == selectedId)[0];
-        setExercices(selectedCatégorie);
-      };
+      // const onChangeComboBox = (e) => {
+      //   const selectedId = e.target.value;
+      //   const selectedCatégorie = getExercices().filter((d) => d.id == selectedId)[0];
+      //   setExercices(selectedCatégorie);
+      // };
 
 
   return (
@@ -38,11 +39,27 @@ const AllExercices = () => {
           <Box mt={3} width="100%">
           <FormControl size="small" fullWidth>
           <InputLabel>Catégorie</InputLabel>
-          <Select value={exercices?.id} onChange={(e) => {
-          onChangeComboBox(e);
-        }} label="Catégorie" >
+          <Select 
+          defaultValue = ""
+          value={exercices?.id} 
+          label="Catégorie" >
+          {exercices.map((e) => {
+                   return <MenuItem value={e.id}>{e.categorie}</MenuItem>;
+                  })}
+          </Select>
+
+              
+              </FormControl>
+              </Box>
+              <Box mt={3} width="100%">
+          <FormControl size="small" fullWidth>
+          <InputLabel>Cours</InputLabel>
+          <Select 
+          defaultValue = ""
+          value={exercices?.id} 
+          label="Cours" >
           {exercices.map((e, key) => {
-                      return <MenuItem value={e.id}>{e.categorie}</MenuItem>;
+                      return <MenuItem value={e.id}>{e.cours}</MenuItem>;
                   })}
           </Select>
 

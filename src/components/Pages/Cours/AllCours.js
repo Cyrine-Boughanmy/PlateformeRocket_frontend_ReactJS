@@ -16,23 +16,24 @@ import {
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../../../context/AuthContext";
+import PageLoader from "../hooks/PageLoader";
 
 const AllCours = () => {
   const [cours, setCours] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [modules, setModules] = useState([]);
   const { authTokens, logoutUser } = useContext(AuthContext);
 
   useEffect(() => {
     if (isLoading) {
       getCourses();
-      setIsLoading(false);
     }
   }, [isLoading]);
   const getCourses = async () => {
     // const response = await axios.get("http://localhost:8000/cours/liste/");
     const response = await axios.get(
-      " https://rocketcoding-plateform-back.herokuapp.com/cours/liste/"
+      // " https://rocketcoding-plateform-back.herokuapp.com/cours/liste/"
+      "http://localhost:8000/cours/liste/"
       // ,
       // {
       //   headers: {
@@ -59,7 +60,8 @@ const AllCours = () => {
 
   const getModules = async () => {
     const response = await axios.get(
-      "https://rocketcoding-plateform-back.herokuapp.com/cours/listeModule/"
+      // "https://rocketcoding-plateform-back.herokuapp.com/cours/listeModule/"
+      "http://localhost:8000/cours/listeModule/"
     );
     console.log("reponsee", response.data);
     setModules(response.data);
@@ -99,7 +101,7 @@ const AllCours = () => {
                     component="div"
                     fontFamily="Arimo"
                   >
-                    {courses.nom}
+                    {courses.nom_cours}
                   </Typography>
 
                   <Typography
@@ -107,7 +109,7 @@ const AllCours = () => {
                     color="text.secondary"
                     fontFamily="Arimo"
                   >
-                    {courses.description}
+                    {courses.description_cours}
                   </Typography>
                 </CardContent>
               </CardActionArea>

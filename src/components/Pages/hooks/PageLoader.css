@@ -1,0 +1,13 @@
+.loader-section{
+  /* text-align: center;
+  align-items: center;
+  display: flex;
+  justify-content: center; */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background-color: #FFFFFF;
+  z-index: 10;
+  
+}
