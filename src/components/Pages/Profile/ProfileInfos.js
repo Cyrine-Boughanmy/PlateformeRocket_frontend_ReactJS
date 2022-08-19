@@ -20,6 +20,7 @@ import Typography from "@mui/material/Typography";
 import PropTypes from "prop-types";
 import { Btn, H4, H6 } from "../../../AbstractElements";
 import { Form, FormGroup, Input, Label } from "reactstrap";
+import { fontSize } from "@mui/system";
 
 const PageProfil = () => {
   const [users, setUser] = useState([]);
@@ -29,12 +30,12 @@ const PageProfil = () => {
 
   const tokenDecoded = jwt_decode(
     "Bearer " + localStorage.getItem("authTokens")
-  ).email;
+  ).user_id;
   const { authTokens, user } = useContext(AuthContext);
 
   console.log("TOKEEEEEEEEEEEEEEN", tokenToServer);
   console.log("AMAaaaAAAAAaAAAAAN", tokenDecoded);
-  const email = window.$email;
+  // const email = window.$email;
   const token = window.$token_access;
   console.log("wllh heedha", token);
 
@@ -137,7 +138,68 @@ const PageProfil = () => {
   };
 
   // Handle Update Profile
+  const [first_name, setFirstname] = useState("");
+  const [last_name, setLastname] = useState("");
+  const [email, setEmail] = useState("");
+  const [date_de_naissance, setDateDeNaissance] = useState("");
+  const [adresse, setAdresse] = useState("");
+  const [code_postal, setCodePostal] = useState("");
+  const [ville, setVille] = useState("");
+  const [num_tel, setNumTel] = useState("");
+  const [profile_image, setProfileImage] = useState("");
+  const [resume, setResume] = useState("");
+  const [presentation, setPresentation] = useState("");
 
+  const onChangeImage = (e) => {
+    setProfileImage(e.target.files[0]);
+  };
+
+  const onChangeFile = (e) => {
+    setResume(e.target.files[0]);
+  };
+
+  const updateProfile = (event) => {
+    const formdata = new FormData();
+    formdata.append("first_name", first_name);
+    formdata.append("last_name", last_name);
+    formdata.append("email", email);
+    formdata.append("date_de_naissance", date_de_naissance);
+    formdata.append("adresse", adresse);
+    formdata.append("code_postal", code_postal);
+    formdata.append("ville", ville);
+    formdata.append("num_tel", num_tel);
+    formdata.append("profile_image", profile_image);
+    formdata.append("resume", resume);
+    formdata.append("presentation", presentation);
+
+    axios.put(
+      `http://localhost:8000/simple-user/profile/${tokenDecoded}`,
+      formdata,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${authTokens?.access}`,
+        },
+      }
+    );
+  };
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8000/simple-user/profile/${tokenDecoded}`)
+      .then((res) => {
+        setFirstname(res.data.first_name);
+        setLastname(res.data.last_name);
+        setEmail(res.data.email);
+        setDateDeNaissance(res.data.date_de_naissance);
+        setAdresse(res.data.adresse);
+        setCodePostal(res.data.code_postal);
+        setVille(res.data.ville);
+        setNumTel(res.data.num_tel);
+        setProfileImage(res.data.profile_image);
+        setResume(res.data.resume);
+        setPresentation(res.data.presentation);
+      });
+  }, []);
   return (
     <>
       <Container sx={{ padding: "10px" }}>
@@ -285,6 +347,7 @@ const PageProfil = () => {
               dui. Donec ullamcorper nulla non metus auctor fringilla.
             </Typography> */}
             <Form className="theme-form login-form">
+              <H6>Enter Your Profile Data</H6>
               <FormGroup>
                 <Label>Nom</Label>
                 <div className="input-group">
@@ -295,7 +358,9 @@ const PageProfil = () => {
                     id="nom"
                     className="form-control"
                     type="text"
-                    required=""
+                    // required=""
+                    value={first_name}
+                    onChange={(e) => setFirstname(e.target.value)}
                     placeholder="nom"
                   />
                 </div>
@@ -312,7 +377,9 @@ const PageProfil = () => {
                     className="form-control"
                     type="text"
                     name="prenom"
-                    required=""
+                    // required=""
+                    value={last_name}
+                    onChange={(e) => setLastname(e.target.value)}
                     placeholder="Prénom"
                   />
                 </div>
@@ -328,7 +395,9 @@ const PageProfil = () => {
                     className="form-control"
                     type="text"
                     name="email"
-                    required=""
+                    // required=""
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     placeholder="Adresse Email"
                   />
                 </div>
@@ -344,7 +413,9 @@ const PageProfil = () => {
                     className="form-control"
                     type="date"
                     name="date_de_naissance"
-                    required=""
+                    // required=""
+                    value={date_de_naissance}
+                    onChange={(e) => setDateDeNaissance(e.target.value)}
                     placeholder="Date de Naissance"
                   />
                 </div>
@@ -360,7 +431,9 @@ const PageProfil = () => {
                     className="form-control"
                     type="text"
                     name="adresse"
-                    required=""
+                    // required=""
+                    value={adresse}
+                    onChange={(e) => setAdresse(e.target.value)}
                     placeholder="Adresse"
                   />
                 </div>
@@ -376,7 +449,9 @@ const PageProfil = () => {
                     className="form-control"
                     type="text"
                     name="ville"
-                    required=""
+                    // required=""
+                    value={ville}
+                    onChange={(e) => setVille(e.target.value)}
                     placeholder="Ville"
                   />
                 </div>
@@ -392,7 +467,9 @@ const PageProfil = () => {
                     className="form-control"
                     type="text"
                     name="code_postal"
-                    required=""
+                    // required=""
+                    value={code_postal}
+                    onChange={(e) => setCodePostal(e.target.value)}
                     placeholder="Code Postal"
                   />
                 </div>
@@ -409,7 +486,9 @@ const PageProfil = () => {
                     className="form-control"
                     type="phone"
                     name="num_tel"
-                    required=""
+                    // required=""
+                    value={num_tel}
+                    onChange={(e) => setNumTel(e.target.value)}
                     placeholder="Numéro de Téléphone"
                   />
                 </div>
@@ -425,7 +504,9 @@ const PageProfil = () => {
                     className="form-control"
                     type="text"
                     name="presentation"
-                    required=""
+                    // required=""
+                    value={presentation}
+                    onChange={(e) => setPresentation(e.target.value)}
                     placeholder="Une description"
                   />
                 </div>
@@ -440,8 +521,10 @@ const PageProfil = () => {
                     id="num_tel"
                     className="form-control"
                     type="file"
-                    name="num_tel"
-                    required=""
+                    name="profile_image"
+                    // required=""
+                    filename="profile_image"
+                    onChange={onChangeImage}
                   />
                 </div>
               </FormGroup>
@@ -456,13 +539,16 @@ const PageProfil = () => {
                     className="form-control"
                     type="file"
                     name="resume"
-                    required=""
+                    // required=""
+                    filename="resume"
+                    onChange={onChangeFile}
                   />
                 </div>
               </FormGroup>
 
               <FormGroup>
                 <Btn
+                  onClick={() => updateProfile()}
                   attrBtn={{
                     color: "#014AAD",
                     type: "submit",
