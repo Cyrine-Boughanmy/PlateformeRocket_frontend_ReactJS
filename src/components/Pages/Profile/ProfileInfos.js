@@ -21,6 +21,7 @@ import PropTypes from "prop-types";
 import { Btn, H4, H6 } from "../../../AbstractElements";
 import { Form, FormGroup, Input, Label } from "reactstrap";
 import { fontSize } from "@mui/system";
+import PageLoader from "../hooks/PageLoader";
 
 const PageProfil = () => {
   const [users, setUser] = useState([]);
@@ -52,36 +53,37 @@ const PageProfil = () => {
   // const id = jwt_decode("Bearer " + localStorage.getItem("jwtToken")).user_id;
   // console.log("HADHA ID", id);
   const fetchData = async () => {
-    const response = await axios.get(
-      // " https://rocketcoding-plateform-back.herokuapp.com/cours/liste/"
-      // `http://localhost:8000/simple-user/profile/${id} `,
-      "http://localhost:8000/simple-user/profile/",
-      {
-        headers: {
-          "Content-Type": "application/json",
-          // Authorization:
-          //   "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYxNjA0OTAwLCJpYXQiOjE2NjAzMDg5MDAsImp0aSI6IjdiNGIyNmE2Mjc0NDQ3YzY5NDVhN2U2NTRkZWViNGUyIiwidXNlcl9pZCI6MX0.8y-xHXUDTCA9pP-8RabFjHVkZ2oEVnuV7qH7qpof3KI ",
-          Authorization: `Bearer ${authTokens?.access}`,
-        },
-      }
-      // ,
-      // {
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //     Authorization: `JWT ${localStorage.getItem("authTokens")}`,
-      //     Accept: "application/json",
-      //   },
-      // }
-    );
-    setUser(response);
-    console.log("AAAAAAAAAAAAAAAAA HEDHAA AAAAA", response);
-    // .then((res) => {
-    //   setUser(res.data);
-    //   console.log("DATAAAAAAAAAAAA", res.data);
-    // })
-    // .catch((Error) => {
-    //   console.log(Error);
-    // });
+    const response = await axios
+      .get(
+        // " https://rocketcoding-plateform-back.herokuapp.com/cours/liste/"
+        // `http://localhost:8000/simple-user/profile/${id} `,
+        `http://localhost:8000/simple-user/profile/${tokenDecoded}/`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            // Authorization:
+            //   "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYxNjA0OTAwLCJpYXQiOjE2NjAzMDg5MDAsImp0aSI6IjdiNGIyNmE2Mjc0NDQ3YzY5NDVhN2U2NTRkZWViNGUyIiwidXNlcl9pZCI6MX0.8y-xHXUDTCA9pP-8RabFjHVkZ2oEVnuV7qH7qpof3KI ",
+            Authorization: `Bearer ${authTokens?.access}`,
+          },
+        }
+        // ,
+        // {
+        //   headers: {
+        //     "Content-Type": "application/json",
+        //     Authorization: `JWT ${localStorage.getItem("authTokens")}`,
+        //     Accept: "application/json",
+        //   },
+        // }
+      )
+      // setUser(response);
+      // console.log("AAAAAAAAAAAAAAAAA HEDHAA AAAAA", response);
+      .then((res) => {
+        setUser(res.data);
+        console.log("DATAAAAAAAAAAAAAA", res.data);
+      })
+      .catch((Error) => {
+        console.log(Error);
+      });
 
     // console.log("reponsee", response.data);
 
@@ -102,6 +104,7 @@ const PageProfil = () => {
 
   // Dialog Update Profile
   const [open, setOpen] = React.useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -138,6 +141,7 @@ const PageProfil = () => {
   };
 
   // Handle Update Profile
+  const [username, setUsername] = useState("");
   const [first_name, setFirstname] = useState("");
   const [last_name, setLastname] = useState("");
   const [email, setEmail] = useState("");
@@ -158,8 +162,12 @@ const PageProfil = () => {
     setResume(e.target.files[0]);
   };
 
-  const updateProfile = (event) => {
+  const updateProfile = async (event) => {
+    event.preventDefault();
+    setLoading(true);
+
     const formdata = new FormData();
+    formdata.append("username", username);
     formdata.append("first_name", first_name);
     formdata.append("last_name", last_name);
     formdata.append("email", email);
@@ -172,8 +180,8 @@ const PageProfil = () => {
     formdata.append("resume", resume);
     formdata.append("presentation", presentation);
 
-    axios.put(
-      `http://localhost:8000/simple-user/profile/${tokenDecoded}`,
+    await axios.put(
+      `http://localhost:8000/simple-user/profile/${tokenDecoded}/`,
       formdata,
       {
         headers: {
@@ -182,11 +190,13 @@ const PageProfil = () => {
         },
       }
     );
+    window.location.reload(false);
   };
   useEffect(() => {
     axios
       .get(`http://localhost:8000/simple-user/profile/${tokenDecoded}`)
       .then((res) => {
+        setUsername(res.data.username);
         setFirstname(res.data.first_name);
         setLastname(res.data.last_name);
         setEmail(res.data.email);
@@ -198,6 +208,7 @@ const PageProfil = () => {
         setProfileImage(res.data.profile_image);
         setResume(res.data.resume);
         setPresentation(res.data.presentation);
+        // console.log("wlh fadit", res.data.first_name);
       });
   }, []);
   return (
@@ -246,7 +257,7 @@ const PageProfil = () => {
                   width: "100%",
                   borderRadius: "50px",
                 }}
-                src={user?.profile_image}
+                src={users.profile_image}
                 alt="user profile "
               />
             </Box>
@@ -255,7 +266,7 @@ const PageProfil = () => {
               type="submit"
               style={{ fontFamily: "Arimo" }}
               onClick={() => {
-                saveAs(user?.profile_image, "image.jpg");
+                saveAs(users.profile_image, "image.jpg");
               }}
             >
               Télécharger photo
@@ -272,16 +283,16 @@ const PageProfil = () => {
                 borderRadius: "10px",
               }}
             >
-              <div className="text-cordonnées">Nom : {user?.first_name}</div>
-              <div className="text-cordonnées">Prénom : {user?.last_name}</div>
-              <div className="text-cordonnées">Adresse : {user?.adresse}</div>
+              <div className="text-cordonnées">Nom : {users.first_name}</div>
+              <div className="text-cordonnées">Prénom : {users.last_name}</div>
+              <div className="text-cordonnées">Adresse : {users.adresse}</div>
               <div className="text-cordonnées">
                 Code Postale : {user?.code_postal}
               </div>
-              <div className="text-cordonnées">Ville : {user?.ville}</div>
-              <div className="text-cordonnées">Mail : {user?.email}</div>
+              <div className="text-cordonnées">Ville : {users.ville}</div>
+              <div className="text-cordonnées">Mail : {users.email}</div>
               <div className="text-cordonnées">
-                Numéro de téléphone : {user?.num_tel}
+                Numéro de téléphone : {users.num_tel}
               </div>
             </Box>
           </Grid>
@@ -297,7 +308,7 @@ const PageProfil = () => {
               }}
             >
               <div className="titre-présentation">Présentation</div>
-              <p className="text-présentation">{user?.presentation}</p>
+              <p className="text-présentation">{users.presentation}</p>
             </Box>
           </Grid>
         </Grid>
@@ -319,6 +330,7 @@ const PageProfil = () => {
         <button className="btn-update" onClick={handleClickOpen}>
           MODIFIER MES INFOS
         </button>
+
         <BootstrapDialog
           onClose={handleClose}
           aria-labelledby="customized-dialog-title"
@@ -330,24 +342,32 @@ const PageProfil = () => {
           >
             Update Your Profile
           </BootstrapDialogTitle>
+          {loading && <PageLoader />}
           <DialogContent dividers>
-            {/* <Typography gutterBottom>
-              Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-              dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
-              ac consectetur ac, vestibulum at eros.
-            </Typography>
-            <Typography gutterBottom>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur
-              et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor
-              auctor.
-            </Typography>
-            <Typography gutterBottom>
-              Aenean lacinia bibendum nulla sed consectetur. Praesent commodo
-              cursus magna, vel scelerisque nisl consectetur et. Donec sed odio
-              dui. Donec ullamcorper nulla non metus auctor fringilla.
-            </Typography> */}
-            <Form className="theme-form login-form">
+            <Form
+              encType="multipart/form-data"
+              className="theme-form login-form"
+              onSubmit={updateProfile}
+            >
               <H6>Enter Your Profile Data</H6>
+              <FormGroup>
+                <Label>My Username</Label>
+                <div className="input-group">
+                  <span className="input-group-text">
+                    <i className="icon-email"></i>
+                  </span>
+                  <Input
+                    id="username"
+                    className="form-control"
+                    type="text"
+                    required=""
+                    readOnly
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    placeholder="Username"
+                  />
+                </div>
+              </FormGroup>
               <FormGroup>
                 <Label>Nom</Label>
                 <div className="input-group">
@@ -546,18 +566,20 @@ const PageProfil = () => {
                 </div>
               </FormGroup>
 
-              <FormGroup>
-                <Btn
-                  onClick={() => updateProfile()}
-                  attrBtn={{
-                    color: "#014AAD",
-                    type: "submit",
-                  }}
-                >
-                  {/* <Link to="/dashboard" /> */}
-                  Update
-                </Btn>
-              </FormGroup>
+              <DialogActions>
+                <FormGroup>
+                  <Btn
+                    // onClick={() => updateProfile()}
+                    attrBtn={{
+                      color: "#014AAD",
+                      type: "submit",
+                    }}
+                  >
+                    {/* <Link to="/dashboard" /> */}
+                    Update
+                  </Btn>
+                </FormGroup>
+              </DialogActions>
             </Form>
           </DialogContent>
           {/* <DialogActions>
