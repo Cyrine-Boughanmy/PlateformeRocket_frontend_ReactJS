@@ -15,8 +15,8 @@ const AnnoncePage = () => {
 
   const annonces = async () => {
     const response = await axios.get(
-      `http://localhost:8000/annonces/annonce/${id}`
-      // `https://rocketcoding-plateform-back.herokuapp.com/annonces/annonce/${id}`
+      // `http://localhost:8000/annonces/annonce/${id}`
+      `https://rocketcoding-plateform-back.herokuapp.com/annonces/annonce/${id}`
     );
     setAnnonce(response.data);
     console.log("response details of something", response.data);

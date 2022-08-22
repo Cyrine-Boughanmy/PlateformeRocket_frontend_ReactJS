@@ -24,26 +24,32 @@ const PageProfil = () => {
   const fetchData = async () => {
     const res = await axios
       .get(
-        // " https://rocketcoding-plateform-back.herokuapp.com/cours/liste/"
-        // `http://localhost:8000/simple-user/profile/${id} `,
-        "http://localhost:8000/simple-user/profile/" + tokenDecoded.user_id,
-        {
-          headers: {
-            "Content-Type": "application/json",
-            // Authorization:
-            //   "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYxNjA0OTAwLCJpYXQiOjE2NjAzMDg5MDAsImp0aSI6IjdiNGIyNmE2Mjc0NDQ3YzY5NDVhN2U2NTRkZWViNGUyIiwidXNlcl9pZCI6MX0.8y-xHXUDTCA9pP-8RabFjHVkZ2oEVnuV7qH7qpof3KI ",
-            Authorization: `Bearer ${authTokens?.access}`,
-          },
-        }
-        // ,
-        // {
-        //   headers: {
-        //     "Content-Type": "application/json",
-        //     Authorization: `JWT ${localStorage.getItem("authTokens")}`,
-        //     Accept: "application/json",
-        //   },
-        // }
-      )
+        "https://rocketcoding-plateform-back.herokuapp.com/simple-user/profile/")
+    // const res = await axios
+    //   .get(
+    //     // " https://rocketcoding-plateform-back.herokuapp.com/cours/liste/"
+    //     // `http://localhost:8000/simple-user/profile/${id} `, 
+    //     // "http://localhost:8000/simple-user/profile/" + tokenDecoded.user_id,
+        
+    //     "https://rocketcoding-plateform-back.herokuapp.com/simple-user/profile/"+tokenDecoded.user_id,
+       
+    //     {
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //         // Authorization:
+    //         //   "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYxNjA0OTAwLCJpYXQiOjE2NjAzMDg5MDAsImp0aSI6IjdiNGIyNmE2Mjc0NDQ3YzY5NDVhN2U2NTRkZWViNGUyIiwidXNlcl9pZCI6MX0.8y-xHXUDTCA9pP-8RabFjHVkZ2oEVnuV7qH7qpof3KI ",
+    //         Authorization: `Bearer ${authTokens?.access}`,
+    //       },
+    //     }
+    //     // ,
+    //     // {
+    //     //   headers: {
+    //     //     "Content-Type": "application/json",
+    //     //     Authorization: `JWT ${localStorage.getItem("authTokens")}`,
+    //     //     Accept: "application/json",
+    //     //   },
+    //     // }
+    //   )
       .then((res) => {
         setUser(res.data);
         console.log("DATAAAAAAA", res.data);

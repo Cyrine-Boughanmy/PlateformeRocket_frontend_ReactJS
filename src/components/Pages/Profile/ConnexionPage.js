@@ -51,7 +51,7 @@ const ConnexionPage = () => {
         <Box textAlign="left" >
         <button
         className="go-back-link__actualites"
-        onClick={() => history("/exercices")}
+        onClick={() => history("/profile")}
       >
         Retour
       </button>
