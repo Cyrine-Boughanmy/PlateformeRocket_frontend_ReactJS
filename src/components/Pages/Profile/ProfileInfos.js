@@ -1,5 +1,5 @@
 import { Container } from "@material-ui/core";
-import { Box, Grid, div, Button } from "@mui/material";
+import { Box, Grid, div, Button, InputLabel } from "@mui/material";
 import React, { useEffect, useState, useContext } from "react";
 import PrimarySearchAppBar from "../../Dashboard/Default/Navbar";
 import userimg from "../../../assets/images/user-profile/userprofile.jpg";
@@ -22,7 +22,9 @@ import { Btn, H4, H6 } from "../../../AbstractElements";
 import { Form, FormGroup, Input, Label } from "reactstrap";
 import { fontSize } from "@mui/system";
 import PageLoader from "../hooks/PageLoader";
-
+import FormControl from "@mui/material/FormControl";
+import Avatar from "@mui/material/Avatar";
+import { upload } from "@testing-library/user-event/dist/upload";
 const PageProfil = () => {
   const [users, setUser] = useState([]);
   // const { id } = useParams();
@@ -211,6 +213,7 @@ const PageProfil = () => {
         // console.log("wlh fadit", res.data.first_name);
       });
   }, []);
+
   return (
     <>
       <Container sx={{ padding: "10px" }}>
@@ -262,9 +265,11 @@ const PageProfil = () => {
               />
             </Box>
             <br></br>
+
             <Button
               type="submit"
               style={{ fontFamily: "Arimo" }}
+              onChange={onChangeImage}
               onClick={() => {
                 saveAs(users.profile_image, "image.jpg");
               }}
@@ -317,7 +322,7 @@ const PageProfil = () => {
           className="btn-download"
           type="submit"
           onClick={() => {
-            saveAs(user?.resume, "resume.pdf", {
+            saveAs(users.resume, "resume.pdf", {
               type: "text/plain;charset=utf-8",
             });
           }}
@@ -330,243 +335,243 @@ const PageProfil = () => {
         <button className="btn-update" onClick={handleClickOpen}>
           MODIFIER MES INFOS
         </button>
-
-        <BootstrapDialog
-          onClose={handleClose}
-          aria-labelledby="customized-dialog-title"
-          open={open}
-        >
-          <BootstrapDialogTitle
-            id="customized-dialog-title"
-            onClose={handleClose}
-          >
-            Update Your Profile
-          </BootstrapDialogTitle>
-          {loading && <PageLoader />}
-          <DialogContent dividers>
+        <Dialog open={open}>
+          <Box>
+            {loading && <PageLoader />}
             <Form
               encType="multipart/form-data"
               className="theme-form login-form"
               onSubmit={updateProfile}
             >
-              <H6>Enter Your Profile Data</H6>
-              <FormGroup>
-                <Label>My Username</Label>
-                <div className="input-group">
-                  <span className="input-group-text">
-                    <i className="icon-email"></i>
-                  </span>
-                  <Input
-                    id="username"
-                    className="form-control"
-                    type="text"
-                    required=""
-                    readOnly
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    placeholder="Username"
-                  />
-                </div>
-              </FormGroup>
-              <FormGroup>
-                <Label>Nom</Label>
-                <div className="input-group">
-                  <span className="input-group-text">
-                    <i className="icon-email"></i>
-                  </span>
-                  <Input
-                    id="nom"
-                    className="form-control"
-                    type="text"
-                    // required=""
-                    value={first_name}
-                    onChange={(e) => setFirstname(e.target.value)}
-                    placeholder="nom"
-                  />
-                </div>
-              </FormGroup>
+              <DialogTitle>
+                <Grid container justify="center" alignItems="center">
+                  <Typography variant="div">Update Your Profile</Typography>
+                  <div style={{ float: "right" }}>
+                    <IconButton onClick={() => setOpen(false)}>
+                      <CloseIcon />
+                    </IconButton>
+                  </div>
+                </Grid>
+              </DialogTitle>
+              <DialogContent dividers>
+                <H6>Enter Your Profile Data</H6>
+                <FormGroup>
+                  <Label>My Username</Label>
+                  <div className="input-group">
+                    <span className="input-group-text">
+                      <i className="icon-email"></i>
+                    </span>
+                    <Input
+                      id="username"
+                      className="form-control"
+                      type="text"
+                      required=""
+                      readOnly
+                      value={username}
+                      onChange={(e) => setUsername(e.target.value)}
+                      placeholder="Username"
+                    />
+                  </div>
+                </FormGroup>
+                <FormGroup>
+                  <Label>Nom</Label>
+                  <div className="input-group">
+                    <span className="input-group-text">
+                      <i className="icon-email"></i>
+                    </span>
+                    <Input
+                      id="nom"
+                      className="form-control"
+                      type="text"
+                      // required=""
+                      value={first_name}
+                      onChange={(e) => setFirstname(e.target.value)}
+                      placeholder="nom"
+                    />
+                  </div>
+                </FormGroup>
 
-              <FormGroup className="position-relative">
-                <Label>Prénom</Label>
-                <div className="input-group">
-                  <span className="input-group-text">
-                    <i className="icon-lock"></i>
-                  </span>
-                  <Input
-                    id="prenom"
-                    className="form-control"
-                    type="text"
-                    name="prenom"
-                    // required=""
-                    value={last_name}
-                    onChange={(e) => setLastname(e.target.value)}
-                    placeholder="Prénom"
-                  />
-                </div>
-              </FormGroup>
-              <FormGroup className="position-relative">
-                <Label>Adresse Email</Label>
-                <div className="input-group">
-                  <span className="input-group-text">
-                    <i className="icon-lock"></i>
-                  </span>
-                  <Input
-                    id="email"
-                    className="form-control"
-                    type="text"
-                    name="email"
-                    // required=""
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Adresse Email"
-                  />
-                </div>
-              </FormGroup>
-              <FormGroup className="position-relative">
-                <Label>Date de Naissance</Label>
-                <div className="input-group">
-                  <span className="input-group-text">
-                    <i className="icon-lock"></i>
-                  </span>
-                  <Input
-                    id="date_de_naissance"
-                    className="form-control"
-                    type="date"
-                    name="date_de_naissance"
-                    // required=""
-                    value={date_de_naissance}
-                    onChange={(e) => setDateDeNaissance(e.target.value)}
-                    placeholder="Date de Naissance"
-                  />
-                </div>
-              </FormGroup>
-              <FormGroup className="position-relative">
-                <Label>Adresse</Label>
-                <div className="input-group">
-                  <span className="input-group-text">
-                    <i className="icon-lock"></i>
-                  </span>
-                  <Input
-                    id="adresse"
-                    className="form-control"
-                    type="text"
-                    name="adresse"
-                    // required=""
-                    value={adresse}
-                    onChange={(e) => setAdresse(e.target.value)}
-                    placeholder="Adresse"
-                  />
-                </div>
-              </FormGroup>
-              <FormGroup className="position-relative">
-                <Label>Ville</Label>
-                <div className="input-group">
-                  <span className="input-group-text">
-                    <i className="icon-lock"></i>
-                  </span>
-                  <Input
-                    id="ville"
-                    className="form-control"
-                    type="text"
-                    name="ville"
-                    // required=""
-                    value={ville}
-                    onChange={(e) => setVille(e.target.value)}
-                    placeholder="Ville"
-                  />
-                </div>
-              </FormGroup>
-              <FormGroup className="position-relative">
-                <Label>Code Postal</Label>
-                <div className="input-group">
-                  <span className="input-group-text">
-                    <i className="icon-lock"></i>
-                  </span>
-                  <Input
-                    id="code_postal"
-                    className="form-control"
-                    type="text"
-                    name="code_postal"
-                    // required=""
-                    value={code_postal}
-                    onChange={(e) => setCodePostal(e.target.value)}
-                    placeholder="Code Postal"
-                  />
-                </div>
-              </FormGroup>
+                <FormGroup className="position-relative">
+                  <Label>Prénom</Label>
+                  <div className="input-group">
+                    <span className="input-group-text">
+                      <i className="icon-lock"></i>
+                    </span>
+                    <Input
+                      id="prenom"
+                      className="form-control"
+                      type="text"
+                      name="prenom"
+                      // required=""
+                      value={last_name}
+                      onChange={(e) => setLastname(e.target.value)}
+                      placeholder="Prénom"
+                    />
+                  </div>
+                </FormGroup>
+                <FormGroup className="position-relative">
+                  <Label>Adresse Email</Label>
+                  <div className="input-group">
+                    <span className="input-group-text">
+                      <i className="icon-lock"></i>
+                    </span>
+                    <Input
+                      id="email"
+                      className="form-control"
+                      type="text"
+                      name="email"
+                      // required=""
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="Adresse Email"
+                    />
+                  </div>
+                </FormGroup>
+                <FormGroup className="position-relative">
+                  <Label>Date de Naissance</Label>
+                  <div className="input-group">
+                    <span className="input-group-text">
+                      <i className="icon-lock"></i>
+                    </span>
+                    <Input
+                      id="date_de_naissance"
+                      className="form-control"
+                      type="date"
+                      name="date_de_naissance"
+                      // required=""
+                      value={date_de_naissance}
+                      onChange={(e) => setDateDeNaissance(e.target.value)}
+                      placeholder="Date de Naissance"
+                    />
+                  </div>
+                </FormGroup>
+                <FormGroup className="position-relative">
+                  <Label>Adresse</Label>
+                  <div className="input-group">
+                    <span className="input-group-text">
+                      <i className="icon-lock"></i>
+                    </span>
+                    <Input
+                      id="adresse"
+                      className="form-control"
+                      type="text"
+                      name="adresse"
+                      // required=""
+                      value={adresse}
+                      onChange={(e) => setAdresse(e.target.value)}
+                      placeholder="Adresse"
+                    />
+                  </div>
+                </FormGroup>
+                <FormGroup className="position-relative">
+                  <Label>Ville</Label>
+                  <div className="input-group">
+                    <span className="input-group-text">
+                      <i className="icon-lock"></i>
+                    </span>
+                    <Input
+                      id="ville"
+                      className="form-control"
+                      type="text"
+                      name="ville"
+                      // required=""
+                      value={ville}
+                      onChange={(e) => setVille(e.target.value)}
+                      placeholder="Ville"
+                    />
+                  </div>
+                </FormGroup>
+                <FormGroup className="position-relative">
+                  <Label>Code Postal</Label>
+                  <div className="input-group">
+                    <span className="input-group-text">
+                      <i className="icon-lock"></i>
+                    </span>
+                    <Input
+                      id="code_postal"
+                      className="form-control"
+                      type="text"
+                      name="code_postal"
+                      // required=""
+                      value={code_postal}
+                      onChange={(e) => setCodePostal(e.target.value)}
+                      placeholder="Code Postal"
+                    />
+                  </div>
+                </FormGroup>
 
-              <FormGroup className="position-relative">
-                <Label>Numéro de Téléphone</Label>
-                <div className="input-group">
-                  <span className="input-group-text">
-                    <i className="icon-lock"></i>
-                  </span>
-                  <Input
-                    id="num_tel"
-                    className="form-control"
-                    type="phone"
-                    name="num_tel"
-                    // required=""
-                    value={num_tel}
-                    onChange={(e) => setNumTel(e.target.value)}
-                    placeholder="Numéro de Téléphone"
-                  />
-                </div>
-              </FormGroup>
-              <FormGroup className="position-relative">
-                <Label>Présentation</Label>
-                <div className="input-group">
-                  <span className="input-group-text">
-                    <i className="icon-lock"></i>
-                  </span>
-                  <Input
-                    id="presentation"
-                    className="form-control"
-                    type="text"
-                    name="presentation"
-                    // required=""
-                    value={presentation}
-                    onChange={(e) => setPresentation(e.target.value)}
-                    placeholder="Une description"
-                  />
-                </div>
-              </FormGroup>
-              <FormGroup className="position-relative">
-                <Label>Photo de Profil</Label>
-                <div className="input-group">
-                  <span className="input-group-text">
-                    <i className="icon-lock"></i>
-                  </span>
-                  <Input
-                    id="num_tel"
-                    className="form-control"
-                    type="file"
-                    name="profile_image"
-                    // required=""
-                    filename="profile_image"
-                    onChange={onChangeImage}
-                  />
-                </div>
-              </FormGroup>
-              <FormGroup className="position-relative">
-                <Label>CV</Label>
-                <div className="input-group">
-                  <span className="input-group-text">
-                    <i className="icon-lock"></i>
-                  </span>
-                  <Input
-                    id="resume"
-                    className="form-control"
-                    type="file"
-                    name="resume"
-                    // required=""
-                    filename="resume"
-                    onChange={onChangeFile}
-                  />
-                </div>
-              </FormGroup>
+                <FormGroup className="position-relative">
+                  <Label>Numéro de Téléphone</Label>
+                  <div className="input-group">
+                    <span className="input-group-text">
+                      <i className="icon-lock"></i>
+                    </span>
+                    <Input
+                      id="num_tel"
+                      className="form-control"
+                      type="phone"
+                      name="num_tel"
+                      // required=""
+                      value={num_tel}
+                      onChange={(e) => setNumTel(e.target.value)}
+                      placeholder="Numéro de Téléphone"
+                    />
+                  </div>
+                </FormGroup>
+                <FormGroup className="position-relative">
+                  <Label>Présentation</Label>
+                  <div className="input-group">
+                    <span className="input-group-text">
+                      <i className="icon-lock"></i>
+                    </span>
+                    <Input
+                      id="presentation"
+                      className="form-control"
+                      type="text"
+                      name="presentation"
+                      // required=""
+                      value={presentation}
+                      onChange={(e) => setPresentation(e.target.value)}
+                      placeholder="Une description"
+                    />
+                  </div>
+                </FormGroup>
+                <FormGroup className="position-relative">
+                  <Label>Photo de Profil</Label>
+                  <div className="input-group">
+                    <span className="input-group-text">
+                      <i className="icon-lock"></i>
+                    </span>
+                    <Input
+                      id="num_tel"
+                      className="form-control"
+                      type="file"
+                      name="profile_image"
+                      // required=""
+                      filename="profile_image"
+                      onChange={onChangeImage}
+                    />
+                  </div>
+                </FormGroup>
+                <FormGroup className="position-relative">
+                  <Label>CV</Label>
+                  <div className="input-group">
+                    <span className="input-group-text">
+                      <i className="icon-lock"></i>
+                    </span>
+                    <Input
+                      id="resume"
+                      className="form-control"
+                      type="file"
+                      name="resume"
+                      // required=""
+                      filename="resume"
+                      onChange={onChangeFile}
+                    />
+                  </div>
+                </FormGroup>
 
-              <DialogActions>
+                {/* <DialogActions> */}
                 <FormGroup>
                   <Btn
                     // onClick={() => updateProfile()}
@@ -579,15 +584,12 @@ const PageProfil = () => {
                     Update
                   </Btn>
                 </FormGroup>
-              </DialogActions>
+
+                {/* </DialogActions> */}
+              </DialogContent>
             </Form>
-          </DialogContent>
-          {/* <DialogActions>
-            <Button autoFocus onClick={handleClose}>
-              Save changes
-            </Button>
-          </DialogActions> */}
-        </BootstrapDialog>
+          </Box>
+        </Dialog>
       </Container>
     </>
   );

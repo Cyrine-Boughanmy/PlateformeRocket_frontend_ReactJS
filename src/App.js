@@ -27,6 +27,7 @@ import PageLoader from "./components/Pages/hooks/PageLoader";
 import EvaluationPage from "./components/Pages/Evaluations/EvaluationPage";
 import ConnexionPage from "./components/Pages/Profile/ConnexionPage";
 import PrivateRoute from "./utils/PrivateRoute";
+import TokenValidation from "./components/Pages/Auth/TokenValidation";
 
 function App() {
   return (
@@ -81,7 +82,7 @@ function App() {
                 path="/annonce/:id"
                 element={<AnnoncePage />}
               ></Route>
-              <Route exact path="/monCompte" element={<MonCompte />}></Route>
+              {/* <Route exact path="/monCompte" element={<MonCompte />}></Route> */}
               <Route
                 exact
                 path="/annonce/:id"
@@ -99,12 +100,6 @@ function App() {
                 element={<ModulesPage />}
               ></Route>
 
-              {/* <Route
-              exact
-              path="/login/reset_pwd"
-              element={<ForgetPwd />}
-            ></Route> */}
-
               {/* <Route exact path="/dashboard" element={<Dashboard />}></Route> */}
 
               {/* <PrivateRoute
@@ -115,6 +110,12 @@ function App() {
 
               {/* <Route exact path="/test" element={<Ecommerce />}></Route> */}
             </Route>
+            <Route
+              exact
+              path="/login/reset_pwd"
+              element={<ForgetPwd />}
+            ></Route>
+            <Route exact path="/token" element={<TokenValidation />}></Route>
           </Routes>
         </AuthProvider>
       </Router>

@@ -62,25 +62,45 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // const reset_passsword = async (email) => {
-  //   const config = {
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   };
+  const reset_passsword = async (email) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
 
-  //   const body = JSON.stringify({ email });
+    const body = JSON.stringify({ email });
 
-  //   try {
-  //     await axios.post(
-  //       "http://127.0.0.1:8000/simple-user/password-reset/",
-  //       body,
-  //       config
-  //     );
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
+    try {
+      await axios.post(
+        "http://127.0.0.1:8000/simple-user/password_reset/",
+        body,
+        config
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const token_validation = async (token, password) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const body = JSON.stringify({ token, password });
+
+    try {
+      await axios.post(
+        "http://127.0.0.1:8000/simple-user/password_reset/confirm/",
+        body,
+        config
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   // const registerUser = async (
   //   username,
@@ -137,7 +157,8 @@ export const AuthProvider = ({ children }) => {
     // registerUser,
     loginUser,
     logoutUser,
-    // reset_passsword,
+    reset_passsword,
+    token_validation,
   };
 
   useEffect(() => {
