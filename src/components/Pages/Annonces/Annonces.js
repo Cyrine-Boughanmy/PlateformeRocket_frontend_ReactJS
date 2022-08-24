@@ -34,8 +34,8 @@ const AllAnnonces = () => {
 
   const getAnnonces = async () => {
     const response = await axios.get(
-      "https://rocketcoding-plateform-back.herokuapp.com/annonces/annonce/"
-      // "http://localhost:8000/annonces/annonce/"
+      // "https://rocketcoding-plateform-back.herokuapp.com/annonces/annonce/"
+      "http://localhost:8000/annonces/annonce/"
     );
 
     console.log("reponsee", response.data);
@@ -58,11 +58,11 @@ const AllAnnonces = () => {
           style={{
             fontSize: "60px",
             marginBottom: "40px",
-            color:"#014AAD",
-            
+            color: "#014AAD",
+
             fontStyle: "normal",
             fontW: "800",
-          
+
             lineHeight: "116px",
             textAlign: "center",
           }}
@@ -90,9 +90,9 @@ const AllAnnonces = () => {
                       gutterBottom
                       variant="h5"
                       component="div"
-                      sx={{ margin: "10px", color:"#014AAD" }}
+                      sx={{ margin: "10px", color: "#014AAD" }}
                     >
-                      {item.titre}
+                      {item.titre_annonce}
                     </Typography>
                     <Typography
                       variant="body2"
@@ -116,7 +116,7 @@ const AllAnnonces = () => {
                       {
                         <div
                           dangerouslySetInnerHTML={{
-                            __html: item.body,
+                            __html: item.description_annonce,
                           }}
                         ></div>
                       }
@@ -129,7 +129,7 @@ const AllAnnonces = () => {
                     color="primary"
                     variant="contained"
                     onClick={() => history(`/annonce/${item.id}`)}
-                    sx={{ margin: "10px" ,backgroundColor:"#014AAD" }}
+                    sx={{ margin: "10px", backgroundColor: "#014AAD" }}
                   >
                     En Savoir plus
                   </Button>

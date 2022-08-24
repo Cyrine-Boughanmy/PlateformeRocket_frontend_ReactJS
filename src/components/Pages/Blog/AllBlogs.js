@@ -3,7 +3,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import './Articles.css';
+import "./Articles.css";
 import {
   Button,
   CardActionArea,
@@ -32,8 +32,8 @@ const AllBlogs = () => {
 
   const getBlogs = async () => {
     const response = await axios.get(
-      // "http://localhost:8000/blogs/blog/"
-      "https://rocketcoding-plateform-back.herokuapp.com/blogs/blog/"
+      "http://localhost:8000/blogs/blog/"
+      // "https://rocketcoding-plateform-back.herokuapp.com/blogs/blog/"
     );
 
     console.log("reponse", response.data);
@@ -53,13 +53,12 @@ const AllBlogs = () => {
 
   return (
     <>
-      
       <Container>
         <p
           style={{
             fontSize: "60px",
             marginBottom: "40px",
-            color:"#014AAD",
+            color: "#014AAD",
             fontStyle: "normal",
             fontW: "800",
             lineHeight: "116px",
@@ -90,9 +89,9 @@ const AllBlogs = () => {
                       gutterBottom
                       variant="h5"
                       component="div"
-                      sx={{ margin: "10px", color:"#014AAD" }}
+                      sx={{ margin: "10px", color: "#014AAD" }}
                     >
-                      {item.titre}
+                      {item.titre_blog}
                     </Typography>
                     <Typography
                       variant="body2"
@@ -104,7 +103,7 @@ const AllBlogs = () => {
                     <Typography
                       variant="body2"
                       color="text.secondary"
-                      sx={{ margin: "10px" ,color: "#040404" }}
+                      sx={{ margin: "10px", color: "#040404" }}
                     >
                       {
                         <div
@@ -119,10 +118,9 @@ const AllBlogs = () => {
                 <CardActions>
                   <Button
                     size="small"
-                    
                     variant="contained"
                     onClick={() => history(`/article/${item.id}`)}
-                    sx={{ margin: "10px" , backgroundColor:"#014AAD"}}
+                    sx={{ margin: "10px", backgroundColor: "#014AAD" }}
                   >
                     En Savoir plus
                   </Button>
@@ -137,7 +135,6 @@ const AllBlogs = () => {
             justifyContent: "center",
             marginBottom: "2rem",
             marginTop: "2rem",
-
           }}
         >
           <Pagination

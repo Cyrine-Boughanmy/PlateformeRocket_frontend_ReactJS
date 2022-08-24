@@ -22,7 +22,8 @@ const CoursPage = () => {
 
   const modules = async () => {
     const response = await axios.get(
-      `https://rocketcoding-plateform-back.herokuapp.com/cours/details/${id}`
+      // `https://rocketcoding-plateform-back.herokuapp.com/cours/details/${id}`
+      `http://localhost:8000/cours/details/${id}`
     );
     setModule(response.data);
     console.log("response details of something", response.data);
@@ -57,16 +58,18 @@ const CoursPage = () => {
                       gutterBottom
                       variant="h5"
                       component="div"
-                      fontFamily='Arimo'
-                      sx={{ color:"#014AAD" }}
-
+                      fontFamily="Arimo"
+                      sx={{ color: "#014AAD" }}
                     >
                       {/* Titre : {module.modules && module.modules.titre_module} */}
                       <strong>{item && item.titre_module}</strong>
                       {/* id : {item && item.id} */}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary" fontFamily='Arimo'
->
+                    <Typography
+                      variant="body2"
+                      color="text.secondary"
+                      fontFamily="Arimo"
+                    >
                       {/* Cours : {module.modules && module.modules.cours_module} */}
                       {/* Cours : {item && item.cours_module} */}
                     </Typography>
@@ -74,18 +77,17 @@ const CoursPage = () => {
                 </CardActionArea>
                 <CardActions>
                   <Button
-                  style={{fontFamily:'Arimo', color:"#014AAD"}}
+                    style={{ fontFamily: "Arimo", color: "#014AAD" }}
                     size="small"
-                    
                     onClick={() => history("/cours")}
                   >
                     Retour
                   </Button>
                 </CardActions>
                 <CardActions>
-                  <div style={{ float: "right", fontFamily:'Arimo'}}>
+                  <div style={{ float: "right", fontFamily: "Arimo" }}>
                     <Button
-                    style={{fontFamily:'Arimo' , color:"#014AAD"}}
+                      style={{ fontFamily: "Arimo", color: "#014AAD" }}
                       size="small"
                       onClick={() => history(`/sousModule/${item.id}`)}
                     >
