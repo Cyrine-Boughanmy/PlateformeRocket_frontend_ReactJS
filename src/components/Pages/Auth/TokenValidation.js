@@ -6,14 +6,16 @@ import AuthContext from "../../../context/AuthContext";
 import loginlogo from "../../../assets/images/login/logo1.png";
 import { Box } from "@mui/material";
 
-const ForgetPwd = () => {
-  const [email, setEmail] = useState("");
+const TokenValidation = () => {
+  const [token, setToken] = useState("");
+  const [password, setPassword] = useState("");
 
-  const { reset_passsword } = useContext(AuthContext);
+  const { token_validation } = useContext(AuthContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    reset_passsword(email);
+    token_validation(password, token);
+    console.log("test", token_validation);
   };
   return (
     <Fragment>
@@ -47,20 +49,35 @@ const ForgetPwd = () => {
               <Form className="theme-form login-form" onSubmit={handleSubmit}>
                 <H4>Réinitialiser Votre Mot de Passe</H4>
                 <FormGroup>
-                  <Label>Entrer Votre Adresse Email</Label>
+                  <Label>Entrer le code que vous venez de recevez</Label>
                   <div className="input-group">
                     <span className="input-group-text">
                       <i className="icon-email"></i>
                     </span>
                     <Input
-                      id="email"
+                      id="token"
                       className="form-control"
-                      type="email"
+                      type="text"
                       required=""
-                      placeholder="adresse@gmail.com"
-                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="Token"
+                      onChange={(e) => setToken(e.target.value)}
                     />
                   </div>
+                  <br />
+                  <div className="input-group">
+                    <span className="input-group-text">
+                      <i className="icon-email"></i>
+                    </span>
+                    <Input
+                      id="password"
+                      className="form-control"
+                      type="password"
+                      required=""
+                      placeholder="New Password"
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+                  </div>
+                  <br />
                 </FormGroup>
 
                 <FormGroup>
@@ -71,7 +88,7 @@ const ForgetPwd = () => {
                       type: "submit",
                     }}
                   >
-                    Envoyer
+                    Valider
                   </Btn>
                 </FormGroup>
 
@@ -88,4 +105,4 @@ const ForgetPwd = () => {
   );
 };
 
-export default ForgetPwd;
+export default TokenValidation;

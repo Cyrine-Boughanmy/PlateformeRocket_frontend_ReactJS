@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useEffect, useState, useContext } from "react";
-import CoursPage from "./CoursPage";
+
 import { Card, Grid } from "@material-ui/core";
 import {
   CardActionArea,
@@ -15,22 +15,20 @@ import {
 } from "@mui/material";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useNavigate } from "react-router-dom";
-import AuthContext from "../../../context/AuthContext";
-import PageLoader from "../hooks/PageLoader";
+import AuthContext from "../../context/AuthContext";
+// import PageLoader from "../hooks/PageLoader";
 
 const AllCours = () => {
   const [cours, setCours] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [modules, setModules] = useState([]);
-  const [category,setCategories]=useState([]);
   const { authTokens, logoutUser } = useContext(AuthContext);
 
   useEffect(() => {
-    // if (isLoading) {
+   
       getCourses();
-    // }
+   
   }, []);
-// }, [isLoading]);
   const getCourses = async () => {
     // const response = await axios.get("http://localhost:8000/cours/liste/");
     const response = await axios.get(
@@ -69,61 +67,13 @@ const AllCours = () => {
     setModules(response.data);
   };
 
-
-
-
-  useEffect(() => {
-    getCategories();
-  }, []);
-
-  const getCategories = async () => {
-    const response = await axios.get(
-      // "https://rocketcoding-plateform-back.herokuapp.com/cours/listeModule/"
-      "http://localhost:8000/categorie/liste/"
-    );
-    console.log("reponsee cat", response.data);
-    setCategories(response.data);
-  };
-
-
   const history = useNavigate();
-  
-  
-  
-  
-  const filterItem = (cat) => {
-    const updatedItems = cours.filter((curElem) => {
-      return curElem.categorie === cat
-    }) ;
-    setCours(updatedItems)
-
-  }
 
   return (
-    <Container>
-      <p style={{ fontSize: "60px", color: "#014AAD" }}>Cours</p> 
-      <Grid
-  container
-  direction="column"
-  justifyContent="center"
-  alignItems="flex-start"
->
-        <Grid item ><p>Filter tab</p>
-        <button onClick={()=> getCourses()}>toutes les catégories</button>
-
-        {category.map((categ) => ( 
-          <button
-          onClick={()=>{
-            filterItem(categ.nom);
-        }}
-          >{categ.nom}</button>
-         ))}
-        
-        </Grid>
-        </Grid>
-
-        <Grid container spacing={3}>
-        
+    <div>
+        <Container>
+        <p style={{ fontSize: "60px", color: "#014AAD" }}>Cours</p>
+      <Grid container spacing={3}>
         {cours.map((courses) => (
           <Grid item key={courses.id} xs={12} md={6} lg={4}>
             <Card elevation={3}>
@@ -134,7 +84,6 @@ const AllCours = () => {
                     color="text.secondary"
                     gutterBottom
                     variant="h5"
-                    fontFamily="Arimo"
                   >
                     <strong>Catégorie :</strong> {courses.categorie}
                   </Typography>
@@ -146,27 +95,16 @@ const AllCours = () => {
                   alt="green iguana"
                 />
                 <CardContent>
-                  <Typography
-                    gutterBottom
-                    variant="h5"
-                    component="div"
-                    fontFamily="Arimo"
-                  >
+                  <Typography gutterBottom variant="h5" component="div">
                     {courses.nom_cours}
                   </Typography>
-
-                  <Typography
-                    variant="body2"
-                    color="text.secondary"
-                    fontFamily="Arimo"
-                  >
-                    {courses.description_cours}
+                  <Typography variant="body2" color="text.secondary">
+                    {courses.description}
                   </Typography>
                 </CardContent>
               </CardActionArea>
-              <Divider />
-              <IconButton onClick={() => history(`/modules/${courses.id}`)}>
-                <h5 style={{ fontFamily: "Arimo" }}>
+              <IconButton>
+                <h5>
                   {" "}
                   <strong>Ouvrir Cours</strong>
                 </h5>{" "}
@@ -179,6 +117,7 @@ const AllCours = () => {
         ))}
       </Grid>
     </Container>
+    </div>
   );
 };
 

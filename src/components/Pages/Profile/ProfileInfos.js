@@ -1,5 +1,5 @@
 import { Container } from "@material-ui/core";
-import { Box, Grid, div, Button } from "@mui/material";
+import { Box, Grid, div, Button, InputLabel } from "@mui/material";
 import React, { useEffect, useState, useContext } from "react";
 import PrimarySearchAppBar from "../../Dashboard/Default/Navbar";
 import userimg from "../../../assets/images/user-profile/userprofile.jpg";
@@ -21,7 +21,10 @@ import PropTypes from "prop-types";
 import { Btn, H4, H6 } from "../../../AbstractElements";
 import { Form, FormGroup, Input, Label } from "reactstrap";
 import { fontSize } from "@mui/system";
-
+import PageLoader from "../hooks/PageLoader";
+import FormControl from "@mui/material/FormControl";
+import Avatar from "@mui/material/Avatar";
+import { upload } from "@testing-library/user-event/dist/upload";
 const PageProfil = () => {
   const [users, setUser] = useState([]);
   // const { id } = useParams();
@@ -52,74 +55,37 @@ const PageProfil = () => {
   // const id = jwt_decode("Bearer " + localStorage.getItem("jwtToken")).user_id;
   // console.log("HADHA ID", id);
   const fetchData = async () => {
-
-    const res = await axios
+    const response = await axios
       .get(
-        "https://rocketcoding-plateform-back.herokuapp.com/simple-user/profile/")
-    // const res = await axios
-    //   .get(
-    //     // " https://rocketcoding-plateform-back.herokuapp.com/cours/liste/"
-    //     // `http://localhost:8000/simple-user/profile/${id} `, 
-    //     // "http://localhost:8000/simple-user/profile/" + tokenDecoded.user_id,
-        
-    //     "https://rocketcoding-plateform-back.herokuapp.com/simple-user/profile/"+tokenDecoded.user_id,
-       
-    //     {
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //         // Authorization:
-    //         //   "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYxNjA0OTAwLCJpYXQiOjE2NjAzMDg5MDAsImp0aSI6IjdiNGIyNmE2Mjc0NDQ3YzY5NDVhN2U2NTRkZWViNGUyIiwidXNlcl9pZCI6MX0.8y-xHXUDTCA9pP-8RabFjHVkZ2oEVnuV7qH7qpof3KI ",
-    //         Authorization: `Bearer ${authTokens?.access}`,
-    //       },
-    //     }
-    //     // ,
-    //     // {
-    //     //   headers: {
-    //     //     "Content-Type": "application/json",
-    //     //     Authorization: `JWT ${localStorage.getItem("authTokens")}`,
-    //     //     Accept: "application/json",
-    //     //   },
-    //     // }
-    //   )
+        // " https://rocketcoding-plateform-back.herokuapp.com/cours/liste/"
+        // `http://localhost:8000/simple-user/profile/${id} `,
+        `http://localhost:8000/simple-user/profile/${tokenDecoded}/`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            // Authorization:
+            //   "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYxNjA0OTAwLCJpYXQiOjE2NjAzMDg5MDAsImp0aSI6IjdiNGIyNmE2Mjc0NDQ3YzY5NDVhN2U2NTRkZWViNGUyIiwidXNlcl9pZCI6MX0.8y-xHXUDTCA9pP-8RabFjHVkZ2oEVnuV7qH7qpof3KI ",
+            Authorization: `Bearer ${authTokens?.access}`,
+          },
+        }
+        // ,
+        // {
+        //   headers: {
+        //     "Content-Type": "application/json",
+        //     Authorization: `JWT ${localStorage.getItem("authTokens")}`,
+        //     Accept: "application/json",
+        //   },
+        // }
+      )
+      // setUser(response);
+      // console.log("AAAAAAAAAAAAAAAAA HEDHAA AAAAA", response);
       .then((res) => {
         setUser(res.data);
-        console.log("DATAAAAAAA", res.data);
+        console.log("DATAAAAAAAAAAAAAA", res.data);
       })
       .catch((Error) => {
         console.log(Error);
       });
-
-    const response = await axios.get(
-      // " https://rocketcoding-plateform-back.herokuapp.com/cours/liste/"
-      // `http://localhost:8000/simple-user/profile/${id} `,
-      "http://localhost:8000/simple-user/profile/",
-      {
-        headers: {
-          "Content-Type": "application/json",
-          // Authorization:
-          //   "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYxNjA0OTAwLCJpYXQiOjE2NjAzMDg5MDAsImp0aSI6IjdiNGIyNmE2Mjc0NDQ3YzY5NDVhN2U2NTRkZWViNGUyIiwidXNlcl9pZCI6MX0.8y-xHXUDTCA9pP-8RabFjHVkZ2oEVnuV7qH7qpof3KI ",
-          Authorization: `Bearer ${authTokens?.access}`,
-        },
-      }
-      // ,
-      // {
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //     Authorization: `JWT ${localStorage.getItem("authTokens")}`,
-      //     Accept: "application/json",
-      //   },
-      // }
-    );
-    setUser(response);
-    console.log("AAAAAAAAAAAAAAAAA HEDHAA AAAAA", response);
-    // .then((res) => {
-    //   setUser(res.data);
-    //   console.log("DATAAAAAAAAAAAA", res.data);
-    // })
-    // .catch((Error) => {
-    //   console.log(Error);
-    // });
-
 
     // console.log("reponsee", response.data);
 
@@ -140,6 +106,7 @@ const PageProfil = () => {
 
   // Dialog Update Profile
   const [open, setOpen] = React.useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -176,6 +143,7 @@ const PageProfil = () => {
   };
 
   // Handle Update Profile
+  const [username, setUsername] = useState("");
   const [first_name, setFirstname] = useState("");
   const [last_name, setLastname] = useState("");
   const [email, setEmail] = useState("");
@@ -196,8 +164,12 @@ const PageProfil = () => {
     setResume(e.target.files[0]);
   };
 
-  const updateProfile = (event) => {
+  const updateProfile = async (event) => {
+    event.preventDefault();
+    setLoading(true);
+
     const formdata = new FormData();
+    formdata.append("username", username);
     formdata.append("first_name", first_name);
     formdata.append("last_name", last_name);
     formdata.append("email", email);
@@ -210,8 +182,8 @@ const PageProfil = () => {
     formdata.append("resume", resume);
     formdata.append("presentation", presentation);
 
-    axios.put(
-      `http://localhost:8000/simple-user/profile/${tokenDecoded}`,
+    await axios.put(
+      `http://localhost:8000/simple-user/profile/${tokenDecoded}/`,
       formdata,
       {
         headers: {
@@ -220,11 +192,13 @@ const PageProfil = () => {
         },
       }
     );
+    window.location.reload(false);
   };
   useEffect(() => {
     axios
       .get(`http://localhost:8000/simple-user/profile/${tokenDecoded}`)
       .then((res) => {
+        setUsername(res.data.username);
         setFirstname(res.data.first_name);
         setLastname(res.data.last_name);
         setEmail(res.data.email);
@@ -236,8 +210,10 @@ const PageProfil = () => {
         setProfileImage(res.data.profile_image);
         setResume(res.data.resume);
         setPresentation(res.data.presentation);
+        // console.log("wlh fadit", res.data.first_name);
       });
   }, []);
+
   return (
     <>
       <Container sx={{ padding: "10px" }}>
@@ -284,16 +260,18 @@ const PageProfil = () => {
                   width: "100%",
                   borderRadius: "50px",
                 }}
-                src={user?.profile_image}
+                src={users.profile_image}
                 alt="user profile "
               />
             </Box>
             <br></br>
+
             <Button
               type="submit"
               style={{ fontFamily: "Arimo" }}
+              onChange={onChangeImage}
               onClick={() => {
-                saveAs(user?.profile_image, "image.jpg");
+                saveAs(users.profile_image, "image.jpg");
               }}
             >
               Télécharger photo
@@ -310,16 +288,16 @@ const PageProfil = () => {
                 borderRadius: "10px",
               }}
             >
-              <div className="text-cordonnées">Nom : {user?.first_name}</div>
-              <div className="text-cordonnées">Prénom : {user?.last_name}</div>
-              <div className="text-cordonnées">Adresse : {user?.adresse}</div>
+              <div className="text-cordonnées">Nom : {users.first_name}</div>
+              <div className="text-cordonnées">Prénom : {users.last_name}</div>
+              <div className="text-cordonnées">Adresse : {users.adresse}</div>
               <div className="text-cordonnées">
                 Code Postale : {user?.code_postal}
               </div>
-              <div className="text-cordonnées">Ville : {user?.ville}</div>
-              <div className="text-cordonnées">Mail : {user?.email}</div>
+              <div className="text-cordonnées">Ville : {users.ville}</div>
+              <div className="text-cordonnées">Mail : {users.email}</div>
               <div className="text-cordonnées">
-                Numéro de téléphone : {user?.num_tel}
+                Numéro de téléphone : {users.num_tel}
               </div>
             </Box>
           </Grid>
@@ -335,7 +313,7 @@ const PageProfil = () => {
               }}
             >
               <div className="titre-présentation">Présentation</div>
-              <p className="text-présentation">{user?.presentation}</p>
+              <p className="text-présentation">{users.presentation}</p>
             </Box>
           </Grid>
         </Grid>
@@ -344,7 +322,7 @@ const PageProfil = () => {
           className="btn-download"
           type="submit"
           onClick={() => {
-            saveAs(user?.resume, "resume.pdf", {
+            saveAs(users.resume, "resume.pdf", {
               type: "text/plain;charset=utf-8",
             });
           }}
@@ -357,253 +335,261 @@ const PageProfil = () => {
         <button className="btn-update" onClick={handleClickOpen}>
           MODIFIER MES INFOS
         </button>
-        <BootstrapDialog
-          onClose={handleClose}
-          aria-labelledby="customized-dialog-title"
-          open={open}
-        >
-          <BootstrapDialogTitle
-            id="customized-dialog-title"
-            onClose={handleClose}
-          >
-            Update Your Profile
-          </BootstrapDialogTitle>
-          <DialogContent dividers>
-            {/* <Typography gutterBottom>
-              Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-              dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
-              ac consectetur ac, vestibulum at eros.
-            </Typography>
-            <Typography gutterBottom>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur
-              et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor
-              auctor.
-            </Typography>
-            <Typography gutterBottom>
-              Aenean lacinia bibendum nulla sed consectetur. Praesent commodo
-              cursus magna, vel scelerisque nisl consectetur et. Donec sed odio
-              dui. Donec ullamcorper nulla non metus auctor fringilla.
-            </Typography> */}
-            <Form className="theme-form login-form">
-              <H6>Enter Your Profile Data</H6>
-              <FormGroup>
-                <Label>Nom</Label>
-                <div className="input-group">
-                  <span className="input-group-text">
-                    <i className="icon-email"></i>
-                  </span>
-                  <Input
-                    id="nom"
-                    className="form-control"
-                    type="text"
-                    // required=""
-                    value={first_name}
-                    onChange={(e) => setFirstname(e.target.value)}
-                    placeholder="nom"
-                  />
-                </div>
-              </FormGroup>
+        <Dialog open={open}>
+          <Box>
+            {loading && <PageLoader />}
+            <Form
+              encType="multipart/form-data"
+              className="theme-form login-form"
+              onSubmit={updateProfile}
+            >
+              <DialogTitle>
+                <Grid container justify="center" alignItems="center">
+                  <Typography variant="div">Update Your Profile</Typography>
+                  <div style={{ float: "right" }}>
+                    <IconButton onClick={() => setOpen(false)}>
+                      <CloseIcon />
+                    </IconButton>
+                  </div>
+                </Grid>
+              </DialogTitle>
+              <DialogContent dividers>
+                <H6>Enter Your Profile Data</H6>
+                <FormGroup>
+                  <Label>My Username</Label>
+                  <div className="input-group">
+                    <span className="input-group-text">
+                      <i className="icon-email"></i>
+                    </span>
+                    <Input
+                      id="username"
+                      className="form-control"
+                      type="text"
+                      required=""
+                      readOnly
+                      value={username}
+                      onChange={(e) => setUsername(e.target.value)}
+                      placeholder="Username"
+                    />
+                  </div>
+                </FormGroup>
+                <FormGroup>
+                  <Label>Nom</Label>
+                  <div className="input-group">
+                    <span className="input-group-text">
+                      <i className="icon-email"></i>
+                    </span>
+                    <Input
+                      id="nom"
+                      className="form-control"
+                      type="text"
+                      // required=""
+                      value={first_name}
+                      onChange={(e) => setFirstname(e.target.value)}
+                      placeholder="nom"
+                    />
+                  </div>
+                </FormGroup>
 
-              <FormGroup className="position-relative">
-                <Label>Prénom</Label>
-                <div className="input-group">
-                  <span className="input-group-text">
-                    <i className="icon-lock"></i>
-                  </span>
-                  <Input
-                    id="prenom"
-                    className="form-control"
-                    type="text"
-                    name="prenom"
-                    // required=""
-                    value={last_name}
-                    onChange={(e) => setLastname(e.target.value)}
-                    placeholder="Prénom"
-                  />
-                </div>
-              </FormGroup>
-              <FormGroup className="position-relative">
-                <Label>Adresse Email</Label>
-                <div className="input-group">
-                  <span className="input-group-text">
-                    <i className="icon-lock"></i>
-                  </span>
-                  <Input
-                    id="email"
-                    className="form-control"
-                    type="text"
-                    name="email"
-                    // required=""
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Adresse Email"
-                  />
-                </div>
-              </FormGroup>
-              <FormGroup className="position-relative">
-                <Label>Date de Naissance</Label>
-                <div className="input-group">
-                  <span className="input-group-text">
-                    <i className="icon-lock"></i>
-                  </span>
-                  <Input
-                    id="date_de_naissance"
-                    className="form-control"
-                    type="date"
-                    name="date_de_naissance"
-                    // required=""
-                    value={date_de_naissance}
-                    onChange={(e) => setDateDeNaissance(e.target.value)}
-                    placeholder="Date de Naissance"
-                  />
-                </div>
-              </FormGroup>
-              <FormGroup className="position-relative">
-                <Label>Adresse</Label>
-                <div className="input-group">
-                  <span className="input-group-text">
-                    <i className="icon-lock"></i>
-                  </span>
-                  <Input
-                    id="adresse"
-                    className="form-control"
-                    type="text"
-                    name="adresse"
-                    // required=""
-                    value={adresse}
-                    onChange={(e) => setAdresse(e.target.value)}
-                    placeholder="Adresse"
-                  />
-                </div>
-              </FormGroup>
-              <FormGroup className="position-relative">
-                <Label>Ville</Label>
-                <div className="input-group">
-                  <span className="input-group-text">
-                    <i className="icon-lock"></i>
-                  </span>
-                  <Input
-                    id="ville"
-                    className="form-control"
-                    type="text"
-                    name="ville"
-                    // required=""
-                    value={ville}
-                    onChange={(e) => setVille(e.target.value)}
-                    placeholder="Ville"
-                  />
-                </div>
-              </FormGroup>
-              <FormGroup className="position-relative">
-                <Label>Code Postal</Label>
-                <div className="input-group">
-                  <span className="input-group-text">
-                    <i className="icon-lock"></i>
-                  </span>
-                  <Input
-                    id="code_postal"
-                    className="form-control"
-                    type="text"
-                    name="code_postal"
-                    // required=""
-                    value={code_postal}
-                    onChange={(e) => setCodePostal(e.target.value)}
-                    placeholder="Code Postal"
-                  />
-                </div>
-              </FormGroup>
+                <FormGroup className="position-relative">
+                  <Label>Prénom</Label>
+                  <div className="input-group">
+                    <span className="input-group-text">
+                      <i className="icon-lock"></i>
+                    </span>
+                    <Input
+                      id="prenom"
+                      className="form-control"
+                      type="text"
+                      name="prenom"
+                      // required=""
+                      value={last_name}
+                      onChange={(e) => setLastname(e.target.value)}
+                      placeholder="Prénom"
+                    />
+                  </div>
+                </FormGroup>
+                <FormGroup className="position-relative">
+                  <Label>Adresse Email</Label>
+                  <div className="input-group">
+                    <span className="input-group-text">
+                      <i className="icon-lock"></i>
+                    </span>
+                    <Input
+                      id="email"
+                      className="form-control"
+                      type="text"
+                      name="email"
+                      // required=""
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="Adresse Email"
+                    />
+                  </div>
+                </FormGroup>
+                <FormGroup className="position-relative">
+                  <Label>Date de Naissance</Label>
+                  <div className="input-group">
+                    <span className="input-group-text">
+                      <i className="icon-lock"></i>
+                    </span>
+                    <Input
+                      id="date_de_naissance"
+                      className="form-control"
+                      type="date"
+                      name="date_de_naissance"
+                      // required=""
+                      value={date_de_naissance}
+                      onChange={(e) => setDateDeNaissance(e.target.value)}
+                      placeholder="Date de Naissance"
+                    />
+                  </div>
+                </FormGroup>
+                <FormGroup className="position-relative">
+                  <Label>Adresse</Label>
+                  <div className="input-group">
+                    <span className="input-group-text">
+                      <i className="icon-lock"></i>
+                    </span>
+                    <Input
+                      id="adresse"
+                      className="form-control"
+                      type="text"
+                      name="adresse"
+                      // required=""
+                      value={adresse}
+                      onChange={(e) => setAdresse(e.target.value)}
+                      placeholder="Adresse"
+                    />
+                  </div>
+                </FormGroup>
+                <FormGroup className="position-relative">
+                  <Label>Ville</Label>
+                  <div className="input-group">
+                    <span className="input-group-text">
+                      <i className="icon-lock"></i>
+                    </span>
+                    <Input
+                      id="ville"
+                      className="form-control"
+                      type="text"
+                      name="ville"
+                      // required=""
+                      value={ville}
+                      onChange={(e) => setVille(e.target.value)}
+                      placeholder="Ville"
+                    />
+                  </div>
+                </FormGroup>
+                <FormGroup className="position-relative">
+                  <Label>Code Postal</Label>
+                  <div className="input-group">
+                    <span className="input-group-text">
+                      <i className="icon-lock"></i>
+                    </span>
+                    <Input
+                      id="code_postal"
+                      className="form-control"
+                      type="text"
+                      name="code_postal"
+                      // required=""
+                      value={code_postal}
+                      onChange={(e) => setCodePostal(e.target.value)}
+                      placeholder="Code Postal"
+                    />
+                  </div>
+                </FormGroup>
 
-              <FormGroup className="position-relative">
-                <Label>Numéro de Téléphone</Label>
-                <div className="input-group">
-                  <span className="input-group-text">
-                    <i className="icon-lock"></i>
-                  </span>
-                  <Input
-                    id="num_tel"
-                    className="form-control"
-                    type="phone"
-                    name="num_tel"
-                    // required=""
-                    value={num_tel}
-                    onChange={(e) => setNumTel(e.target.value)}
-                    placeholder="Numéro de Téléphone"
-                  />
-                </div>
-              </FormGroup>
-              <FormGroup className="position-relative">
-                <Label>Présentation</Label>
-                <div className="input-group">
-                  <span className="input-group-text">
-                    <i className="icon-lock"></i>
-                  </span>
-                  <Input
-                    id="presentation"
-                    className="form-control"
-                    type="text"
-                    name="presentation"
-                    // required=""
-                    value={presentation}
-                    onChange={(e) => setPresentation(e.target.value)}
-                    placeholder="Une description"
-                  />
-                </div>
-              </FormGroup>
-              <FormGroup className="position-relative">
-                <Label>Photo de Profil</Label>
-                <div className="input-group">
-                  <span className="input-group-text">
-                    <i className="icon-lock"></i>
-                  </span>
-                  <Input
-                    id="num_tel"
-                    className="form-control"
-                    type="file"
-                    name="profile_image"
-                    // required=""
-                    filename="profile_image"
-                    onChange={onChangeImage}
-                  />
-                </div>
-              </FormGroup>
-              <FormGroup className="position-relative">
-                <Label>CV</Label>
-                <div className="input-group">
-                  <span className="input-group-text">
-                    <i className="icon-lock"></i>
-                  </span>
-                  <Input
-                    id="resume"
-                    className="form-control"
-                    type="file"
-                    name="resume"
-                    // required=""
-                    filename="resume"
-                    onChange={onChangeFile}
-                  />
-                </div>
-              </FormGroup>
+                <FormGroup className="position-relative">
+                  <Label>Numéro de Téléphone</Label>
+                  <div className="input-group">
+                    <span className="input-group-text">
+                      <i className="icon-lock"></i>
+                    </span>
+                    <Input
+                      id="num_tel"
+                      className="form-control"
+                      type="phone"
+                      name="num_tel"
+                      // required=""
+                      value={num_tel}
+                      onChange={(e) => setNumTel(e.target.value)}
+                      placeholder="Numéro de Téléphone"
+                    />
+                  </div>
+                </FormGroup>
+                <FormGroup className="position-relative">
+                  <Label>Présentation</Label>
+                  <div className="input-group">
+                    <span className="input-group-text">
+                      <i className="icon-lock"></i>
+                    </span>
+                    <Input
+                      id="presentation"
+                      className="form-control"
+                      type="text"
+                      name="presentation"
+                      // required=""
+                      value={presentation}
+                      onChange={(e) => setPresentation(e.target.value)}
+                      placeholder="Une description"
+                    />
+                  </div>
+                </FormGroup>
+                <FormGroup className="position-relative">
+                  <Label>Photo de Profil</Label>
+                  <div className="input-group">
+                    <span className="input-group-text">
+                      <i className="icon-lock"></i>
+                    </span>
+                    <Input
+                      id="num_tel"
+                      className="form-control"
+                      type="file"
+                      name="profile_image"
+                      // required=""
+                      filename="profile_image"
+                      onChange={onChangeImage}
+                    />
+                  </div>
+                </FormGroup>
+                <FormGroup className="position-relative">
+                  <Label>CV</Label>
+                  <div className="input-group">
+                    <span className="input-group-text">
+                      <i className="icon-lock"></i>
+                    </span>
+                    <Input
+                      id="resume"
+                      className="form-control"
+                      type="file"
+                      name="resume"
+                      // required=""
+                      filename="resume"
+                      onChange={onChangeFile}
+                    />
+                  </div>
+                </FormGroup>
 
-              <FormGroup>
-                <Btn
-                  onClick={() => updateProfile()}
-                  attrBtn={{
-                    color: "#014AAD",
-                    type: "submit",
-                  }}
-                >
-                  {/* <Link to="/dashboard" /> */}
-                  Update
-                </Btn>
-              </FormGroup>
+                {/* <DialogActions> */}
+                <FormGroup>
+                  <Btn
+                    // onClick={() => updateProfile()}
+                    attrBtn={{
+                      color: "#014AAD",
+                      type: "submit",
+                    }}
+                  >
+                    {/* <Link to="/dashboard" /> */}
+                    Update
+                  </Btn>
+                </FormGroup>
+
+                {/* </DialogActions> */}
+              </DialogContent>
             </Form>
-          </DialogContent>
-          {/* <DialogActions>
-            <Button autoFocus onClick={handleClose}>
-              Save changes
-            </Button>
-          </DialogActions> */}
-        </BootstrapDialog>
+          </Box>
+        </Dialog>
       </Container>
     </>
   );
