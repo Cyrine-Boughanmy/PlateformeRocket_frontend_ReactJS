@@ -34,8 +34,8 @@ const AllAnnonces = () => {
 
   const getAnnonces = async () => {
     const response = await axios.get(
-      // "https://rocketcoding-plateform-back.herokuapp.com/annonces/annonce/"
-      "http://localhost:8000/annonces/annonce/"
+      "https://rocketcoding-plateform-back.herokuapp.com/annonces/annonce/"
+      // "http://localhost:8000/annonces/annonce/"
     );
 
     console.log("reponsee", response.data);

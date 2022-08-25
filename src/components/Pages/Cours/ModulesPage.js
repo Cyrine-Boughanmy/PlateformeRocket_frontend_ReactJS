@@ -28,8 +28,8 @@ const CoursPage = () => {
 
   const sousModules = async () => {
     const response = await axios.get(
-      // `https://rocketcoding-plateform-back.herokuapp.com/cours/details/${id}`
-      `http://localhost:8000/cours/details/${id}`
+      `https://rocketcoding-plateform-back.herokuapp.com/cours/details/${id}`
+      // `http://localhost:8000/cours/details/${id}`
     );
     setSousModule(response.data);
     console.log("response details of SOUS MODULES", response.data);

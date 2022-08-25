@@ -32,8 +32,8 @@ const AllBlogs = () => {
 
   const getBlogs = async () => {
     const response = await axios.get(
-      "http://localhost:8000/blogs/blog/"
-      // "https://rocketcoding-plateform-back.herokuapp.com/blogs/blog/"
+      // "http://localhost:8000/blogs/blog/"
+      "https://rocketcoding-plateform-back.herokuapp.com/blogs/blog/"
     );
 
     console.log("reponse", response.data);

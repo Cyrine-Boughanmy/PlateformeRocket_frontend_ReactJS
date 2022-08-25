@@ -14,8 +14,8 @@ const Articles = () => {
 
   const articles = async () => {
     const response = await axios.get(
-      `http://localhost:8000/blogs/blog/${id}`
-      // `https://rocketcoding-plateform-back.herokuapp.com/blogs/blog/${id}`
+      // `http://localhost:8000/blogs/blog/${id}`
+      `https://rocketcoding-plateform-back.herokuapp.com/blogs/blog/${id}`
     );
     setArticle(response.data);
     console.log("response details of something", response.data);
