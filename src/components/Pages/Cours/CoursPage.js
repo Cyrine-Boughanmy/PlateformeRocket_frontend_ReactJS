@@ -3,7 +3,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { CardActionArea, CardActions, Button } from "@mui/material";
+import { CardActionArea, CardActions, Button, Box } from "@mui/material";
 import { Grid } from "@material-ui/core";
 import { Container } from "@mui/system";
 
@@ -34,7 +34,17 @@ const CoursPage = () => {
     <div>
       <PrimarySearchAppBar />
       <br />
+      <br />
+      <Box textAlign="left">
+      <button
+              className="go-back-link__actualites"
+              onClick={() => history("/cours")}
+            >
+              Retour
+            </button>
+      </Box>
       <Container>
+    
         <Grid
           container
           spacing={3}
@@ -42,8 +52,12 @@ const CoursPage = () => {
           direction="row"
           alignItems="center"
         >
+          
+            
+          
           {module.modules?.map((item) => (
             <Grid item key={item.id} xs={12} md={6} lg={4}>
+              
               <Card sx={{ maxWidth: 345 }}>
                 <CardActionArea>
                   {/* <CardMedia
@@ -75,7 +89,8 @@ const CoursPage = () => {
                     </Typography>
                   </CardContent>
                 </CardActionArea>
-                <CardActions>
+                {/* <CardActions>
+
                   <Button
                     style={{ fontFamily: "Arimo", color: "#014AAD" }}
                     size="small"
@@ -83,7 +98,7 @@ const CoursPage = () => {
                   >
                     Retour
                   </Button>
-                </CardActions>
+                </CardActions> */}
                 <CardActions>
                   <div style={{ float: "right", fontFamily: "Arimo" }}>
                     <Button
