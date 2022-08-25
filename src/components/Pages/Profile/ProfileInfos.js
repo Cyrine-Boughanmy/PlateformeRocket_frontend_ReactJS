@@ -59,7 +59,9 @@ const PageProfil = () => {
       .get(
         // " https://rocketcoding-plateform-back.herokuapp.com/cours/liste/"
         // `http://localhost:8000/simple-user/profile/${id} `,
-        `http://localhost:8000/simple-user/profile/${tokenDecoded}/`,
+        // `http://localhost:8000/simple-user/profile/${tokenDecoded}/`,
+        `https://rocketcoding-plateform-back.herokuapp.com/simple-user/profile/${tokenDecoded}/`,
+
         {
           headers: {
             "Content-Type": "application/json",
@@ -183,7 +185,9 @@ const PageProfil = () => {
     formdata.append("presentation", presentation);
 
     await axios.put(
-      `http://localhost:8000/simple-user/profile/${tokenDecoded}/`,
+      // `http://localhost:8000/simple-user/profile/${tokenDecoded}/`,
+      `https://rocketcoding-plateform-back.herokuapp.com/simple-user/profile/${tokenDecoded}/`,
+
       formdata,
       {
         headers: {
@@ -196,7 +200,11 @@ const PageProfil = () => {
   };
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/simple-user/profile/${tokenDecoded}`)
+      // .get(`http://localhost:8000/simple-user/profile/${tokenDecoded}`)
+      .get(
+        `https://rocketcoding-plateform-back.herokuapp.com/simple-user/profile/${tokenDecoded}`
+      )
+
       .then((res) => {
         setUsername(res.data.username);
         setFirstname(res.data.first_name);

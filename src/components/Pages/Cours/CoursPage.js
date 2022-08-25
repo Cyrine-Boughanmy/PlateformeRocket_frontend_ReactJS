@@ -22,8 +22,8 @@ const CoursPage = () => {
 
   const modules = async () => {
     const response = await axios.get(
-      // `https://rocketcoding-plateform-back.herokuapp.com/cours/details/${id}`
-      `http://localhost:8000/cours/details/${id}`
+      `https://rocketcoding-plateform-back.herokuapp.com/cours/details/${id}`
+      // `http://localhost:8000/cours/details/${id}`
     );
     setModule(response.data);
     console.log("response details of something", response.data);

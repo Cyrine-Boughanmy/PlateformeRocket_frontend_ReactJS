@@ -4,7 +4,8 @@ import dayjs from "dayjs";
 import { useContext } from "react";
 import AuthContext from "../context/AuthContext";
 
-const baseURL = "http://127.0.0.1:8000/simple-user";
+// const baseURL = "http://127.0.0.1:8000/simple-user";
+const baseURL = "https://rocketcoding-plateform-back.herokuapp.com/simple-user";
 
 const useAxios = () => {
   const { authTokens, setUser, setAuthTokens } = useContext(AuthContext);

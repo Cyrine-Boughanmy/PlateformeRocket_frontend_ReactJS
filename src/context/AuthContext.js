@@ -37,8 +37,8 @@ export const AuthProvider = ({ children }) => {
     //     localStorage.setItem("users", JSON.stringify(users));
     //   });
     const response = await fetch(
-      // "https://rocketcoding-plateform-back.herokuapp.com/simple-user/token/",
-      "http://localhost:8000/simple-user/token/",
+      "https://rocketcoding-plateform-back.herokuapp.com/simple-user/token/",
+      // "http://localhost:8000/simple-user/token/",
 
       {
         method: "POST",
@@ -73,7 +73,9 @@ export const AuthProvider = ({ children }) => {
 
     try {
       await axios.post(
-        "http://127.0.0.1:8000/simple-user/password_reset/",
+        // "http://127.0.0.1:8000/simple-user/password_reset/",
+        "https://rocketcoding-plateform-back.herokuapp.com/simple-user/password_reset/",
+
         body,
         config
       );
@@ -93,7 +95,9 @@ export const AuthProvider = ({ children }) => {
 
     try {
       await axios.post(
-        "http://127.0.0.1:8000/simple-user/password_reset/confirm/",
+        // "http://127.0.0.1:8000/simple-user/password_reset/confirm/",
+        "https://rocketcoding-plateform-back.herokuapp.com/simple-user/password_reset/confirm/",
+
         body,
         config
       );
@@ -114,7 +118,9 @@ export const AuthProvider = ({ children }) => {
 
     try {
       await axios.put(
-        "http://127.0.0.1:8000/simple-user/change_password/",
+        // "http://127.0.0.1:8000/simple-user/change_password/",
+        "https://rocketcoding-plateform-back.herokuapp.com/simple-user/change_password/",
+
         body,
         config
       );
