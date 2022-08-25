@@ -92,10 +92,11 @@ const AllCours = () => {
   
   
   const filterItem = (cat) => {
+    
     const updatedItems = cours.filter((curElem) => {
       return curElem.categorie === cat
     }) ;
-    setCours(updatedItems)
+    setCours(updatedItems);
 
   }
 
@@ -111,8 +112,9 @@ const AllCours = () => {
         <Grid item ><p>Filter tab</p>
         <button onClick={()=> getCourses()}>toutes les catégories</button>
 
-        {category.map((categ) => ( 
+        {category.map((categ,id )=> ( 
           <button
+          key={id}
           onClick={()=>{
             filterItem(categ.nom);
         }}
