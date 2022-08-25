@@ -1,100 +1,28 @@
-import {
-  Box,
-  Container,
-  FormControl,
-  IconButton,
-  InputAdornment,
-  InputLabel,
-  OutlinedInput,
-  TextField,
-} from "@mui/material";
-import React, { useEffect, useState, useContext } from "react";
+import { Box, Container } from "@mui/material";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import PrimarySearchAppBar from "../../Dashboard/Default/Navbar";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import { AccountCircle, SellOutlined } from "@mui/icons-material";
 import AuthContext from "../../../context/AuthContext";
-import axios from "axios";
-import { Form, FormGroup, Input, Label } from "reactstrap";
+import { Form, FormGroup, Input } from "reactstrap";
 import jwt_decode from "jwt-decode";
-import { Btn, H4, P } from "../../../AbstractElements";
+import { H4 } from "../../../AbstractElements";
 
 const ConnexionPage = () => {
   const history = useNavigate();
-  const [values, setValues] = React.useState({
-    amount: "",
-    password: "",
-    weight: "",
-    weightRange: "",
-    showPassword: false,
-  });
 
-  const { user, authTokens, change_password } = useContext(AuthContext);
-  // const [old_password, setOldPassword] = useState("");
-  // const [new_password, setNewPassword] = useState("");
+  const { change_password } = useContext(AuthContext);
 
-  // const handleUpdate = async (e) => {
-  //   e.preventDefault();
-  // const old_password = e.target.old_password.value;
-  // const new_password = e.target.new_password.value;
-  // change_password(old_password, new_password);
-  // console.log(change_password);
-
-  // history("/dashboard");
-  // };
   const getID = jwt_decode(
     "Bearer " + localStorage.getItem("authTokens")
   ).user_id;
 
   console.log("ID", getID);
-  // const { authTokens } = useContext(AuthContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const handleSubmit = async (e) => {
     e.preventDefault();
     change_password(username, password);
     window.location.reload(false);
-  };
-
-  // const changePassword = (event) => {
-  //   const formdata = {
-  //     username: username,
-  //     password: password,
-  //   };
-  //   axios.put(
-  //     "http://localhost:8000/simple-user/change_password/",
-  //     formdata,
-  //     {
-  //       headers: {
-  //         Authorization: `Bearer ${authTokens?.access}`,
-  //       },
-  //     }
-  //   );
-  // };
-
-  // useEffect(() => {
-  //   axios
-  //     .get("http://localhost:8000/simple-user/change_password/")
-  //     .then((res) => {
-  //       setUsername(res.data.old_password);
-  //       setPassword(res.data.new_password);
-  //     }, []);
-  // });
-
-  const handleChange = (prop) => (event) => {
-    setValues({ ...values, [prop]: event.target.value });
-  };
-
-  const handleClickShowPassword = () => {
-    setValues({
-      ...values,
-      showPassword: !values.showPassword,
-    });
-  };
-
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
   };
 
   return (
