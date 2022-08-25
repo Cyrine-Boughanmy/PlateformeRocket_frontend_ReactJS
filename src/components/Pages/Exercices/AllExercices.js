@@ -11,8 +11,8 @@ const AllExercices = () => {
     const getExercices = async () => {
         // const response = await axios.get("http://localhost:8000/cours/liste/");
         const response = await axios.get(
-        //   " https://rocketcoding-plateform-back.herokuapp.com/cours/liste/"
-          "http://localhost:8000/exercices/liste/"
+          " https://rocketcoding-plateform-back.herokuapp.com/exercices/liste/"
+          // "http://localhost:8000/exercices/liste/"
         );
     
         console.log("reponsee", response.data);

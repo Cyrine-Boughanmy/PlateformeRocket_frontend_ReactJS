@@ -28,6 +28,7 @@ import EvaluationPage from "./components/Pages/Evaluations/EvaluationPage";
 import ConnexionPage from "./components/Pages/Profile/ConnexionPage";
 import PrivateRoute from "./utils/PrivateRoute";
 import TokenValidation from "./components/Pages/Auth/TokenValidation";
+import AllCours from "./components/Pages/test";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
       <Router>
         <AuthProvider>
           <Routes>
+          {/* <Route exact path="/test" element={<AllCours />}></Route> */}
             <Route exact path="/" element={<Login />}></Route>
 
             <Route element={<PrivateRoute />}>
