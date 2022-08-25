@@ -14,7 +14,7 @@ const TokenValidation = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    token_validation(password, token);
+    token_validation(token, password);
     console.log("test", token_validation);
   };
   return (
