@@ -102,6 +102,27 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const change_password = async (username, password) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + authTokens.access,
+      },
+    };
+
+    const body = JSON.stringify({ username, password });
+
+    try {
+      await axios.put(
+        "http://127.0.0.1:8000/simple-user/change_password/",
+        body,
+        config
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   // const registerUser = async (
   //   username,
   //   password,
@@ -159,6 +180,7 @@ export const AuthProvider = ({ children }) => {
     logoutUser,
     reset_passsword,
     token_validation,
+    change_password,
   };
 
   useEffect(() => {

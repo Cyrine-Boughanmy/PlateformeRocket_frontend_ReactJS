@@ -115,7 +115,11 @@ function App() {
               path="/login/reset_pwd"
               element={<ForgetPwd />}
             ></Route>
-            <Route exact path="/token" element={<TokenValidation />}></Route>
+            <Route
+              exact
+              path="/token/:id"
+              element={<TokenValidation />}
+            ></Route>
           </Routes>
         </AuthProvider>
       </Router>
