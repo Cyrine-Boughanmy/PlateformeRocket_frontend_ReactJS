@@ -212,18 +212,24 @@ export default function PrimarySearchAppBar() {
             </List>
             <Divider />
             <List>
+            <ListItem button onClick={() => history("/cours")}>
+                <ImportContactsSharpIcon />
+                <ListItemText primary={"Cours"}></ListItemText>
+              </ListItem>
               <ListItem button onClick={() => history("/cours")}>
                 <ImportContactsSharpIcon />
                 <ListItemText primary={"Cours"}></ListItemText>
               </ListItem>
-              <ListItem button onClick={() => history("/exercices")}>
+
+              {/* <ListItem button onClick={() => history("/exercices")}>
                 <WebAssetSharpIcon />
                 <ListItemText primary={"Exercices"}></ListItemText>
               </ListItem>
               <ListItem button onClick={() => history("/evaluations")}>
                 <VerifiedUserSharpIcon />
                 <ListItemText primary={"Evaluations"}></ListItemText>
-              </ListItem>
+              </ListItem> */}
+
               <ListItem button onClick={() => history("/qcm")}>
                 <ReorderSharpIcon />
                 <ListItemText primary={"QCM"}></ListItemText>

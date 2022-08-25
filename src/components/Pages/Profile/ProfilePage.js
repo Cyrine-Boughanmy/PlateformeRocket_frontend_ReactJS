@@ -9,7 +9,9 @@ const ProfilePage = () => {
     <>
     <PrimarySearchAppBar />
     <ProfileInfos/>
-    <ProfileEvaluatinBootcampPage/>
+    <br></br>
+    <br></br>
+    {/* <ProfileEvaluatinBootcampPage/> */}
     <ProfileNotesEvaluationPage/>
     </>
   );
