@@ -57,6 +57,14 @@ const CoursPage = () => {
     <div>
       <PrimarySearchAppBar />
       <br />
+      <Box textAlign="left">
+      <button
+              className="go-back-link__actualites"
+              onClick={() => history(-1)}
+            >
+              Retour
+            </button>
+      </Box>
       <Container>
         <Grid
           container
