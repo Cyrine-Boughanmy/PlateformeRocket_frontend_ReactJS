@@ -41,8 +41,8 @@ const AllCours = () => {
   const getCourses = async () => {
     // const response = await axios.get("http://localhost:8000/cours/liste/");
     const response = await axios.get(
-      // " https://rocketcoding-plateform-back.herokuapp.com/cours/liste/"
-      "http://localhost:8000/cours/liste/"
+      " https://rocketcoding-plateform-back.herokuapp.com/cours/liste/"
+      // "http://localhost:8000/cours/liste/"
       // ,
       // {
       //   headers: {
@@ -82,7 +82,7 @@ const AllCours = () => {
 
   const getCategories = async () => {
     const response = await axios.get(
-      "https://rocketcoding-plateform-back.herokuapp.com/cours/listeModule/"
+      "https://rocketcoding-plateform-back.herokuapp.com/categorie/liste/"
       // "http://localhost:8000/categorie/liste/"
     );
     console.log("reponsee cat", response.data);
