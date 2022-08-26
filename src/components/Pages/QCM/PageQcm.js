@@ -115,8 +115,10 @@ class MainQuiz extends React.Component {
 
   loadQuizData = () => {
     // console.log(quizData[0].question)
+    console.log(quizData[0])
     this.setState(() => {
       return {
+        qcm_name : quizData[this.state.currentQuestion],
         questions: quizData[this.state.currentQuestion].question,
         answer: quizData[this.state.currentQuestion].answer,
         options: quizData[this.state.currentQuestion].options

@@ -27,6 +27,7 @@ import NewspaperIcon from "@mui/icons-material/Newspaper";
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../../../context/AuthContext";
+import CategoryIcon from '@mui/icons-material/Category';
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -212,9 +213,9 @@ export default function PrimarySearchAppBar() {
             </List>
             <Divider />
             <List>
-            <ListItem button onClick={() => history("/cours")}>
-                <ImportContactsSharpIcon />
-                <ListItemText primary={"Cours"}></ListItemText>
+            <ListItem button onClick={() => history("/categories")}>
+                <CategoryIcon />
+                <ListItemText primary={"Catégories"}></ListItemText>
               </ListItem>
               <ListItem button onClick={() => history("/cours")}>
                 <ImportContactsSharpIcon />

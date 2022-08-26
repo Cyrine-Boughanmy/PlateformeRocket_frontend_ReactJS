@@ -32,18 +32,25 @@ const Home = () => {
           <br />
           <Item
             style={{ margin: "auto", padding: "10px", fontSize: "20px" }}
-            onClick={() => history("/cours")}
+            onClick={() => history("/categories")}
           >
-            Cours
+            Catégories
           </Item>
           <br />
           <Item
             style={{ margin: "auto", padding: "10px", fontSize: "20px" }}
+            onClick={() => history("/cours")}
+          >
+            Cours
+          </Item>
+         
+          {/* <Item
+            style={{ margin: "auto", padding: "10px", fontSize: "20px" }}
             onClick={() => history("/exercices")}
           >
             Exercices
-          </Item>
-          <br />
+          </Item> */}
+          {/* <br />
           <Item
             style={{ margin: "auto", padding: "10px", fontSize: "20px" }}
             onClick={() => history("/evaluations")}
@@ -56,7 +63,7 @@ const Home = () => {
             onClick={() => history("/qcm")}
           >
             QCM
-          </Item>
+          </Item> */}
           <br />
           <Item
             style={{ margin: "auto", padding: "10px", fontSize: "20px" }}

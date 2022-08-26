@@ -29,6 +29,7 @@ import ConnexionPage from "./components/Pages/Profile/ConnexionPage";
 import PrivateRoute from "./utils/PrivateRoute";
 import TokenValidation from "./components/Pages/Auth/TokenValidation";
 import AllCours from "./components/Pages/test";
+import Catégories from "./components/Dashboard/Default/Catégories";
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
                 path="/register"
                 element={<RegisterSimple />}
               ></Route>
+              <Route exact path="/categories" element={<Catégories />}></Route>
               <Route exact path="/cours" element={<Cours />}></Route>
               <Route exact path="/profile" element={<Profile />}></Route>
               <Route

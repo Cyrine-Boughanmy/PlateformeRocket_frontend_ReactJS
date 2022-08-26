@@ -165,6 +165,11 @@
 // }
 // export default MenuQcm;
 
+
+
+
+
+
 import { Box, Button, Container, FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -189,25 +194,42 @@ constructor(props) {
 
 
 changeCatégorie (event) {
-  this.setState({selectedCatégorie: event.target.value});
+  this.setState({selectedCatégorie : event.target.value});
   this.setState({cours : this.state.catégories.find(cat => cat.name === event.target.value).cours});
+  // console.log("cat : ",event.target.value);
+ 
 }
-
+// componentDidUpdate() {
+//   console.log("componentDidUpdate cat ********");
+//   console.log("cat : ",this.state.selectedCatégorie);
+  
+// }
 changeCours(event) {
   this.setState({selectedCours: event.target.value});
   const stats = this.state.catégories.find(cat => cat.name === this.state.selectedCatégorie).cours;
   this.setState({qcm : stats.find(stat => stat.name === event.target.value).qcm});
-};
+  
+}
+// componentDidUpdate() {
+//   console.log("componentDidUpdate cours ********");
+//   console.log("cours : ",this.state.selectedCours);
+  
+// }
+
 changeQcm ( event) {
   this.setState({selectedQcm : event.target.value});
-  const quest = this.state.cours.find(course => course.name ===this.state.selectedCatégorie).qcm;
-  this.setState({questions : quest.find(question => question.name === event.target.value).qestions});
+  // const quest = this.state.cours.find(course => course.name ===this.state.selectedCatégorie).qcm;
+  // this.setState({questions : quest.find(question => question.name === event.target.value).qestions});
 }
 
-
+componentDidUpdate() {
+  console.log("componentDidUpdate qcm ********");
+  console.log("qcm : ",this.state.selectedQcm);
+  
+}
 
 render() {
-  
+
   return (
     <Container maxWidth="sm">
           <Box textAlign="center" mt={5}>
@@ -254,7 +276,7 @@ render() {
               <Box mt={3} width="100%">
             <FormControl size="small" fullWidth>
           <InputLabel>Qcm</InputLabel>
-          <Select  label="Qcm" onChange={() => {}}>
+          <Select  label="Qcm" value={this.state.selectedQcm}  onChange={this.changeQcm}>
           {this.state.qcm.map((e, key) => {
                       return <MenuItem value={e.name}>{e.name}</MenuItem>;
                   })}
@@ -272,7 +294,7 @@ render() {
           </div> */}
           {/* <button type="submit" className="btn btn-success" >Submit</button> */}
           <Box mt={3} width="100%">
-        <Button fullWidth variant="contained" type="submit" 
+        <Button fullWidth variant="contained" type="submit" onClick={() => useNavigate("/profile")}
          sx={{backgroundColor:" #014AAD"}}
         
          >
@@ -286,3 +308,128 @@ render() {
 }
 }
 export default MenuQcm;
+
+// import React from "react";
+// import ReactDOM from "react-dom";
+// import Data from './MenuQcmList';
+
+
+// class MenuQcm extends React.Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       countryList: [],
+//       stateList: [],
+//       cityList: [],
+//       selectedCountry: "",
+//       selectedState: "",
+//       selectedCity: "",
+      
+//     };
+
+//     this.changeCountry = this.changeCountry.bind(this);
+//     this.changeState = this.changeState.bind(this);
+//     this.changeCity = this.changeCity.bind(this);
+//   }
+//   componentDidMount() {
+//     const { data } = Data;
+//     // Get all countries from data object which exists as keys
+//     // and set to the countrylist state
+//     const countryList = Object.keys(data);
+//     this.setState({
+//       countryList
+//     });
+//   }
+
+//   changeCountry(e) {
+//     // Based on country selection change options for state dropdown
+//     // and show it in result as well
+//     const { data } = Data;
+//     const selectedCountry = e && e.target && e.target.value;
+//     if (selectedCountry) {
+//       const stateList = Object.keys(data[selectedCountry].cours);
+//       this.setState({
+//         stateList,
+//         selectedCountry,
+//         cityList: []
+//       });
+//     } else {
+//       this.setState({
+//         stateList: [],
+//         cityList: [],
+//         selectedCountry: "",
+//         selectedState: "",
+//         selectedCity: ""
+//       });
+//     }
+//   }
+
+//   changeState(e) {
+//     // Based on state selection change options for city dropdown
+//     // and show it in result as well
+//     const { data } = Data;
+//     const selectedState = e && e.target && e.target.value;
+//     if (selectedState) {
+//       const cityList =
+//         data[this.state.selectedCountry].cours[selectedState].qcm;
+//       this.setState({
+//         cityList,
+//         selectedState
+//       });
+//     } else {
+//       this.setState({
+//         cityList: [],
+//         selectedState: "",
+//         selectedCity: "",
+//       });
+//     }
+//   }
+
+//   changeCity(e) {
+//     // Based on city selection show it in result as well
+//     const selectedCity = e && e.target && e.target.value;
+//     this.setState({
+//       selectedCity
+//     });
+//   }
+
+//   render() {
+//     return (
+//       <div className="App">
+//         <h1>Dynamic Select dropdown - ReactJS</h1>
+//         <div className="dynamic-dropdown">
+//           <select
+//             value={this.state.selectedCountry}
+//             onChange={this.changeCountry}
+//           >
+//             <option value="">Please select Country</option>
+//             {this.state.countryList.map((x, i) => {
+//               return <option key={i}>{x}</option>;
+//             })}
+//           </select>
+//           <br />
+//           <select value={this.state.selectedState} onChange={this.changeState}>
+//             <option value="">Please select State/Province</option>
+//             {this.state.stateList.map((x, i) => {
+//               return <option key={i}>{x}</option>;
+//             })}
+//           </select>
+//           <br />
+//           <select value={this.state.selectedCity} onChange={this.changeCity}>
+//             <option value="">Please select City</option>
+//             {this.state.cityList.map((x, i) => {
+//               return <option key={i}>{x}</option>;
+//             })}
+//           </select>
+//         </div>
+//         <div className="dynamic-dropdown-result">
+//           <h3>Selected Result:</h3>
+//           {this.state.selectedCountry}
+//           {this.state.selectedState ? ` | ${this.state.selectedState}` : ``}
+//           {this.state.selectedCity ? ` | ${this.state.selectedCity}` : ``}
+//         </div>
+//       </div>
+//     );
+//   }
+// }
+// export default MenuQcm;
