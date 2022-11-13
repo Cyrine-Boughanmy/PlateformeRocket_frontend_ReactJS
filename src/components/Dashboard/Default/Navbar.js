@@ -222,14 +222,14 @@ export default function PrimarySearchAppBar() {
                 <ListItemText primary={"Cours"}></ListItemText>
               </ListItem>
 
-              {/* <ListItem button onClick={() => history("/exercices")}>
+              <ListItem button onClick={() => history("/exercices")}>
                 <WebAssetSharpIcon />
                 <ListItemText primary={"Exercices"}></ListItemText>
               </ListItem>
               <ListItem button onClick={() => history("/evaluations")}>
                 <VerifiedUserSharpIcon />
                 <ListItemText primary={"Evaluations"}></ListItemText>
-              </ListItem> */}
+              </ListItem>
 
               <ListItem button onClick={() => history("/qcm")}>
                 <ReorderSharpIcon />
